@@ -11,18 +11,18 @@ import java.util.ArrayList;
  *
  * @author AlbertoRS
  */
-public class build {
+public class composition {
 
     private int codBuild;
     private champions c;
     private runes r;
     private ArrayList<items> it;
 
-    public build() {
+    public composition() {
         this(-1, null, null, null);
     }
 
-    public build(int codBuild, champions c, runes r, ArrayList<items> it) {
+    public composition(int codBuild, champions c, runes r, ArrayList<items> it) {
         this.codBuild = codBuild;
         this.c = c;
         this.r = r;
@@ -75,8 +75,8 @@ public class build {
             if (this == obj) {
                 igual = true;
             } else {
-                if (obj instanceof build) {
-                    build n = (build) obj;
+                if (obj instanceof composition) {
+                    composition n = (composition) obj;
                     if (this.codBuild == n.getCodBuild()) {
                         igual = true;
                     }
