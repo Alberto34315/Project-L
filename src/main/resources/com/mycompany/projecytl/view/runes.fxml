@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecytl.controller.runesController">
+   <children>
+      <GridPane layoutX="186.0" layoutY="1.0" prefHeight="436.0" prefWidth="586.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="133.0000244140625" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.19995117187503" minWidth="0.0" prefWidth="140.99996337890624" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.6000244140625" minWidth="10.0" prefWidth="162.60003662109375" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.79998779296875" minWidth="10.0" prefWidth="122.40003662109376" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="189.59998779296876" minHeight="10.0" prefHeight="81.59998779296876" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="186.19999008178712" minHeight="10.0" prefHeight="76.79998168945312" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="133.60000000000002" minHeight="7.599966430664054" prefHeight="88.80001831054688" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="123.5999816894531" minHeight="10.0" prefHeight="72.79998779296875" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="113.39997558593751" minHeight="10.0" prefHeight="87.00001220703126" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="113.39997558593751" minHeight="10.0" prefHeight="87.00001220703126" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="113.39997558593751" minHeight="10.0" prefHeight="87.00001220703126" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <ComboBox fx:id="type" onAction="#selectRunePrimary" prefHeight="28.0" prefWidth="118.0" promptText="Runes Type" />
+            <ComboBox fx:id="rPrimary" prefHeight="26.0" prefWidth="122.0" promptText="Runes Primary" GridPane.rowIndex="1" />
+            <ComboBox layoutX="10.0" layoutY="136.0" prefHeight="26.0" prefWidth="122.0" promptText="Slot 1" GridPane.rowIndex="2" />
+            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Slot 2" GridPane.rowIndex="3" />
+            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Slot 3" GridPane.rowIndex="4" />
+            <ComboBox prefHeight="26.0" prefWidth="134.0" promptText="Runes Secondary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Slot 4" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Slot 5" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Buff 1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Buff 2" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Buff 3" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label text="Label" GridPane.columnIndex="1" />
+            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+      <Button layoutX="97.0" layoutY="381.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Save" />
+   </children>
+</AnchorPane>
