@@ -28,16 +28,16 @@
         </rowConstraints>
          <children>
             <ComboBox fx:id="type" onAction="#selectRunePrimary" prefHeight="28.0" prefWidth="118.0" promptText="Runes Type" />
-            <ComboBox fx:id="rPrimary" prefHeight="26.0" prefWidth="122.0" promptText="Runes Primary" GridPane.rowIndex="1" />
-            <ComboBox layoutX="10.0" layoutY="136.0" prefHeight="26.0" prefWidth="122.0" promptText="Slot 1" GridPane.rowIndex="2" />
-            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Slot 2" GridPane.rowIndex="3" />
-            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Slot 3" GridPane.rowIndex="4" />
-            <ComboBox prefHeight="26.0" prefWidth="134.0" promptText="Runes Secondary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Slot 4" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Slot 5" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Buff 1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Buff 2" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-            <ComboBox prefHeight="26.0" prefWidth="122.0" promptText="Buff 3" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <ComboBox fx:id="rPrimary" onAction="#selectRuneSlots" prefHeight="26.0" prefWidth="122.0" promptText="Runes Primary" GridPane.rowIndex="1" />
+            <ComboBox fx:id="s1" layoutX="10.0" layoutY="136.0" prefHeight="26.0" prefWidth="122.0" promptText="Slot 1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="s2" prefHeight="26.0" prefWidth="122.0" promptText="Slot 2" GridPane.rowIndex="3" />
+            <ComboBox fx:id="s3" prefHeight="26.0" prefWidth="122.0" promptText="Slot 3" GridPane.rowIndex="4" />
+            <ComboBox fx:id="rSecondary" prefHeight="26.0" prefWidth="134.0" promptText="Runes Secondary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ComboBox fx:id="s4" prefHeight="26.0" prefWidth="122.0" promptText="Slot 4" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ComboBox fx:id="s5" prefHeight="26.0" prefWidth="122.0" promptText="Slot 5" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <ComboBox fx:id="b1" prefHeight="26.0" prefWidth="122.0" promptText="Buff 1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <ComboBox fx:id="b2" prefHeight="26.0" prefWidth="122.0" promptText="Buff 2" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <ComboBox fx:id="b3" prefHeight="26.0" prefWidth="122.0" promptText="Buff 3" GridPane.columnIndex="2" GridPane.rowIndex="6" />
             <Label text="Label" GridPane.columnIndex="1" />
             <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
