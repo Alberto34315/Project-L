@@ -32,8 +32,8 @@
             <ComboBox fx:id="s1" layoutX="10.0" layoutY="136.0" prefHeight="26.0" prefWidth="122.0" promptText="Slot 1" GridPane.rowIndex="2" />
             <ComboBox fx:id="s2" prefHeight="26.0" prefWidth="122.0" promptText="Slot 2" GridPane.rowIndex="3" />
             <ComboBox fx:id="s3" prefHeight="26.0" prefWidth="122.0" promptText="Slot 3" GridPane.rowIndex="4" />
-            <ComboBox fx:id="rSecondary" onAction="#selectsSlotsSecondarys" prefHeight="26.0" prefWidth="134.0" promptText="Runes Secondary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ComboBox fx:id="s4" prefHeight="26.0" prefWidth="122.0" promptText="Slot 4" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ComboBox fx:id="rSecondary" onAction="#selectsSlotsSecondarys4" prefHeight="26.0" prefWidth="134.0" promptText="Runes Secondary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <ComboBox fx:id="s4" onAction="#selectsSlotsSecondarys5" prefHeight="26.0" prefWidth="122.0" promptText="Slot 4" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <ComboBox fx:id="s5" prefHeight="26.0" prefWidth="122.0" promptText="Slot 5" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <ComboBox fx:id="b1" prefHeight="26.0" prefWidth="122.0" promptText="Buff 1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <ComboBox fx:id="b2" prefHeight="26.0" prefWidth="122.0" promptText="Buff 2" GridPane.columnIndex="2" GridPane.rowIndex="5" />

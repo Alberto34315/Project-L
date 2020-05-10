@@ -78,10 +78,15 @@ public class runesController extends ModalControllers implements Initializable {
 
     @FXML
     public void selectRunePrimary() {
+
         rSecondary.getItems().clear();
         selectRunesecondary();
+
+        b1.getItems().clear();
         runesBuff1();
+        b2.getItems().clear();
         runesBuff2();
+        b3.getItems().clear();
         runesBuff3();
         switch (type.getValue()) {
             case "Precision":
@@ -158,7 +163,6 @@ public class runesController extends ModalControllers implements Initializable {
         }
     }
 
-    @FXML
     public void selectRunesecondary() {
         if (type != null) {
             for (RuneType _type : RuneType.values()) {
@@ -171,8 +175,14 @@ public class runesController extends ModalControllers implements Initializable {
     }
 
     @FXML
-    private void selectsSlotsSecondarys() {
+    private void selectsSlotsSecondarys4() {
+        s4.getItems().clear();
         runesSlot4();
+    }
+
+    @FXML
+    private void selectsSlotsSecondarys5() {
+        s5.getItems().clear();
         runesSlot5();
     }
 
@@ -291,20 +301,18 @@ public class runesController extends ModalControllers implements Initializable {
                 s5.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Precision.getRune())) {
                     for (SlotGeneral _type : SlotGeneral.values()) {
-                        if (_type.getRune().equals(SlotGeneral.Overheal.getRune()) && s4.getSelectionModel().getSelectedItem() != SlotGeneral.Overheal.getRune()
-                                || _type.getRune().equals(SlotGeneral.Triumph.getRune()) && s4.getSelectionModel().getSelectedItem() != SlotGeneral.Triumph.getRune()
-                                || _type.getRune().equals(SlotGeneral.PresenceOfMind.getRune()) && s4.getSelectionModel().getSelectedItem() != SlotGeneral.PresenceOfMind.getRune()
-                                || _type.getRune().equals(SlotGeneral.Promptness.getRune()) && s4.getSelectionModel().getSelectedItem() != SlotGeneral.Promptness.getRune()
-                                || _type.getRune().equals(SlotGeneral.Tenacity.getRune()) && s4.getSelectionModel().getSelectedItem() != SlotGeneral.Tenacity.getRune()
-                                || _type.getRune().equals(SlotGeneral.Lineage.getRune()) && s4.getSelectionModel().getSelectedItem() != SlotGeneral.Lineage.getRune()
-                                || _type.getRune().equals(SlotGeneral.CoupOfGrace.getRune()) && s4.getSelectionModel().getSelectedItem() != SlotGeneral.CoupOfGrace.getRune()
-                                || _type.getRune().equals(SlotGeneral.CutDown.getRune()) && s4.getSelectionModel().getSelectedItem() != SlotGeneral.CutDown.getRune()
-                                || _type.getRune().equals(SlotGeneral.LastStand.getRune()) && s4.getSelectionModel().getSelectedItem() != SlotGeneral.LastStand.getRune()) {
-                            //  if (s4.getSelectionModel().getSelectedItem().equals(_type.getRune())) {
-                            //      s5.getItems().remove(SlotGeneral.valueOf(_type.getRune()));
-                            //   } else {
+                        if (_type.getRune().equals(SlotGeneral.Overheal.getRune()) && s4.getValue() != SlotGeneral.Overheal.getRune() && s4.getValue() != SlotGeneral.Triumph.getRune() && s4.getValue() != SlotGeneral.PresenceOfMind.getRune()
+                                || _type.getRune().equals(SlotGeneral.Triumph.getRune()) && s4.getValue() != SlotGeneral.Triumph.getRune() && s4.getValue() != SlotGeneral.Overheal.getRune() && s4.getValue() != SlotGeneral.PresenceOfMind.getRune()
+                                || _type.getRune().equals(SlotGeneral.PresenceOfMind.getRune()) && s4.getValue() != SlotGeneral.PresenceOfMind.getRune() && s4.getValue() != SlotGeneral.Triumph.getRune() && s4.getValue() != SlotGeneral.Overheal.getRune()
+                                || _type.getRune().equals(SlotGeneral.Promptness.getRune()) && s4.getValue() != SlotGeneral.Promptness.getRune() && s4.getValue() != SlotGeneral.Tenacity.getRune() && s4.getValue() != SlotGeneral.Lineage.getRune()
+                                || _type.getRune().equals(SlotGeneral.Tenacity.getRune()) && s4.getValue() != SlotGeneral.Tenacity.getRune() && s4.getValue() != SlotGeneral.Promptness.getRune() && s4.getValue() != SlotGeneral.Lineage.getRune()
+                                || _type.getRune().equals(SlotGeneral.Lineage.getRune()) && s4.getValue() != SlotGeneral.Lineage.getRune() && s4.getValue() != SlotGeneral.Tenacity.getRune() && s4.getValue() != SlotGeneral.Promptness.getRune()
+                                || _type.getRune().equals(SlotGeneral.CoupOfGrace.getRune()) && s4.getValue() != SlotGeneral.CoupOfGrace.getRune() && s4.getValue() != SlotGeneral.CutDown.getRune() && s4.getValue() != SlotGeneral.LastStand.getRune()
+                                || _type.getRune().equals(SlotGeneral.CutDown.getRune()) && s4.getValue() != SlotGeneral.CutDown.getRune() && s4.getValue() != SlotGeneral.CoupOfGrace.getRune() && s4.getValue() != SlotGeneral.LastStand.getRune()
+                                || _type.getRune().equals(SlotGeneral.LastStand.getRune()) && s4.getValue() != SlotGeneral.LastStand.getRune() && s4.getValue() != SlotGeneral.CoupOfGrace.getRune() && s4.getValue() != SlotGeneral.CutDown.getRune()) {
+
                             s5.getItems().add(_type.getRune());
-                            // }
+
                         }
                     }
                 }
@@ -313,21 +321,19 @@ public class runesController extends ModalControllers implements Initializable {
                 s5.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Domination.getRune())) {
                     for (SlotGeneral _type : SlotGeneral.values()) {
-                        if (_type.getRune().equals(SlotGeneral.CheapShot.getRune())
-                                || _type.getRune().equals(SlotGeneral.TasteOfBlood.getRune())
-                                || _type.getRune().equals(SlotGeneral.SuddenImpact.getRune())
-                                || _type.getRune().equals(SlotGeneral.ZombieWard.getRune())
-                                || _type.getRune().equals(SlotGeneral.Tenacity.getRune())
-                                || _type.getRune().equals(SlotGeneral.Lineage.getRune())
-                                || _type.getRune().equals(SlotGeneral.RavenousHunter.getRune())
-                                || _type.getRune().equals(SlotGeneral.IngeniousHunter.getRune())
-                                || _type.getRune().equals(SlotGeneral.RelentlessHunter.getRune())
-                                || _type.getRune().equals(SlotGeneral.UltimateHunter.getRune())) {
-                            //    if (s4.getSelectionModel().getSelectedItem().equals(_type.getRune())) {
-                            //       s5.getItems().remove(SlotGeneral.valueOf(_type.getRune()));
-                            //  } else {
+                        if (_type.getRune().equals(SlotGeneral.CheapShot.getRune()) && s4.getValue() != SlotGeneral.CheapShot.getRune() && s4.getValue() != SlotGeneral.TasteOfBlood.getRune() && s4.getValue() != SlotGeneral.SuddenImpact.getRune()
+                                || _type.getRune().equals(SlotGeneral.TasteOfBlood.getRune()) && s4.getValue() != SlotGeneral.CheapShot.getRune() && s4.getValue() != SlotGeneral.TasteOfBlood.getRune() && s4.getValue() != SlotGeneral.SuddenImpact.getRune()
+                                || _type.getRune().equals(SlotGeneral.SuddenImpact.getRune()) && s4.getValue() != SlotGeneral.CheapShot.getRune() && s4.getValue() != SlotGeneral.TasteOfBlood.getRune() && s4.getValue() != SlotGeneral.SuddenImpact.getRune()
+                                || _type.getRune().equals(SlotGeneral.ZombieWard.getRune()) && s4.getValue() != SlotGeneral.ZombieWard.getRune() && s4.getValue() != SlotGeneral.GhostPoro.getRune() && s4.getValue() != SlotGeneral.EyeballCollection.getRune()
+                                || _type.getRune().equals(SlotGeneral.GhostPoro.getRune()) && s4.getValue() != SlotGeneral.ZombieWard.getRune() && s4.getValue() != SlotGeneral.GhostPoro.getRune() && s4.getValue() != SlotGeneral.EyeballCollection.getRune()
+                                || _type.getRune().equals(SlotGeneral.EyeballCollection.getRune()) && s4.getValue() != SlotGeneral.ZombieWard.getRune() && s4.getValue() != SlotGeneral.GhostPoro.getRune() && s4.getValue() != SlotGeneral.EyeballCollection.getRune()
+                                || _type.getRune().equals(SlotGeneral.RavenousHunter.getRune()) && s4.getValue() != SlotGeneral.RavenousHunter.getRune() && s4.getValue() != SlotGeneral.IngeniousHunter.getRune() && s4.getValue() != SlotGeneral.RelentlessHunter.getRune() && s4.getValue() != SlotGeneral.UltimateHunter.getRune()
+                                || _type.getRune().equals(SlotGeneral.IngeniousHunter.getRune()) && s4.getValue() != SlotGeneral.RavenousHunter.getRune() && s4.getValue() != SlotGeneral.IngeniousHunter.getRune() && s4.getValue() != SlotGeneral.RelentlessHunter.getRune() && s4.getValue() != SlotGeneral.UltimateHunter.getRune()
+                                || _type.getRune().equals(SlotGeneral.RelentlessHunter.getRune()) && s4.getValue() != SlotGeneral.RavenousHunter.getRune() && s4.getValue() != SlotGeneral.IngeniousHunter.getRune() && s4.getValue() != SlotGeneral.RelentlessHunter.getRune() && s4.getValue() != SlotGeneral.UltimateHunter.getRune()
+                                || _type.getRune().equals(SlotGeneral.UltimateHunter.getRune()) && s4.getValue() != SlotGeneral.RavenousHunter.getRune() && s4.getValue() != SlotGeneral.IngeniousHunter.getRune() && s4.getValue() != SlotGeneral.RelentlessHunter.getRune() && s4.getValue() != SlotGeneral.UltimateHunter.getRune()) {
+
                             s5.getItems().add(_type.getRune());
-                            //  }
+
                         }
                     }
                 }
@@ -336,20 +342,17 @@ public class runesController extends ModalControllers implements Initializable {
                 s5.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Sorcery.getRune())) {
                     for (SlotGeneral _type : SlotGeneral.values()) {
-                        if (_type.getRune().equals(SlotGeneral.NullifyingOrb.getRune())
-                                || _type.getRune().equals(SlotGeneral.ManaflowBand.getRune())
-                                || _type.getRune().equals(SlotGeneral.NimbusCloak.getRune())
-                                || _type.getRune().equals(SlotGeneral.Transcendence.getRune())
-                                || _type.getRune().equals(SlotGeneral.Celerity.getRune())
-                                || _type.getRune().equals(SlotGeneral.AbsoluteFocus.getRune())
-                                || _type.getRune().equals(SlotGeneral.Scorch.getRune())
-                                || _type.getRune().equals(SlotGeneral.Waterwalking.getRune())
-                                || _type.getRune().equals(SlotGeneral.GatheringStorm.getRune())) {
-                            //   if (s4.getSelectionModel().getSelectedItem().equals(s4.getSelectionModel().getSelectedItem())) {
-                            //      s5.getItems().remove(SlotGeneral.valueOf(s4.getValue()));
-                            //  } else {
+                        if (_type.getRune().equals(SlotGeneral.NullifyingOrb.getRune()) && s4.getValue() != SlotGeneral.NullifyingOrb.getRune() && s4.getValue() != SlotGeneral.ManaflowBand.getRune() && s4.getValue() != SlotGeneral.NimbusCloak.getRune()
+                                || _type.getRune().equals(SlotGeneral.ManaflowBand.getRune()) && s4.getValue() != SlotGeneral.NullifyingOrb.getRune() && s4.getValue() != SlotGeneral.ManaflowBand.getRune() && s4.getValue() != SlotGeneral.NimbusCloak.getRune()
+                                || _type.getRune().equals(SlotGeneral.NimbusCloak.getRune()) && s4.getValue() != SlotGeneral.NullifyingOrb.getRune() && s4.getValue() != SlotGeneral.ManaflowBand.getRune() && s4.getValue() != SlotGeneral.NimbusCloak.getRune()
+                                || _type.getRune().equals(SlotGeneral.Transcendence.getRune()) && s4.getValue() != SlotGeneral.Transcendence.getRune() && s4.getValue() != SlotGeneral.Celerity.getRune() && s4.getValue() != SlotGeneral.AbsoluteFocus.getRune()
+                                || _type.getRune().equals(SlotGeneral.Celerity.getRune()) && s4.getValue() != SlotGeneral.Transcendence.getRune() && s4.getValue() != SlotGeneral.Celerity.getRune() && s4.getValue() != SlotGeneral.AbsoluteFocus.getRune()
+                                || _type.getRune().equals(SlotGeneral.AbsoluteFocus.getRune()) && s4.getValue() != SlotGeneral.Transcendence.getRune() && s4.getValue() != SlotGeneral.Celerity.getRune() && s4.getValue() != SlotGeneral.AbsoluteFocus.getRune()
+                                || _type.getRune().equals(SlotGeneral.Scorch.getRune()) && s4.getValue() != SlotGeneral.Scorch.getRune() && s4.getValue() != SlotGeneral.Waterwalking.getRune() && s4.getValue() != SlotGeneral.GatheringStorm.getRune()
+                                || _type.getRune().equals(SlotGeneral.Waterwalking.getRune()) && s4.getValue() != SlotGeneral.Scorch.getRune() && s4.getValue() != SlotGeneral.Waterwalking.getRune() && s4.getValue() != SlotGeneral.GatheringStorm.getRune()
+                                || _type.getRune().equals(SlotGeneral.GatheringStorm.getRune()) && s4.getValue() != SlotGeneral.Scorch.getRune() && s4.getValue() != SlotGeneral.Waterwalking.getRune() && s4.getValue() != SlotGeneral.GatheringStorm.getRune()) {
+
                             s5.getItems().add(_type.getRune());
-                            //  }
 
                         }
                     }
@@ -360,20 +363,18 @@ public class runesController extends ModalControllers implements Initializable {
                 s5.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Resolve.getRune())) {
                     for (SlotGeneral _type : SlotGeneral.values()) {
-                        if (_type.getRune().equals(SlotGeneral.Demolish.getRune())
-                                || _type.getRune().equals(SlotGeneral.FontOfLife.getRune())
-                                || _type.getRune().equals(SlotGeneral.ShielBash.getRune())
-                                || _type.getRune().equals(SlotGeneral.Conditioning.getRune())
-                                || _type.getRune().equals(SlotGeneral.Renewedforces.getRune())
-                                || _type.getRune().equals(SlotGeneral.BonePlating.getRune())
-                                || _type.getRune().equals(SlotGeneral.Overgrowth.getRune())
-                                || _type.getRune().equals(SlotGeneral.Revitalize.getRune())
-                                || _type.getRune().equals(SlotGeneral.Unflinching.getRune())) {
-                            //   if (s4.getSelectionModel().getSelectedItem().equals(s4.getSelectionModel().getSelectedItem())) {
-                            //       s5.getItems().remove(SlotGeneral.valueOf(s4.getValue()));
-                            //   } else {
+                        if (_type.getRune().equals(SlotGeneral.Demolish.getRune()) && s4.getValue() != SlotGeneral.Demolish.getRune() && s4.getValue() != SlotGeneral.FontOfLife.getRune() && s4.getValue() != SlotGeneral.ShielBash.getRune()
+                                || _type.getRune().equals(SlotGeneral.FontOfLife.getRune()) && s4.getValue() != SlotGeneral.Demolish.getRune() && s4.getValue() != SlotGeneral.FontOfLife.getRune() && s4.getValue() != SlotGeneral.ShielBash.getRune()
+                                || _type.getRune().equals(SlotGeneral.ShielBash.getRune()) && s4.getValue() != SlotGeneral.Demolish.getRune() && s4.getValue() != SlotGeneral.FontOfLife.getRune() && s4.getValue() != SlotGeneral.ShielBash.getRune()
+                                || _type.getRune().equals(SlotGeneral.Conditioning.getRune()) && s4.getValue() != SlotGeneral.Conditioning.getRune() && s4.getValue() != SlotGeneral.Renewedforces.getRune() && s4.getValue() != SlotGeneral.BonePlating.getRune()
+                                || _type.getRune().equals(SlotGeneral.Renewedforces.getRune()) && s4.getValue() != SlotGeneral.Conditioning.getRune() && s4.getValue() != SlotGeneral.Renewedforces.getRune() && s4.getValue() != SlotGeneral.BonePlating.getRune()
+                                || _type.getRune().equals(SlotGeneral.BonePlating.getRune()) && s4.getValue() != SlotGeneral.Conditioning.getRune() && s4.getValue() != SlotGeneral.Renewedforces.getRune() && s4.getValue() != SlotGeneral.BonePlating.getRune()
+                                || _type.getRune().equals(SlotGeneral.Overgrowth.getRune()) && s4.getValue() != SlotGeneral.Overgrowth.getRune() && s4.getValue() != SlotGeneral.Revitalize.getRune() && s4.getValue() != SlotGeneral.Unflinching.getRune()
+                                || _type.getRune().equals(SlotGeneral.Revitalize.getRune()) && s4.getValue() != SlotGeneral.Overgrowth.getRune() && s4.getValue() != SlotGeneral.Revitalize.getRune() && s4.getValue() != SlotGeneral.Unflinching.getRune()
+                                || _type.getRune().equals(SlotGeneral.Unflinching.getRune()) && s4.getValue() != SlotGeneral.Overgrowth.getRune() && s4.getValue() != SlotGeneral.Revitalize.getRune() && s4.getValue() != SlotGeneral.Unflinching.getRune()) {
+
                             s5.getItems().add(_type.getRune());
-                            //  }
+
                         }
                     }
                 }
@@ -383,20 +384,18 @@ public class runesController extends ModalControllers implements Initializable {
                 s5.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Inspiration.getRune())) {
                     for (SlotGeneral _type : SlotGeneral.values()) {
-                        if (_type.getRune().equals(SlotGeneral.HextechFlashtraption.getRune())
-                                || _type.getRune().equals(SlotGeneral.MagicalFootwear.getRune())
-                                || _type.getRune().equals(SlotGeneral.PerfectTiming.getRune())
-                                || _type.getRune().equals(SlotGeneral.FuturesMarket.getRune())
-                                || _type.getRune().equals(SlotGeneral.MinionDematerializer.getRune())
-                                || _type.getRune().equals(SlotGeneral.BiscuitDelivery.getRune())
-                                || _type.getRune().equals(SlotGeneral.CosmicInsight.getRune())
-                                || _type.getRune().equals(SlotGeneral.ApproachVelocity.getRune())
-                                || _type.getRune().equals(SlotGeneral.TimeWarpTonic.getRune())) {
-                            //  if (s4.getSelectionModel().getSelectedItem().equals(s4.getSelectionModel().getSelectedItem())) {
-                            //       s5.getItems().remove(SlotGeneral.valueOf(s4.getValue()));
-                            //   } else {
+                        if (_type.getRune().equals(SlotGeneral.HextechFlashtraption.getRune()) && s4.getValue() != SlotGeneral.HextechFlashtraption.getRune() && s4.getValue() != SlotGeneral.MagicalFootwear.getRune() && s4.getValue() != SlotGeneral.PerfectTiming.getRune()
+                                || _type.getRune().equals(SlotGeneral.MagicalFootwear.getRune()) && s4.getValue() != SlotGeneral.HextechFlashtraption.getRune() && s4.getValue() != SlotGeneral.MagicalFootwear.getRune() && s4.getValue() != SlotGeneral.PerfectTiming.getRune()
+                                || _type.getRune().equals(SlotGeneral.PerfectTiming.getRune()) && s4.getValue() != SlotGeneral.HextechFlashtraption.getRune() && s4.getValue() != SlotGeneral.MagicalFootwear.getRune() && s4.getValue() != SlotGeneral.PerfectTiming.getRune()
+                                || _type.getRune().equals(SlotGeneral.FuturesMarket.getRune()) && s4.getValue() != SlotGeneral.FuturesMarket.getRune() && s4.getValue() != SlotGeneral.MinionDematerializer.getRune() && s4.getValue() != SlotGeneral.BiscuitDelivery.getRune()
+                                || _type.getRune().equals(SlotGeneral.MinionDematerializer.getRune()) && s4.getValue() != SlotGeneral.FuturesMarket.getRune() && s4.getValue() != SlotGeneral.MinionDematerializer.getRune() && s4.getValue() != SlotGeneral.BiscuitDelivery.getRune()
+                                || _type.getRune().equals(SlotGeneral.BiscuitDelivery.getRune()) && s4.getValue() != SlotGeneral.FuturesMarket.getRune() && s4.getValue() != SlotGeneral.MinionDematerializer.getRune() && s4.getValue() != SlotGeneral.BiscuitDelivery.getRune()
+                                || _type.getRune().equals(SlotGeneral.CosmicInsight.getRune()) && s4.getValue() != SlotGeneral.CosmicInsight.getRune() && s4.getValue() != SlotGeneral.ApproachVelocity.getRune() && s4.getValue() != SlotGeneral.TimeWarpTonic.getRune()
+                                || _type.getRune().equals(SlotGeneral.ApproachVelocity.getRune()) && s4.getValue() != SlotGeneral.CosmicInsight.getRune() && s4.getValue() != SlotGeneral.ApproachVelocity.getRune() && s4.getValue() != SlotGeneral.TimeWarpTonic.getRune()
+                                || _type.getRune().equals(SlotGeneral.TimeWarpTonic.getRune()) && s4.getValue() != SlotGeneral.CosmicInsight.getRune() && s4.getValue() != SlotGeneral.ApproachVelocity.getRune() && s4.getValue() != SlotGeneral.TimeWarpTonic.getRune()) {
+
                             s5.getItems().add(_type.getRune());
-                            //   }
+
                         }
                     }
                 }
