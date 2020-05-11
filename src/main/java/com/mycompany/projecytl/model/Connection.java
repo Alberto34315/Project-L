@@ -5,66 +5,59 @@
  */
 package com.mycompany.projecytl.model;
 
-import java.util.Objects;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "CONNECTION")
+@XmlAccessorType(XmlAccessType.FIELD)
 
 public class Connection {
 
-    public static ConnectionsType connectionTypes;
-
-    private StringProperty name;
-    private String type;
-    private String server;
-    private String userName;
+    private String host;
+    private String db;
+    private String user;
     private String password;
 
-    public Connection(String name) {
-        this.name = new SimpleStringProperty(name);
-        this.type = ConnectionsType.MYSQL.getType();
-        this.server = "";
-        this.userName = "";
-        this.password = "";
-    }
-
     public Connection() {
-        this("");
+        this("", "", "", "");
     }
 
-    public StringProperty getN() {
-        return name;
+    public Connection(String host, String db, String user, String password) {
+        this.host = host;
+        this.db = db;
+        this.user = user;
+        this.password = password;
     }
 
-    public String getName() {
-        return name.getValue();
+    public String getHost() {
+        return host;
     }
 
-    public void setName(String name) {
-        this.name = new SimpleStringProperty(name);
+    public void setHost(String host) {
+        this.host = host;
     }
 
-    public String getType() {
-        return type;
+    public String getDb() {
+        return db;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDb(String db) {
+        this.db = db;
     }
 
-    public String getServer() {
-        return server;
+    public String getUser() {
+        return user;
     }
 
-    public void setServer(String server) {
-        this.server = server;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getPassword() {
@@ -77,31 +70,26 @@ public class Connection {
 
     @Override
     public String toString() {
-        return "Connection{" + "name=" + name + ", type=" + type + ", server=" + server + ", userName=" + userName + ", password=" + password + '}';
+        return "Connection{" + "host=" + host + ", db=" + db + ", user=" + user + ", password=" + password + '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (o == this) {
-            return true;
-        } else {
-            if (o instanceof Connection) {
-                Connection other = (Connection) o;
-                if (name.getValue().equals(((Connection) o).name.getValue())) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                return false;
+    public void loadDataXML() {
+        String file = "conf.xml";
+        File f = new File(file);
+        if (f.canRead()) {
+            JAXBContext context;
+            try {
+                context = JAXBContext.newInstance(Connection.class);
+                Unmarshaller um = context.createUnmarshaller();
+                Connection miconextion = (Connection) um.unmarshal(f);
+                this.host = miconextion.host;
+                this.db = miconextion.db;
+                this.user = miconextion.user;
+                this.password = miconextion.password;
+            } catch (JAXBException ex) {
+                Logger.getLogger(Connection.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.name);
-        return hash;
-    }
+   
 }

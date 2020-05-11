@@ -9,12 +9,14 @@ import com.mycompany.projecytl.Enums.RuneType;
 import com.mycompany.projecytl.Enums.RunesPrimary;
 import com.mycompany.projecytl.Enums.SlotGeneral;
 import com.mycompany.projecytl.Enums.buffsGeneral;
+import com.mycompany.projecytl.Utils.MapEntry;
+import com.mycompany.projecytl.model.runes;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 /**
  *
@@ -23,6 +25,11 @@ import javafx.scene.control.ComboBox;
 public class runesController extends ModalControllers implements Initializable {
 
     private boolean creating;
+    private runes r;
+    private RuneType rT;
+    private RunesPrimary rP;
+    private SlotGeneral sG;
+    private buffsGeneral bG;
 
     @FXML
     public ComboBox<String> type;
@@ -56,6 +63,39 @@ public class runesController extends ModalControllers implements Initializable {
 
     @FXML
     public ComboBox<String> b3;
+
+    @FXML
+    private Label L_Type;
+
+    @FXML
+    public Label L_RPrimary;
+
+    @FXML
+    private Label L_S1;
+
+    @FXML
+    private Label L_S2;
+
+    @FXML
+    private Label L_S3;
+
+    @FXML
+    public Label L_RSecondary;
+
+    @FXML
+    private Label L_S4;
+
+    @FXML
+    private Label L_S5;
+
+    @FXML
+    private Label L_B1;
+
+    @FXML
+    private Label L_B2;
+
+    @FXML
+    private Label L_B3;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -754,6 +794,84 @@ public class runesController extends ModalControllers implements Initializable {
     @Override
     public void setParams(Object p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private RuneType returnType(ComboBox<String> type) {
+        if (type != null) {
+            for (RuneType _type : RuneType.values()) {
+                if (type.getValue().equals(_type.getRune())) {
+                    rT = _type;
+                }
+            }
+        }
+        return rT;
+    }
+
+    private RunesPrimary returnRunesP(ComboBox<String> rPrimary) {
+        if (rPrimary != null) {
+            for (RunesPrimary _type : RunesPrimary.values()) {
+                if (rPrimary.getValue().equals(_type.getRune())) {
+                    rP = _type;
+                }
+            }
+        }
+        return rP;
+    }
+
+    private SlotGeneral returnSlotGeneral(ComboBox<String> s) {
+        if (s != null) {
+            for (SlotGeneral _type : SlotGeneral.values()) {
+                if (s.getValue().equals(_type.getRune())) {
+                    sG = _type;
+                }
+            }
+        }
+        return sG;
+    }
+ private buffsGeneral returnBuffGeneral(ComboBox<String> b) {
+        if (bG != null) {
+            for (buffsGeneral _type : buffsGeneral.values()) {
+                if (b.getValue().equals(_type.getRune())) {
+                    bG = _type;
+                }
+            }
+        }
+        return bG;
+    }
+    @FXML
+    public void save() {
+        //  if (isValid()) {
+        if (r == null) {
+            this.r = new runes();
+            this.creating = true;
+        }
+        this.r.setType(returnType(type));
+        this.r.setDescriptionType(L_Type.getText());
+        this.r.setR1(returnRunesP(rPrimary));
+        this.r.setDescriptionType(L_RPrimary.getText());
+        this.r.setS1(returnSlotGeneral(s1));
+        this.r.setDescriptionS1(L_S1.getText());
+        this.r.setS2(returnSlotGeneral(s2));
+        this.r.setDescriptionS2(L_S2.getText());
+        this.r.setS3(returnSlotGeneral(s3));
+        this.r.setDescriptionS3(L_S3.getText());
+        this.r.setR2(returnRunesP(rSecondary));
+        this.r.setS3(returnSlotGeneral(s4));
+        this.r.setDescriptionS3(L_S4.getText());
+        this.r.setS3(returnSlotGeneral(s5));
+        this.r.setDescriptionS3(L_S5.getText());
+        this.r.setB1(returnBuffGeneral(b1));
+        this.r.setDescriptionB1(L_B1.getText());
+        this.r.setB2(returnBuffGeneral(b2));
+        this.r.setDescriptionB2(L_B2.getText());
+        this.r.setB3(returnBuffGeneral(b3));
+        this.r.setDescriptionB3(L_B3.getText());
+        if (this.parentController != null) {
+            MapEntry<runes, Boolean> response = new MapEntry<>(this.r, creating);
+            this.parentController.doOnCloseModal(response);
+        }
+        this.stage.close();
+        //    }
     }
 
 }

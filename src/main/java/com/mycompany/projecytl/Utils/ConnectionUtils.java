@@ -16,39 +16,43 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class ConnectionUtil {
+public class ConnectionUtils {
 
-    public static java.sql.Connection connect(Connection c) {
-        java.sql.Connection con = null;
+    private static java.sql.Connection _conn = null;
+
+    public static java.sql.Connection connect(Connection c) throws ClassNotFoundException, SQLException {
+        java.sql.Connection conn = null;
+
         if (c == null) {
             return null;
         }
-        try {
-            String driver = c.getType();
-            if (driver.equals("mySQL")) {
-                con = DriverManager.getConnection("jdbc:mysql://" + c.getServer()
-                        + "/agenda?useLegacyDatetimeCode=false&serverTimezone=UTC", c.getUserName(), c.getPassword());
-            } else if (driver.equals("H2")) {
-                //~/test
-                try {
-                    Class.forName("org.h2.Driver");
-                } catch (Exception e) {
-                }
 
-                con = DriverManager.getConnection("jdbc:h2:" + c.getServer() + "/agenda");
-            } else {
-                Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://" + c.getServer()
-                        + "/agenda?useLegacyDatetimeCode=false&serverTimezone=UTC", c.getUserName(), c.getPassword());
-            }
-            checkStructure(con);
-        } catch (ClassNotFoundException | SQLException ex) {
-            Dialog.showError("ERROR", "ERROR conectando con DDBB", ex.toString());
-        }
-        return con;
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        conn = DriverManager.getConnection("jdbc:mysql://" + c.getHost() + "/" + c.getDb()
+                + "?useLegacyDatetimeCode=false&serverTimezone=UTC", c.getUser(), c.getPassword());
+
+        return conn;
     }
 
+    public static java.sql.Connection getConnection() {
+        if (_conn == null) {
+            Connection c = new Connection();
+            c.loadDataXML();
+            try {
+                _conn = connect(c);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ConnectionUtils.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex) {
+                Logger.getLogger(ConnectionUtils.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return _conn;
+    }
+
+    // cerrar conexión <- falta
     public static ResultSet execQuery(java.sql.Connection con, String q, List<Object> params) throws
             SQLException {
         ResultSet result = null;
@@ -163,37 +167,54 @@ public class ConnectionUtil {
     public static void checkStructure(java.sql.Connection con) {
         try {
             String sql1, sql2;
-            if (AppController.currentConnection.getType().equals(ConnectionsType.MYSQL.getType())) {
-                sql1 = "CREATE TABLE IF NOT EXISTS `contactos` ("
-                        + " `id` int(11) NOT NULL AUTO_INCREMENT,"
-                        + " `name` text NOT NULL,"
-                        + " `birthdate` datetime NOT NULL,"
-                        + " PRIMARY KEY (`id`)"
+            if (AppController.currentConnection.getDb().equals(ConnectionsType.MYSQL.getType())) {
+                sql1 = "CREATE TABLE IF NOT EXISTS `runes` ("
+                        + " `codRune` int(11) NOT NULL AUTO_INCREMENT,"
+                        + " `RuneType` Varchar(25) NOT NULL,"
+                        + " `DescriptionType` Varchar(500) NOT NULL,"
+                        + " `R1` Varchar(25) NOT NULL,"
+                        + " `DescriptionRunesPrimary` Varchar(500) NOT NULL,"
+                        + " `S1` Varchar(25) NOT NULL,"
+                        + " `DescriptionS1` Varchar(500) NOT NULL,"
+                        + " `S2` Varchar(25) NOT NULL,"
+                        + " `DescriptionS2` Varchar(500) NOT NULL,"
+                        + " `S3` Varchar(25) NOT NULL,"
+                        + " `DescriptionS3` Varchar(500) NOT NULL,"
+                        + " `R2` Varchar(25) NOT NULL,"
+                        + " `DescriptionRunesSecondary` Varchar(500) NOT NULL,"
+                        + " `S4` Varchar(25) NOT NULL,"
+                        + " `DescriptionS4` Varchar(500) NOT NULL,"
+                        + " `S5` Varchar(25) NOT NULL,"
+                        + " `DescriptionS5` Varchar(500) NOT NULL,"
+                        + " `B1` Varchar(25) NOT NULL,"
+                        + " `DescriptionB1` Varchar(500) NOT NULL,"
+                        + " `B2` Varchar(25) NOT NULL,"
+                        + " `DescriptionB2` Varchar(500) NOT NULL,"
+                        + " `B3` Varchar(25) NOT NULL,"
+                        + " `DescriptionB3` Varchar(500) NOT NULL,"
+                        + " PRIMARY KEY (`codRune`)"
                         + ")";
-                sql2 = "CREATE TABLE IF NOT EXISTS `channel` ("
+                /* sql2 = "CREATE TABLE IF NOT EXISTS `channel` ("
                         + " `id` int(11) NOT NULL AUTO_INCREMENT,"
                         + " `type` text NOT NULL,"
                         + " `value` text NOT NULL,"
                         + " `id_contact` int(11) NOT NULL,"
                         + " PRIMARY KEY (`id`)"
-                        + ")";
+                        + ")";*/
                 // sql3 = "ALTER TABLE `channel`"
                 // + " ADD CONSTRAINT `CR` FOREIGN KEY (`id_contact`) REFERENCES `contactos` (`id`);";
 
             } else {
                 sql1 = "CREATE TABLE IF NOT EXISTS contactos (id INT PRIMARY KEY auto_increment, name VARCHAR(255), birthdate VARCHAR(255));";
-                sql2 = "CREATE TABLE IF NOT EXISTS channel (id INT PRIMARY KEY auto_increment, type VARCHAR(255), value VARCHAR(255), id_contact INT);";
+                //   sql2 = "CREATE TABLE IF NOT EXISTS channel (id INT PRIMARY KEY auto_increment, type VARCHAR(255), value VARCHAR(255), id_contact INT);";
             }
             con.setAutoCommit(
                     false);
-            ConnectionUtil.execUpdate(con, sql1,
-                    null, false);
-            ConnectionUtil.execUpdate(con, sql2,
-                    null, false);
+            ConnectionUtils.execUpdate(con, sql1, null, false);
+            //   ConnectionUtils.execUpdate(con, sql2,null, false);
             con.commit();
 
-            con.setAutoCommit(
-                    true);
+            con.setAutoCommit(true);
         } catch (SQLException ex) {
             Dialog.showError("ERROR", "Error creando tablas", ex.toString());
         }
