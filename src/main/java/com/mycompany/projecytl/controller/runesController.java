@@ -5,6 +5,7 @@
  */
 package com.mycompany.projecytl.controller;
 
+import com.mycompany.projecytl.Enums.DescriptionRuneType;
 import com.mycompany.projecytl.Enums.RuneType;
 import com.mycompany.projecytl.Enums.RunesPrimary;
 import com.mycompany.projecytl.Enums.SlotGeneral;
@@ -118,7 +119,7 @@ public class runesController extends ModalControllers implements Initializable {
 
     @FXML
     public void selectRunePrimary() {
-
+        addDescriptionRunesType();
         rSecondary.getItems().clear();
         selectRunesecondary();
 
@@ -828,7 +829,8 @@ public class runesController extends ModalControllers implements Initializable {
         }
         return sG;
     }
- private buffsGeneral returnBuffGeneral(ComboBox<String> b) {
+
+    private buffsGeneral returnBuffGeneral(ComboBox<String> b) {
         if (bG != null) {
             for (buffsGeneral _type : buffsGeneral.values()) {
                 if (b.getValue().equals(_type.getRune())) {
@@ -838,6 +840,17 @@ public class runesController extends ModalControllers implements Initializable {
         }
         return bG;
     }
+
+    private void addDescriptionRunesType() {
+        if (type != null) {
+            for (DescriptionRuneType _type : DescriptionRuneType.values()) {
+                if (type.getValue().equals(RuneType.Precision.getRune()) && _type.getRune().equals(DescriptionRuneType.PrecisionDescription.getRune())) {
+                    L_Type.setText(_type.getRune());
+                }
+            }
+        }
+    }
+
     @FXML
     public void save() {
         //  if (isValid()) {

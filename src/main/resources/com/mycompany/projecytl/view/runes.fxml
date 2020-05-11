@@ -10,10 +10,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecytl.controller.runesController">
    <children>
-      <GridPane layoutX="186.0" layoutY="1.0" prefHeight="436.0" prefWidth="586.0">
+      <GridPane layoutX="20.0" layoutY="1.0" prefHeight="436.0" prefWidth="752.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="133.0000244140625" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="153.19995117187503" minWidth="0.0" prefWidth="140.99996337890624" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="101.5999755859375" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="264.0000244140625" minWidth="0.0" prefWidth="252.00002441406252" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.6000244140625" minWidth="10.0" prefWidth="162.60003662109375" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.79998779296875" minWidth="10.0" prefWidth="122.40003662109376" />
         </columnConstraints>
@@ -29,28 +29,28 @@
          <children>
             <ComboBox fx:id="type" onAction="#selectRunePrimary" prefHeight="28.0" prefWidth="118.0" promptText="Runes Type" />
             <ComboBox fx:id="rPrimary" onAction="#selectRuneSlots" prefHeight="26.0" prefWidth="122.0" promptText="Runes Primary" GridPane.rowIndex="1" />
-            <ComboBox fx:id="s1" layoutX="10.0" layoutY="136.0" prefHeight="26.0" prefWidth="122.0" promptText="Slot 1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="s2" prefHeight="26.0" prefWidth="122.0" promptText="Slot 2" GridPane.rowIndex="3" />
-            <ComboBox fx:id="s3" prefHeight="26.0" prefWidth="122.0" promptText="Slot 3" GridPane.rowIndex="4" />
+            <ComboBox fx:id="s1" layoutX="10.0" layoutY="136.0" prefHeight="26.0" prefWidth="134.0" promptText="Slot 1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="s2" prefHeight="26.0" prefWidth="135.0" promptText="Slot 2" GridPane.rowIndex="3" />
+            <ComboBox fx:id="s3" prefHeight="26.0" prefWidth="134.0" promptText="Slot 3" GridPane.rowIndex="4" />
             <ComboBox fx:id="rSecondary" onAction="#selectsSlotsSecondarys4" prefHeight="26.0" prefWidth="134.0" promptText="Runes Secondary" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <ComboBox fx:id="s4" onAction="#selectsSlotsSecondarys5" prefHeight="26.0" prefWidth="122.0" promptText="Slot 4" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <ComboBox fx:id="s5" prefHeight="26.0" prefWidth="122.0" promptText="Slot 5" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+            <ComboBox fx:id="s4" onAction="#selectsSlotsSecondarys5" prefHeight="26.0" prefWidth="156.0" promptText="Slot 4" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <ComboBox fx:id="s5" prefHeight="26.0" prefWidth="158.0" promptText="Slot 5" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <ComboBox fx:id="b1" prefHeight="26.0" prefWidth="122.0" promptText="Buff 1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <ComboBox fx:id="b2" prefHeight="26.0" prefWidth="122.0" promptText="Buff 2" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <ComboBox fx:id="b3" prefHeight="26.0" prefWidth="122.0" promptText="Buff 3" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label text="Label" GridPane.columnIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="L_Type" prefHeight="52.0" prefWidth="146.0" text="Label" GridPane.columnIndex="1" />
+            <Label prefHeight="51.0" prefWidth="145.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label prefHeight="58.0" prefWidth="148.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label prefHeight="45.0" prefWidth="146.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label prefHeight="54.0" prefWidth="143.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="3" />
             <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Save" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Button layoutX="97.0" layoutY="381.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Save" />
    </children>
 </AnchorPane>
