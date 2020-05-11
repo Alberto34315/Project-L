@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 /**
  *
@@ -66,7 +67,7 @@ public class runesController extends ModalControllers implements Initializable {
     public ComboBox<String> b3;
 
     @FXML
-    private Label L_Type;
+    private TextArea L_Type;
 
     @FXML
     public Label L_RPrimary;

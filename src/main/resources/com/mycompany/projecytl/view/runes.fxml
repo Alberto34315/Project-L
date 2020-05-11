@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -10,11 +11,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="775.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecytl.controller.runesController">
    <children>
-      <GridPane layoutX="20.0" layoutY="1.0" prefHeight="436.0" prefWidth="752.0">
+      <GridPane layoutX="131.0" layoutY="1.0" prefHeight="436.0" prefWidth="641.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="101.5999755859375" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="264.0000244140625" minWidth="0.0" prefWidth="252.00002441406252" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.6000244140625" minWidth="10.0" prefWidth="162.60003662109375" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.99997863769534" minWidth="10.0" prefWidth="161.8" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="264.0000244140625" minWidth="0.0" prefWidth="180.2" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.6000244140625" minWidth="10.0" prefWidth="184.79997558593743" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="144.79998779296875" minWidth="10.0" prefWidth="122.40003662109376" />
         </columnConstraints>
         <rowConstraints>
@@ -38,7 +39,6 @@
             <ComboBox fx:id="b1" prefHeight="26.0" prefWidth="122.0" promptText="Buff 1" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <ComboBox fx:id="b2" prefHeight="26.0" prefWidth="122.0" promptText="Buff 2" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <ComboBox fx:id="b3" prefHeight="26.0" prefWidth="122.0" promptText="Buff 3" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-            <Label fx:id="L_Type" prefHeight="52.0" prefWidth="146.0" text="Label" GridPane.columnIndex="1" />
             <Label prefHeight="51.0" prefWidth="145.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label prefHeight="58.0" prefWidth="148.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label prefHeight="45.0" prefWidth="146.0" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -50,6 +50,7 @@
             <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="5" />
             <Label text="Label" GridPane.columnIndex="3" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Save" GridPane.rowIndex="6" />
+            <TextArea fx:id="L_Type" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>
