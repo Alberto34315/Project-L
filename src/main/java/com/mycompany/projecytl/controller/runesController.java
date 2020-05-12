@@ -6,6 +6,7 @@
 package com.mycompany.projecytl.controller;
 
 import com.mycompany.projecytl.Enums.DescriptionRuneType;
+import com.mycompany.projecytl.Enums.DescriptionRunesPrimary;
 import com.mycompany.projecytl.Enums.RuneType;
 import com.mycompany.projecytl.Enums.RunesPrimary;
 import com.mycompany.projecytl.Enums.SlotGeneral;
@@ -70,34 +71,34 @@ public class runesController extends ModalControllers implements Initializable {
     private TextArea L_Type;
 
     @FXML
-    public Label L_RPrimary;
+    public TextArea L_RPrimary;
 
     @FXML
-    private Label L_S1;
+    private TextArea L_S1;
 
     @FXML
-    private Label L_S2;
+    private TextArea L_S2;
 
     @FXML
-    private Label L_S3;
+    private TextArea L_S3;
 
     @FXML
-    public Label L_RSecondary;
+    public TextArea L_RSecondary;
 
     @FXML
-    private Label L_S4;
+    private TextArea L_S4;
 
     @FXML
-    private Label L_S5;
+    private TextArea L_S5;
 
     @FXML
-    private Label L_B1;
+    private TextArea L_B1;
 
     @FXML
-    private Label L_B2;
+    private TextArea L_B2;
 
     @FXML
-    private Label L_B3;
+    private TextArea L_B3;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -161,6 +162,7 @@ public class runesController extends ModalControllers implements Initializable {
 
         switch (type.getValue()) {
             case "Precision":
+                addDescriptionRunesPrimary();
                 s1.getItems().clear();
                 runesSlot1Precision();
                 s2.getItems().clear();
@@ -847,6 +849,30 @@ public class runesController extends ModalControllers implements Initializable {
             for (DescriptionRuneType _type : DescriptionRuneType.values()) {
                 if (type.getValue().equals(RuneType.Precision.getRune()) && _type.getRune().equals(DescriptionRuneType.PrecisionDescription.getRune())) {
                     L_Type.setText(_type.getRune());
+                } else if (type.getValue().equals(RuneType.Domination.getRune()) && _type.getRune().equals(DescriptionRuneType.DominationDescription.getRune())) {
+                    L_Type.setText(_type.getRune());
+                } else if (type.getValue().equals(RuneType.Sorcery.getRune()) && _type.getRune().equals(DescriptionRuneType.SorceryDescription.getRune())) {
+                    L_Type.setText(_type.getRune());
+                } else if (type.getValue().equals(RuneType.Resolve.getRune()) && _type.getRune().equals(DescriptionRuneType.ResolveDescription.getRune())) {
+                    L_Type.setText(_type.getRune());
+                } else if (type.getValue().equals(RuneType.Inspiration.getRune()) && _type.getRune().equals(DescriptionRuneType.InspirationDescription.getRune())) {
+                    L_Type.setText(_type.getRune());
+                }
+            }
+        }
+    }
+
+    private void addDescriptionRunesPrimary() {
+        if (type != null) {
+            for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
+                if (rPrimary.getValue().equals(RunesPrimary.Conqueror.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ConquerorDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.LethalTempo.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.LethalTempoDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.FleetFootwork.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.FleetFootworkDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.PressTheAttack.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PressTheAttackDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
                 }
             }
         }
