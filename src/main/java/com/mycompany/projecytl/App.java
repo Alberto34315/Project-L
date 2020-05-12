@@ -28,7 +28,7 @@ public class App extends Application {
         MapEntry<Parent, Controllers> m = AppController.loadFXML(Scenes.ROOT.getUrl());
         mainStage = stage;
         rootLayout = (BorderPane) m.getKey();
-        scene = new Scene(rootLayout, 860, 450);
+        scene = new Scene(rootLayout, 1060, 660);
         stage.setScene(scene);
 
         controller = (AppController) m.getValue();

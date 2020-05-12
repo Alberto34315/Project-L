@@ -162,7 +162,8 @@ public class runesController extends ModalControllers implements Initializable {
 
         switch (type.getValue()) {
             case "Precision":
-                addDescriptionRunesPrimary();
+                L_RPrimary.clear();
+                addDescriptionRunesPrimaryPrecision();
                 s1.getItems().clear();
                 runesSlot1Precision();
                 s2.getItems().clear();
@@ -171,6 +172,8 @@ public class runesController extends ModalControllers implements Initializable {
                 runesSlot3Precision();
                 break;
             case "Domination":
+                L_RPrimary.clear();
+                addDescriptionRunesPrimaryDomination();
                 s1.getItems().clear();
                 runesSlot1Domination();
                 s2.getItems().clear();
@@ -179,6 +182,8 @@ public class runesController extends ModalControllers implements Initializable {
                 runesSlot3Domination();
                 break;
             case "Sorcery":
+                L_RPrimary.clear();
+                addDescriptionRunesPrimarySorcery();
                 s1.getItems().clear();
                 runesSlot1Sorcery();
                 s2.getItems().clear();
@@ -187,6 +192,8 @@ public class runesController extends ModalControllers implements Initializable {
                 runesSlot3Sorcery();
                 break;
             case "Resolve":
+                L_RPrimary.clear();
+                addDescriptionRunesPrimaryResolve();
                 s1.getItems().clear();
                 runesSlot1Resolve();
                 s2.getItems().clear();
@@ -195,6 +202,8 @@ public class runesController extends ModalControllers implements Initializable {
                 runesSlot3Resolve();
                 break;
             case "Inspiration":
+                L_RPrimary.clear();
+                addDescriptionRunesPrimaryInspiration();
                 s1.getItems().clear();
                 runesSlot1Inspiration();
                 s2.getItems().clear();
@@ -862,7 +871,7 @@ public class runesController extends ModalControllers implements Initializable {
         }
     }
 
-    private void addDescriptionRunesPrimary() {
+    private void addDescriptionRunesPrimaryPrecision() {
         if (type != null) {
             for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
                 if (rPrimary.getValue().equals(RunesPrimary.Conqueror.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ConquerorDescription.getRune())) {
@@ -872,6 +881,64 @@ public class runesController extends ModalControllers implements Initializable {
                 } else if (rPrimary.getValue().equals(RunesPrimary.FleetFootwork.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.FleetFootworkDescription.getRune())) {
                     L_RPrimary.setText(_type.getRune());
                 } else if (rPrimary.getValue().equals(RunesPrimary.PressTheAttack.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PressTheAttackDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                }
+            }
+        }
+    }
+
+    private void addDescriptionRunesPrimaryDomination() {
+        if (type != null) {
+            for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
+                if (rPrimary.getValue().equals(RunesPrimary.Electrocute.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ElectrocuteDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.Predator.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PredatorDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.DarkHarvest.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.DarkHarvestDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.HailOfBlade.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.HailOfBladeDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                }
+            }
+        }
+    }
+
+    private void addDescriptionRunesPrimarySorcery() {
+        if (type != null) {
+            for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
+                if (rPrimary.getValue().equals(RunesPrimary.SummonAery.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.SummonAeryDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.ArcaneComet.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ArcaneCometDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.PhaseRush.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PhaseRushDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                }
+            }
+        }
+    }
+
+    private void addDescriptionRunesPrimaryResolve() {
+        if (type != null) {
+            for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
+                if (rPrimary.getValue().equals(RunesPrimary.GraspOfTheUndying.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.GraspOfTheUndyingDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.Aftershock.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.AftershockDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.Guardian.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.GuardianDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                }
+            }
+        }
+    }
+
+    private void addDescriptionRunesPrimaryInspiration() {
+        if (type != null) {
+            for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
+                if (rPrimary.getValue().equals(RunesPrimary.GlacialAugment.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.GlacialAugmentDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.UnsealedSpellbook.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.UnsealedSpellbookDescription.getRune())) {
+                    L_RPrimary.setText(_type.getRune());
+                } else if (rPrimary.getValue().equals(RunesPrimary.PrototypeVersatility.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PrototypeVersatilityDescription.getRune())) {
                     L_RPrimary.setText(_type.getRune());
                 }
             }
