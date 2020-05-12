@@ -7,6 +7,7 @@ package com.mycompany.projecytl.controller;
 
 import com.mycompany.projecytl.Enums.DescriptionRuneType;
 import com.mycompany.projecytl.Enums.DescriptionRunesPrimary;
+import com.mycompany.projecytl.Enums.DescriptionSlotGeneral;
 import com.mycompany.projecytl.Enums.RuneType;
 import com.mycompany.projecytl.Enums.RunesPrimary;
 import com.mycompany.projecytl.Enums.SlotGeneral;
@@ -543,11 +544,26 @@ public class runesController extends ModalControllers implements Initializable {
                         || _type.getRune().equals(SlotGeneral.Triumph.getRune())
                         || _type.getRune().equals(SlotGeneral.PresenceOfMind.getRune())) {
                     s1.getItems().add(_type.getRune());
-
                 }
             }
+
         }
+
         return s1;
+    }
+
+    @FXML
+    private void runesSlot1PrecisionDescription() {
+        if (type.getValue().equals(RuneType.Precision.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s1.getValue().equals(SlotGeneral.Overheal.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.OverhealDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.Triumph.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.TriumphDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.PresenceOfMind.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.PresenceOfMindDescription.getRune())) {
+                    L_S1.setText(_sType.getRune());
+                }
+            }
+
+        }
     }
 
     private ComboBox<String> runesSlot2Precision() {
@@ -565,6 +581,20 @@ public class runesController extends ModalControllers implements Initializable {
         return s2;
     }
 
+    @FXML
+    private void runesSlot2PrecisionDescription() {
+        if (type.getValue().equals(RuneType.Precision.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s2.getValue().equals(SlotGeneral.Promptness.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.PromptnessDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.Tenacity.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.TenacityDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.Lineage.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.LineageDescription.getRune())) {
+                    L_S2.setText(_sType.getRune());
+                }
+            }
+
+        }
+    }
+
     private ComboBox<String> runesSlot3Precision() {
 
         if (type.getValue().equals(RuneType.Precision.getRune())) {
@@ -578,6 +608,20 @@ public class runesController extends ModalControllers implements Initializable {
             }
         }
         return s3;
+    }
+
+    @FXML
+    private void runesSlot3PrecisionDescription() {
+        if (type.getValue().equals(RuneType.Precision.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s3.getValue().equals(SlotGeneral.CoupOfGrace.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.CoupOfGraceDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.CutDown.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.CutDownDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.LastStand.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.LastStandDescription.getRune())) {
+                    L_S3.setText(_sType.getRune());
+                }
+            }
+
+        }
     }
 
     private ComboBox<String> runesSlot1Domination() {

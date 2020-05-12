@@ -30,9 +30,9 @@
          <children>
             <ComboBox fx:id="type" onAction="#selectRunePrimary" prefHeight="28.0" prefWidth="118.0" promptText="Runes Type" />
             <ComboBox fx:id="rPrimary" onAction="#selectRuneSlots" prefHeight="26.0" prefWidth="122.0" promptText="Runes Primary" GridPane.rowIndex="1" />
-            <ComboBox fx:id="s1" layoutX="10.0" layoutY="136.0" prefHeight="26.0" prefWidth="134.0" promptText="Slot 1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="s2" prefHeight="26.0" prefWidth="135.0" promptText="Slot 2" GridPane.rowIndex="3" />
-            <ComboBox fx:id="s3" prefHeight="26.0" prefWidth="134.0" promptText="Slot 3" GridPane.rowIndex="4" />
+            <ComboBox fx:id="s1" layoutX="10.0" layoutY="136.0" onAction="#runesSlot1PrecisionDescription" prefHeight="26.0" prefWidth="134.0" promptText="Slot 1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="s2" onAction="#runesSlot2PrecisionDescription" prefHeight="26.0" prefWidth="135.0" promptText="Slot 2" GridPane.rowIndex="3" />
+            <ComboBox fx:id="s3" onAction="#runesSlot3PrecisionDescription" prefHeight="26.0" prefWidth="134.0" promptText="Slot 3" GridPane.rowIndex="4" />
             <ComboBox fx:id="rSecondary" onAction="#selectsSlotsSecondarys4" prefHeight="26.0" prefWidth="134.0" promptText="Runes Secondary" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
