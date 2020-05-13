@@ -126,6 +126,13 @@ public class runesController extends ModalControllers implements Initializable {
         rSecondary.getItems().clear();
         selectRunesecondary();
 
+        L_RPrimary.clear();
+        s1.getItems().clear();
+        s2.getItems().clear();
+        s3.getItems().clear();
+        L_S1.clear();
+        L_S2.clear();
+        L_S3.clear();
         b1.getItems().clear();
         runesBuff1();
         b2.getItems().clear();
@@ -163,53 +170,33 @@ public class runesController extends ModalControllers implements Initializable {
 
         switch (type.getValue()) {
             case "Precision":
-                L_RPrimary.clear();
                 addDescriptionRunesPrimaryPrecision();
-                s1.getItems().clear();
                 runesSlot1Precision();
-                s2.getItems().clear();
                 runesSlot2Precision();
-                s3.getItems().clear();
                 runesSlot3Precision();
                 break;
             case "Domination":
-                L_RPrimary.clear();
                 addDescriptionRunesPrimaryDomination();
-                s1.getItems().clear();
                 runesSlot1Domination();
-                s2.getItems().clear();
                 runesSlot2Domination();
-                s3.getItems().clear();
                 runesSlot3Domination();
                 break;
             case "Sorcery":
-                L_RPrimary.clear();
                 addDescriptionRunesPrimarySorcery();
-                s1.getItems().clear();
                 runesSlot1Sorcery();
-                s2.getItems().clear();
                 runesSlot2Sorcery();
-                s3.getItems().clear();
                 runesSlot3Sorcery();
                 break;
             case "Resolve":
-                L_RPrimary.clear();
                 addDescriptionRunesPrimaryResolve();
-                s1.getItems().clear();
                 runesSlot1Resolve();
-                s2.getItems().clear();
                 runesSlot2Resolve();
-                s3.getItems().clear();
                 runesSlot3Resolve();
                 break;
             case "Inspiration":
-                L_RPrimary.clear();
                 addDescriptionRunesPrimaryInspiration();
-                s1.getItems().clear();
                 runesSlot1Inspiration();
-                s2.getItems().clear();
                 runesSlot2Inspiration();
-                s3.getItems().clear();
                 runesSlot3Inspiration();
                 break;
             default:
@@ -553,6 +540,74 @@ public class runesController extends ModalControllers implements Initializable {
     }
 
     @FXML
+    public void addDescriptionSlot1() {
+        switch (type.getValue()) {
+            case "Precision":
+                runesSlot1PrecisionDescription();
+                break;
+            case "Domination":
+                runesSlot1DominationDescription();
+                break;
+            case "Sorcery":
+                runesSlot1SorceryDescription();
+                break;
+            case "Resolve":
+                runesSlot1ResolveDescription();
+                break;
+            case "Inspiration":
+                runesSlot1InspirationDescription();
+                break;
+            default:
+                System.out.println("Opción no encontrado");
+        }
+    }
+
+    @FXML
+    public void addDescriptionSlot2() {
+        switch (type.getValue()) {
+            case "Precision":
+                runesSlot2PrecisionDescription();
+                break;
+            case "Domination":
+                runesSlot2DominationDescription();
+                break;
+            case "Sorcery":
+                runesSlot2SorceryDescription();
+                break;
+            case "Resolve":
+                runesSlot2ResolveDescription();
+                break;
+            case "Inspiration":
+                runesSlot2InspirationDescription();
+                break;
+            default:
+                System.out.println("Opción no encontrado");
+        }
+    }
+
+    @FXML
+    public void addDescriptionSlot3() {
+        switch (type.getValue()) {
+            case "Precision":
+                runesSlot3PrecisionDescription();
+                break;
+            case "Domination":
+                runesSlot3DominationDescription();
+                break;
+            case "Sorcery":
+                runesSlot3SorceryDescription();
+                break;
+            case "Resolve":
+                runesSlot3ResolveDescription();
+                break;
+            case "Inspiration":
+                runesSlot3InspirationDescription();
+                break;
+            default:
+                System.out.println("Opción no encontrado");
+        }
+    }
+
     private void runesSlot1PrecisionDescription() {
         if (type.getValue().equals(RuneType.Precision.getRune())) {
             for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
@@ -581,7 +636,6 @@ public class runesController extends ModalControllers implements Initializable {
         return s2;
     }
 
-    @FXML
     private void runesSlot2PrecisionDescription() {
         if (type.getValue().equals(RuneType.Precision.getRune())) {
             for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
@@ -610,7 +664,6 @@ public class runesController extends ModalControllers implements Initializable {
         return s3;
     }
 
-    @FXML
     private void runesSlot3PrecisionDescription() {
         if (type.getValue().equals(RuneType.Precision.getRune())) {
             for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
@@ -639,19 +692,45 @@ public class runesController extends ModalControllers implements Initializable {
         return s1;
     }
 
+    private void runesSlot1DominationDescription() {
+        if (type.getValue().equals(RuneType.Domination.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s1.getValue().equals(SlotGeneral.CheapShot.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.CheapShotDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.TasteOfBlood.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.TasteOfBloodDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.SuddenImpact.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.SuddenImpactDescription.getRune())) {
+                    L_S1.setText(_sType.getRune());
+
+                }
+            }
+        }
+    }
+
     private ComboBox<String> runesSlot2Domination() {
 
         if (type.getValue().equals(RuneType.Domination.getRune())) {
             for (SlotGeneral _type : SlotGeneral.values()) {
                 if (_type.getRune().equals(SlotGeneral.ZombieWard.getRune())
-                        || _type.getRune().equals(SlotGeneral.Tenacity.getRune())
-                        || _type.getRune().equals(SlotGeneral.Lineage.getRune())) {
+                        || _type.getRune().equals(SlotGeneral.GhostPoro.getRune())
+                        || _type.getRune().equals(SlotGeneral.EyeballCollection.getRune())) {
                     s2.getItems().add(_type.getRune());
 
                 }
             }
         }
         return s2;
+    }
+
+    private void runesSlot2DominationDescription() {
+
+        if (type.getValue().equals(RuneType.Domination.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s2.getValue().equals(SlotGeneral.ZombieWard.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.ZombieWardDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.GhostPoro.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.GhostPoroDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.EyeballCollection.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.EyeballCollectionDescription.getRune())) {
+                    L_S2.setText(_sType.getRune());
+                }
+            }
+        }
     }
 
     private ComboBox<String> runesSlot3Domination() {
@@ -670,6 +749,21 @@ public class runesController extends ModalControllers implements Initializable {
         return s3;
     }
 
+    private void runesSlot3DominationDescription() {
+
+        if (type.getValue().equals(RuneType.Domination.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s3.getValue().equals(SlotGeneral.RavenousHunter.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.RavenousHunterDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.IngeniousHunter.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.IngeniousHunterDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.RelentlessHunter.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.RelentlessHunterDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.UltimateHunter.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.UltimateHunterDescription.getRune())) {
+                    L_S3.setText(_sType.getRune());
+
+                }
+            }
+        }
+    }
+
     private ComboBox<String> runesSlot1Sorcery() {
 
         if (type.getValue().equals(RuneType.Sorcery.getRune())) {
@@ -685,7 +779,20 @@ public class runesController extends ModalControllers implements Initializable {
         return s1;
     }
 
-    private ComboBox<String> runesSlot2Sorcery() {
+    private void runesSlot1SorceryDescription() {
+
+        if (type.getValue().equals(RuneType.Sorcery.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s1.getValue().equals(SlotGeneral.NullifyingOrb.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.NullifyingOrbDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.ManaflowBand.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.ManaflowBandDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.NimbusCloak.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.NimbusCloakDescription.getRune())) {
+                    L_S1.setText(_sType.getRune());
+                }
+            }
+        }
+    }
+
+    private void runesSlot2Sorcery() {
 
         if (type.getValue().equals(RuneType.Sorcery.getRune())) {
             for (SlotGeneral _type : SlotGeneral.values()) {
@@ -697,7 +804,19 @@ public class runesController extends ModalControllers implements Initializable {
                 }
             }
         }
-        return s2;
+    }
+
+    private void runesSlot2SorceryDescription() {
+
+        if (type.getValue().equals(RuneType.Sorcery.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s2.getValue().equals(SlotGeneral.Transcendence.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.TranscendenceDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.Celerity.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.CelerityDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.AbsoluteFocus.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.AbsoluteFocusDescription.getRune())) {
+                    L_S2.setText(_sType.getRune());
+                }
+            }
+        }
     }
 
     private ComboBox<String> runesSlot3Sorcery() {
@@ -715,6 +834,19 @@ public class runesController extends ModalControllers implements Initializable {
         return s3;
     }
 
+    private void runesSlot3SorceryDescription() {
+
+        if (type.getValue().equals(RuneType.Sorcery.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s3.getValue().equals(SlotGeneral.Scorch.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.ScorchDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.Waterwalking.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.WaterwalkingDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.GatheringStorm.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.GatheringStormDescription.getRune())) {
+                    L_S3.setText(_sType.getRune());
+                }
+            }
+        }
+    }
+
     private ComboBox<String> runesSlot1Resolve() {
 
         if (type.getValue().equals(RuneType.Resolve.getRune())) {
@@ -728,6 +860,19 @@ public class runesController extends ModalControllers implements Initializable {
             }
         }
         return s1;
+    }
+
+    private void runesSlot1ResolveDescription() {
+
+        if (type.getValue().equals(RuneType.Resolve.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s1.getValue().equals(SlotGeneral.Demolish.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.DemolishDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.FontOfLife.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.FontOfLifeDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.ShielBash.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.ShielBashDescription.getRune())) {
+                    L_S1.setText(_sType.getRune());
+                }
+            }
+        }
     }
 
     private ComboBox<String> runesSlot2Resolve() {
@@ -744,6 +889,19 @@ public class runesController extends ModalControllers implements Initializable {
         return s2;
     }
 
+    private void runesSlot2ResolveDescription() {
+
+        if (type.getValue().equals(RuneType.Resolve.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s2.getValue().equals(SlotGeneral.Conditioning.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.ConditioningDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.Renewedforces.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.RenewedforcesDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.BonePlating.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.BonePlatingDescription.getRune())) {
+                    L_S2.setText(_sType.getRune());
+                }
+            }
+        }
+    }
+
     private ComboBox<String> runesSlot3Resolve() {
         if (type.getValue().equals(RuneType.Resolve.getRune())) {
             for (SlotGeneral _type : SlotGeneral.values()) {
@@ -756,6 +914,19 @@ public class runesController extends ModalControllers implements Initializable {
             }
         }
         return s3;
+    }
+
+    private void runesSlot3ResolveDescription() {
+
+        if (type.getValue().equals(RuneType.Resolve.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s3.getValue().equals(SlotGeneral.Overgrowth.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.OvergrowthDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.Revitalize.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.RevitalizeDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.Unflinching.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.UnflinchingDescription.getRune())) {
+                    L_S3.setText(_sType.getRune());
+                }
+            }
+        }
     }
 
     private ComboBox<String> runesSlot1Inspiration() {
@@ -773,6 +944,19 @@ public class runesController extends ModalControllers implements Initializable {
         return s1;
     }
 
+    private void runesSlot1InspirationDescription() {
+
+        if (type.getValue().equals(RuneType.Inspiration.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s1.getValue().equals(SlotGeneral.HextechFlashtraption.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.HextechFlashtraptionDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.MagicalFootwear.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.MagicalFootwearDescription.getRune())
+                        || s1.getValue().equals(SlotGeneral.PerfectTiming.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.PerfectTimingDescription.getRune())) {
+                    L_S1.setText(_sType.getRune());
+                }
+            }
+        }
+    }
+
     private ComboBox<String> runesSlot2Inspiration() {
 
         if (type.getValue().equals(RuneType.Inspiration.getRune())) {
@@ -788,6 +972,19 @@ public class runesController extends ModalControllers implements Initializable {
         return s2;
     }
 
+    private void runesSlot2InspirationDescription() {
+
+        if (type.getValue().equals(RuneType.Inspiration.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s2.getValue().equals(SlotGeneral.FuturesMarket.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.FuturesMarketDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.MinionDematerializer.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.MinionDematerializerDescription.getRune())
+                        || s2.getValue().equals(SlotGeneral.BiscuitDelivery.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.BiscuitDeliveryDescription.getRune())) {
+                    L_S2.setText(_sType.getRune());
+                }
+            }
+        }
+    }
+
     private ComboBox<String> runesSlot3Inspiration() {
 
         if (type.getValue().equals(RuneType.Inspiration.getRune())) {
@@ -801,6 +998,19 @@ public class runesController extends ModalControllers implements Initializable {
             }
         }
         return s3;
+    }
+
+    private void runesSlot3InspirationDescription() {
+
+        if (type.getValue().equals(RuneType.Inspiration.getRune())) {
+            for (DescriptionSlotGeneral _sType : DescriptionSlotGeneral.values()) {
+                if (s3.getValue().equals(SlotGeneral.CosmicInsight.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.CosmicInsightDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.ApproachVelocity.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.ApproachVelocityDescription.getRune())
+                        || s3.getValue().equals(SlotGeneral.TimeWarpTonic.getRune()) && _sType.getRune().equals(DescriptionSlotGeneral.TimeWarpTonicDescription.getRune())) {
+                    L_S3.setText(_sType.getRune());
+                }
+            }
+        }
     }
 
     private boolean runesBuff1() {

@@ -30,9 +30,9 @@
          <children>
             <ComboBox fx:id="type" onAction="#selectRunePrimary" prefHeight="28.0" prefWidth="118.0" promptText="Runes Type" />
             <ComboBox fx:id="rPrimary" onAction="#selectRuneSlots" prefHeight="26.0" prefWidth="122.0" promptText="Runes Primary" GridPane.rowIndex="1" />
-            <ComboBox fx:id="s1" layoutX="10.0" layoutY="136.0" onAction="#runesSlot1PrecisionDescription" prefHeight="26.0" prefWidth="134.0" promptText="Slot 1" GridPane.rowIndex="2" />
-            <ComboBox fx:id="s2" onAction="#runesSlot2PrecisionDescription" prefHeight="26.0" prefWidth="135.0" promptText="Slot 2" GridPane.rowIndex="3" />
-            <ComboBox fx:id="s3" onAction="#runesSlot3PrecisionDescription" prefHeight="26.0" prefWidth="134.0" promptText="Slot 3" GridPane.rowIndex="4" />
+            <ComboBox fx:id="s1" layoutX="10.0" layoutY="136.0" onAction="#addDescriptionSlot1" prefHeight="26.0" prefWidth="134.0" promptText="Slot 1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="s2" onAction="#addDescriptionSlot2" prefHeight="26.0" prefWidth="135.0" promptText="Slot 2" GridPane.rowIndex="3" />
+            <ComboBox fx:id="s3" onAction="#addDescriptionSlot3" prefHeight="26.0" prefWidth="134.0" promptText="Slot 3" GridPane.rowIndex="4" />
             <ComboBox fx:id="rSecondary" onAction="#selectsSlotsSecondarys4" prefHeight="26.0" prefWidth="134.0" promptText="Runes Secondary" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="10.0" />
@@ -58,17 +58,50 @@
                   <Insets left="10.0" />
                </GridPane.margin></ComboBox>
             <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Save" GridPane.rowIndex="6" />
-            <TextArea fx:id="L_Type" editable="false" prefHeight="64.0" prefWidth="241.0" GridPane.columnIndex="1" />
-            <TextArea fx:id="L_RPrimary" editable="false" layoutX="171.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextArea fx:id="L_S1" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextArea fx:id="L_S2" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextArea fx:id="L_S3" editable="false" layoutX="171.0" layoutY="195.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextArea fx:id="L_RSecondary" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <TextArea fx:id="L_S4" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <TextArea fx:id="L_S5" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-            <TextArea fx:id="L_B1" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <TextArea fx:id="L_B2" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-            <TextArea fx:id="L_B3" editable="false" prefHeight="66.0" prefWidth="171.0" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <TextArea fx:id="L_Type" editable="false" prefHeight="64.0" prefWidth="241.0" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_RPrimary" editable="false" layoutX="171.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_S1" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_S2" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_S3" editable="false" layoutX="171.0" layoutY="195.0" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_RSecondary" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_S4" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_S5" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_B1" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_B2" editable="false" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
+            <TextArea fx:id="L_B3" editable="false" prefHeight="66.0" prefWidth="171.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin></TextArea>
          </children>
       </GridPane>
    </children>
