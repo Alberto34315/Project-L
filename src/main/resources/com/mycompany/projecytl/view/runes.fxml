@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="921.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecytl.controller.runesController">
    <children>
-      <GridPane layoutX="62.0" layoutY="-1.0" prefHeight="452.0" prefWidth="844.0">
+      <GridPane layoutX="48.0" layoutY="4.0" prefHeight="452.0" prefWidth="844.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="277.99997863769534" minWidth="10.0" prefWidth="148.99998779296874" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="346.40001220703124" minWidth="0.0" prefWidth="260.7999450683593" />
