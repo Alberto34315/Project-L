@@ -129,9 +129,13 @@ public class runesController extends ModalControllers implements Initializable {
         s1.getItems().clear();
         s2.getItems().clear();
         s3.getItems().clear();
+        s4.getItems().clear();
+        s5.getItems().clear();
         L_S1.clear();
         L_S2.clear();
         L_S3.clear();
+        L_S4.clear();
+        L_S5.clear();
         b1.getItems().clear();
         runesBuff1();
         b2.getItems().clear();
@@ -211,7 +215,6 @@ public class runesController extends ModalControllers implements Initializable {
                 }
             }
         }
-
     }
 
     private void selectRunesecondaryDescription() {
@@ -244,10 +247,18 @@ public class runesController extends ModalControllers implements Initializable {
     private void selectsSlotsSecondarys5() {
         s5.getItems().clear();
         runesSlot5();
-        
+        L_S4.clear();
+        runesSlot4Description();
+    }
+
+    @FXML
+    private void selectsSlotsSecondarys5Description() {
+        L_S5.clear();
+        runesSlot5Description();
     }
 
     private void runesSlot4() {
+
         switch (rSecondary.getValue()) {
             case "Precision":
                 s4.getItems().clear();
@@ -359,7 +370,6 @@ public class runesController extends ModalControllers implements Initializable {
     private void runesSlot4Description() {
         switch (rSecondary.getValue()) {
             case "Precision":
-                s4.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Precision.getRune())) {
                     for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
                         if (s4.getValue().equals(SlotGeneral.Overheal.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.OverhealDescription.getRune())
@@ -379,7 +389,6 @@ public class runesController extends ModalControllers implements Initializable {
                 }
                 break;
             case "Domination":
-                s4.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Domination.getRune())) {
                     for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
                         if (s4.getValue().equals(SlotGeneral.CheapShot.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.CheapShotDescription.getRune())
@@ -399,7 +408,6 @@ public class runesController extends ModalControllers implements Initializable {
                 }
                 break;
             case "Sorcery":
-                s4.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Sorcery.getRune())) {
                     for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
                         if (s4.getValue().equals(SlotGeneral.NullifyingOrb.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.NullifyingOrbDescription.getRune())
@@ -420,7 +428,6 @@ public class runesController extends ModalControllers implements Initializable {
                 break;
 
             case "Resolve":
-                s4.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Resolve.getRune())) {
                     for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
                         if (s4.getValue().equals(SlotGeneral.Demolish.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.DemolishDescription.getRune())
@@ -441,7 +448,6 @@ public class runesController extends ModalControllers implements Initializable {
                 break;
 
             case "Inspiration":
-                s4.getItems().clear();
                 if (rSecondary.getValue().equals(RuneType.Inspiration.getRune())) {
                     for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
                         if (s4.getValue().equals(SlotGeneral.HextechFlashtraption.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.HextechFlashtraptionDescription.getRune())
@@ -565,6 +571,111 @@ public class runesController extends ModalControllers implements Initializable {
                                 || _type.getRune().equals(SlotGeneral.TimeWarpTonic.getRune()) && s4.getValue() != SlotGeneral.CosmicInsight.getRune() && s4.getValue() != SlotGeneral.ApproachVelocity.getRune() && s4.getValue() != SlotGeneral.TimeWarpTonic.getRune()) {
 
                             s5.getItems().add(_type.getRune());
+
+                        }
+                    }
+                }
+                break;
+            default:
+                System.out.println("Opción no encontrado");
+        }
+    }
+
+    private void runesSlot5Description() {
+        switch (rSecondary.getValue()) {
+            case "Precision":
+                if (rSecondary.getValue().equals(RuneType.Precision.getRune())) {
+                    for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
+                        if (s5.getValue().equals(SlotGeneral.Overheal.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.OverhealDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Triumph.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.TriumphDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.PresenceOfMind.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.PresenceOfMindDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Promptness.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.PromptnessDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Tenacity.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.TenacityDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Lineage.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.LineageDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.CoupOfGrace.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.CoupOfGraceDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.CutDown.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.CutDownDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.LastStand.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.LastStandDescription.getRune())) {
+
+                            L_S5.setText(_type.getRune());
+
+                        }
+                    }
+                }
+                break;
+            case "Domination":
+                if (rSecondary.getValue().equals(RuneType.Domination.getRune())) {
+                    for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
+                        if (s5.getValue().equals(SlotGeneral.CheapShot.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.CheapShotDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.TasteOfBlood.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.TasteOfBloodDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.SuddenImpact.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.SuddenImpactDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.ZombieWard.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.ZombieWardDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.GhostPoro.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.GhostPoroDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.EyeballCollection.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.EyeballCollectionDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.RavenousHunter.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.RavenousHunterDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.IngeniousHunter.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.IngeniousHunterDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.RelentlessHunter.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.RelentlessHunterDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.UltimateHunter.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.UltimateHunterDescription.getRune())) {
+
+                            L_S5.setText(_type.getRune());
+
+                        }
+                    }
+                }
+                break;
+            case "Sorcery":
+                if (rSecondary.getValue().equals(RuneType.Sorcery.getRune())) {
+                    for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
+                        if (s5.getValue().equals(SlotGeneral.NullifyingOrb.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.NullifyingOrbDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.ManaflowBand.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.ManaflowBandDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.NimbusCloak.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.NimbusCloakDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Transcendence.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.TranscendenceDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Celerity.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.CelerityDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.AbsoluteFocus.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.AbsoluteFocusDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Scorch.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.ScorchDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Waterwalking.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.WaterwalkingDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.GatheringStorm.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.GatheringStormDescription.getRune())) {
+
+                            L_S5.setText(_type.getRune());
+
+                        }
+                    }
+                }
+                break;
+
+            case "Resolve":
+                if (rSecondary.getValue().equals(RuneType.Resolve.getRune())) {
+                    for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
+                        if (s5.getValue().equals(SlotGeneral.Demolish.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.DemolishDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.FontOfLife.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.FontOfLifeDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.ShielBash.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.ShielBashDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Conditioning.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.ConditioningDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Renewedforces.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.RenewedforcesDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.BonePlating.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.BonePlatingDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Overgrowth.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.OvergrowthDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Revitalize.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.RevitalizeDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.Unflinching.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.UnflinchingDescription.getRune())) {
+
+                            L_S5.setText(_type.getRune());
+
+                        }
+                    }
+                }
+                break;
+
+            case "Inspiration":
+                if (rSecondary.getValue().equals(RuneType.Inspiration.getRune())) {
+                    for (DescriptionSlotGeneral _type : DescriptionSlotGeneral.values()) {
+                        if (s5.getValue().equals(SlotGeneral.HextechFlashtraption.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.HextechFlashtraptionDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.MagicalFootwear.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.MagicalFootwearDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.PerfectTiming.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.PerfectTimingDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.FuturesMarket.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.FuturesMarketDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.MinionDematerializer.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.MinionDematerializerDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.BiscuitDelivery.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.BiscuitDeliveryDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.CosmicInsight.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.CosmicInsightDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.ApproachVelocity.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.ApproachVelocityDescription.getRune())
+                                || s5.getValue().equals(SlotGeneral.TimeWarpTonic.getRune()) && _type.getRune().equals(DescriptionSlotGeneral.TimeWarpTonicDescription.getRune())) {
+
+                            L_S5.setText(_type.getRune());
 
                         }
                     }
