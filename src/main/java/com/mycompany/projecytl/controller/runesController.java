@@ -5,6 +5,7 @@
  */
 package com.mycompany.projecytl.controller;
 
+import com.mycompany.projecytl.Enums.DescriptionBuffsGeneral;
 import com.mycompany.projecytl.Enums.DescriptionRuneType;
 import com.mycompany.projecytl.Enums.DescriptionRunesPrimary;
 import com.mycompany.projecytl.Enums.DescriptionSlotGeneral;
@@ -1268,6 +1269,20 @@ public class runesController extends ModalControllers implements Initializable {
         return result;
     }
 
+    @FXML
+    private void runesBuff1Description() {
+        if (L_B1.getText() != null) {
+            L_B1.clear();
+        }
+        for (DescriptionBuffsGeneral _type : DescriptionBuffsGeneral.values()) {
+            if (b1.getValue().equals(buffsGeneral.AdaptiveForce.getRune()) && _type.getRune().equals(DescriptionBuffsGeneral.AdaptiveForceDescription.getRune())
+                    || b1.getValue().equals(buffsGeneral.AttackSpeed.getRune()) && _type.getRune().equals(DescriptionBuffsGeneral.AttackSpeedDescription.getRune())
+                    || b1.getValue().equals(buffsGeneral.CoolingReduction.getRune()) && _type.getRune().equals(DescriptionBuffsGeneral.CoolingReductionDescription.getRune())) {
+                L_B1.setText(_type.getRune());
+            }
+        }
+    }
+
     private boolean runesBuff2() {
         boolean result = false;
 
@@ -1283,6 +1298,20 @@ public class runesController extends ModalControllers implements Initializable {
         return result;
     }
 
+    @FXML
+    private void runesBuff2Description() {
+        if (L_B2.getText() != null) {
+            L_B2.clear();
+        }
+        for (DescriptionBuffsGeneral _type : DescriptionBuffsGeneral.values()) {
+            if (b2.getValue().equals(buffsGeneral.AdaptiveForce.getRune()) && _type.getRune().equals(DescriptionBuffsGeneral.AdaptiveForceDescription.getRune())
+                    || b2.getValue().equals(buffsGeneral.Armor.getRune()) && _type.getRune().equals(DescriptionBuffsGeneral.ArmorDescription.getRune())
+                    || b2.getValue().equals(buffsGeneral.MagicResistance.getRune()) && _type.getRune().equals(DescriptionBuffsGeneral.MagicResistanceDescription.getRune())) {
+                L_B2.setText(_type.getRune());
+            }
+        }
+    }
+
     private boolean runesBuff3() {
         boolean result = false;
 
@@ -1296,6 +1325,20 @@ public class runesController extends ModalControllers implements Initializable {
         }
 
         return result;
+    }
+
+    @FXML
+    private void runesBuff3Description() {
+        if (L_B3.getText() != null) {
+            L_B3.clear();
+        }
+        for (DescriptionBuffsGeneral _type : DescriptionBuffsGeneral.values()) {
+            if (b3.getValue().equals(buffsGeneral.Life.getRune()) && _type.getRune().equals(DescriptionBuffsGeneral.LifeDescription.getRune())
+                    || b3.getValue().equals(buffsGeneral.Armor.getRune()) && _type.getRune().equals(DescriptionBuffsGeneral.ArmorDescription.getRune())
+                    || b3.getValue().equals(buffsGeneral.MagicResistance.getRune()) && _type.getRune().equals(DescriptionBuffsGeneral.MagicResistanceDescription.getRune())) {
+                L_B3.setText(_type.getRune());
+            }
+        }
     }
 
     @Override

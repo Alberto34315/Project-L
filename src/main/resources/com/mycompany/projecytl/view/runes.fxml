@@ -45,19 +45,19 @@
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></ComboBox>
-            <ComboBox fx:id="b1" prefHeight="26.0" prefWidth="122.0" promptText="Buff 1" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <ComboBox fx:id="b1" onAction="#runesBuff1Description" prefHeight="26.0" prefWidth="151.0" promptText="Buff 1" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></ComboBox>
-            <ComboBox fx:id="b2" prefHeight="26.0" prefWidth="122.0" promptText="Buff 2" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <ComboBox fx:id="b2" onAction="#runesBuff2Description" prefHeight="26.0" prefWidth="151.0" promptText="Buff 2" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></ComboBox>
-            <ComboBox fx:id="b3" prefHeight="26.0" prefWidth="122.0" promptText="Buff 3" GridPane.columnIndex="2" GridPane.rowIndex="6">
+            <ComboBox fx:id="b3" onAction="#runesBuff3Description" prefHeight="26.0" prefWidth="150.0" promptText="Buff 3" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin></ComboBox>
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="Save" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#save" prefHeight="26.0" prefWidth="66.0" text="Save" GridPane.rowIndex="6" />
             <TextArea fx:id="L_Type" editable="false" prefHeight="64.0" prefWidth="241.0" GridPane.columnIndex="1">
                <GridPane.margin>
                   <Insets top="5.0" />
