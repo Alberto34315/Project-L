@@ -17,10 +17,10 @@ import com.mycompany.projecytl.Utils.MapEntry;
 import com.mycompany.projecytl.model.runes;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 
 /**
@@ -35,6 +35,7 @@ public class runesController extends ModalControllers implements Initializable {
     private RunesPrimary rP;
     private SlotGeneral sG;
     private buffsGeneral bG;
+    private ObservableList<runes> rune;
 
     @FXML
     public ComboBox<String> type;
@@ -1513,7 +1514,12 @@ public class runesController extends ModalControllers implements Initializable {
         if (this.parentController != null) {
             MapEntry<runes, Boolean> response = new MapEntry<>(this.r, creating);
             this.parentController.doOnCloseModal(response);
+            /*runesDao rDao = new runesDao(r);
+            rDao.save();
+            r.setCodRune(rDao.getCodRune());
+            rune.add(rDao);*/
         }
+
         this.stage.close();
         //    }
     }
