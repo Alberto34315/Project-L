@@ -14,8 +14,10 @@ import com.mycompany.projecytl.Utils.Dialog;
 import com.mycompany.projecytl.controller.AppController;
 import com.mycompany.projecytl.model.runes;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -27,6 +29,7 @@ import java.util.logging.Logger;
  */
 public class runesDao extends runes implements DAO {
 //Modificar ENUMS
+
     enum queries {
         INSERT("INSERT INTO runes (codRune,RuneType,DescriptionType,R1,DescriptionRunesPrimary,S1,DescriptionS1,S2,DescriptionS2,S3,DescriptionS3,R2,DescriptionRunesSecondary,S4,DescriptionS4,S5,DescriptionS5,B1,DescriptionB1,B2,DescriptionB2,B3,DescriptionB3) VALUES (-1,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"),
         ALL("SELECT * FROM runes"),
@@ -46,7 +49,7 @@ public class runesDao extends runes implements DAO {
     Connection con;
     private boolean persist;
 
-    public runesDao(int codRune, RuneType type, String descriptionType, RunesPrimary r1, String descriptionRunesPrimary, SlotGeneral s1, String descriptionS1, SlotGeneral s2, String descriptionS2, SlotGeneral s3, String descriptionS3, RunesPrimary r2, String descriptionRunesSecondary, SlotGeneral s4, String descriptionS4, SlotGeneral s5, String descriptionS5, buffsGeneral b1, String descriptionB1, buffsGeneral b2, String descriptionB2, buffsGeneral b3, String descriptionB3) {
+    public runesDao(int codRune, RuneType type, String descriptionType, RunesPrimary r1, String descriptionRunesPrimary, SlotGeneral s1, String descriptionS1, SlotGeneral s2, String descriptionS2, SlotGeneral s3, String descriptionS3, RuneType r2, String descriptionRunesSecondary, SlotGeneral s4, String descriptionS4, SlotGeneral s5, String descriptionS5, buffsGeneral b1, String descriptionB1, buffsGeneral b2, String descriptionB2, buffsGeneral b3, String descriptionB3) {
         super(codRune, type, descriptionType, r1, descriptionRunesPrimary, s1, descriptionS1, s2, descriptionS2, s3, descriptionS3, r2, descriptionRunesSecondary, s4, descriptionS4, s5, descriptionS5, b1, descriptionB1, b2, descriptionB2, b3, descriptionB3);
         try {
             con = ConnectionUtils.connect(AppController.currentConnection);
@@ -78,8 +81,13 @@ public class runesDao extends runes implements DAO {
         this();
         List<Object> params = new ArrayList<>();
         params.add(i);
+        java.sql.Connection csql = ConnectionUtils.getConnection();
+
         try {
-            ResultSet rs = ConnectionUtils.execQuery(con, queries.GETBYID.getQ(), params);
+            queries qu = null;
+            String q = qu.GETBYID.getQ();
+            PreparedStatement ps = csql.prepareStatement(q);
+            ResultSet rs = ps.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
                     runes r = instanceBuilder(rs);
@@ -136,7 +144,7 @@ public class runesDao extends runes implements DAO {
                     ChannelDao cd = new ChannelDao(oldChannel);
                     cd.remove();
                 }*/
-                int rs = ConnectionUtils.execUpdate(con, queries.REMOVE.getQ(), this.codRune, false);
+                // int rs = ConnectionUtils.execUpdate(con, queries.REMOVE.getQ(), this.codRune, false);
                 //Fin de la transacción
                 con.commit();
                 con.setAutoCommit(true);
@@ -147,9 +155,10 @@ public class runesDao extends runes implements DAO {
     }
 
     @Override
-    public void save() {
-        queries q;
-        List<Object> params = new ArrayList<>();
+    public int save() {
+        int result = -1;
+        queries qu = null;
+        /* List<Object> params = new ArrayList<>();
         params.add(this.getType());
         params.add(this.getDescriptionType());
         params.add(this.getR1());
@@ -171,42 +180,77 @@ public class runesDao extends runes implements DAO {
         params.add(this.getB2());
         params.add(this.getDescriptionB2());
         params.add(this.getB3());
-        params.add(this.getDescriptionB3());
-        if (this.codRune == -1) {
-            q = queries.INSERT;
-        } else {
-            q = queries.UPDATE;
-            params.add(this.codRune);
-        }
+        params.add(this.getDescriptionB3());*/
         try {
-            //Comienza transacción
-            con.setAutoCommit(false);
-            int rs = ConnectionUtils.execUpdate(con, q.getQ(), params, (q == queries.INSERT ? true : false));
-            if (q == runesDao.queries.INSERT) {
-                this.codRune = rs;
-            }
-            /* if (channels != null) { //si se ha modificado algo sobre channels
-                //Borrando aquellos que no están ya -> coherencia
-                List<Channel> oldChannels = ChannelDao.getByContact(con, id);
-                for (Channel oldChannel : oldChannels) {
-                    if (!channels.contains(oldChannel)) {
-                        ChannelDao cd = new ChannelDao(oldChannel);
-                        cd.remove();
+            java.sql.Connection csql = ConnectionUtils.getConnection();
+
+            if (this.codRune > 0) {
+                //UPDATE
+                String q = qu.UPDATE.getQ();
+                PreparedStatement ps = csql.prepareStatement(q);
+                ps.setString(1, type.getRune());
+                ps.setString(2, descriptionType);
+                ps.setString(3, r1.getRune());
+                ps.setString(4, descriptionRunesPrimary);
+                ps.setString(5, s1.getRune());
+                ps.setString(6, descriptionS1);
+                ps.setString(7, s2.getRune());
+                ps.setString(8, descriptionS2);
+                ps.setString(9, s3.getRune());
+                ps.setString(10, descriptionS3);
+                ps.setString(11, r2.getRune());
+                ps.setString(12, descriptionRunesSecondary);
+                ps.setString(13, s4.getRune());
+                ps.setString(14, descriptionS4);
+                ps.setString(15, s5.getRune());
+                ps.setString(16, descriptionS5);
+                ps.setString(17, b1.getRune());
+                ps.setString(18, descriptionB1);
+                ps.setString(19, b2.getRune());
+                ps.setString(20, descriptionB2);
+                ps.setString(21, b3.getRune());
+                ps.setString(22, descriptionB3);
+                ps.setInt(23, codRune);
+                result = ps.executeUpdate();
+            } else {
+                //INSERT
+                String q = qu.INSERT.getQ();
+                PreparedStatement ps = csql.prepareStatement(q);
+                ps.setString(1, type.getRune());
+                ps.setString(2, descriptionType);
+                ps.setString(3, r1.getRune());
+                ps.setString(4, descriptionRunesPrimary);
+                ps.setString(5, s1.getRune());
+                ps.setString(6, descriptionS1);
+                ps.setString(7, s2.getRune());
+                ps.setString(8, descriptionS2);
+                ps.setString(9, s3.getRune());
+                ps.setString(10, descriptionS3);
+                ps.setString(11, r2.getRune());
+                ps.setString(12, descriptionRunesSecondary);
+                ps.setString(13, s4.getRune());
+                ps.setString(14, descriptionS4);
+                ps.setString(15, s5.getRune());
+                ps.setString(16, descriptionS5);
+                ps.setString(17, b1.getRune());
+                ps.setString(18, descriptionB1);
+                ps.setString(19, b2.getRune());
+                ps.setString(20, descriptionB2);
+                ps.setString(21, b3.getRune());
+                ps.setString(22, descriptionB3);
+                result = ps.executeUpdate();
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        result = generatedKeys.getInt(1);  //<-- return last id inserted
                     }
                 }
-                //Actualizando o insertando los nuevos
-                for (Channel newChannels : channels) {
-                    ChannelDao cd = new ChannelDao(newChannels);
-                    cd.setId_contact(id); //me aseguro de la relación
-                    cd.save();
-                }
-            }*/
-            //Fin de la transacción
-            con.commit();
-            con.setAutoCommit(true);
+                this.codRune = result;
+
+            }
         } catch (SQLException ex) {
-            Dialog.showError("ERROR", "Error guardando runas", ex.toString());
+            Logger.getLogger(runesDao.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return result;
     }
 
     public static runes instanceBuilder(ResultSet rs) {
@@ -225,7 +269,7 @@ public class runesDao extends runes implements DAO {
                 c.setDescriptionS2(rs.getString("DescriptionS2"));
                 c.setS3((SlotGeneral) rs.getObject("S3"));
                 c.setDescriptionS3(rs.getString("DescriptionS3"));
-                c.setR2((RunesPrimary) rs.getObject("RunesSecondary"));
+                c.setR2((RuneType) rs.getObject("RunesSecondary"));
                 c.setDescriptionRunesSecondary(rs.getString("DescriptionRunesSecondary"));
                 c.setS4((SlotGeneral) rs.getObject("S4"));
                 c.setDescriptionS4(rs.getString("DescriptionS4"));
@@ -246,7 +290,7 @@ public class runesDao extends runes implements DAO {
 
     public static List<runes> getAll(Connection con) {
         List<runes> result = new ArrayList<>();
-        try {
+        /*   try {
             ResultSet rs = ConnectionUtils.execQuery(con, queries.ALL.getQ(), null);
             if (rs != null) {
                 while (rs.next()) {
@@ -256,7 +300,7 @@ public class runesDao extends runes implements DAO {
             }
         } catch (SQLException ex) {
             Dialog.showError("ERRPR", "Error cargando las runas", ex.toString());
-        }
+        }*/
         return result;
     }
 

@@ -58,10 +58,7 @@ public class AppController extends Controllers {
         changeScene(Scenes.RUNE);
     }
 
-    @FXML
-    public void connectionsItems() {
-        changeScene(Scenes.ITEMS);
-    }
+  
 
     @FXML
     public void connectionsChampions() {

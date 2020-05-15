@@ -5,6 +5,7 @@
  */
 package com.mycompany.projecytl.controller;
 
+import com.mycompany.projecytl.DAO.runesDao;
 import com.mycompany.projecytl.Enums.DescriptionBuffsGeneral;
 import com.mycompany.projecytl.Enums.DescriptionRuneType;
 import com.mycompany.projecytl.Enums.DescriptionRunesPrimary;
@@ -30,11 +31,6 @@ import javafx.scene.control.TextArea;
 public class runesController extends ModalControllers implements Initializable {
 
     private boolean creating;
-    private runes r;
-    private RuneType rT;
-    private RunesPrimary rP;
-    private SlotGeneral sG;
-    private buffsGeneral bG;
     private ObservableList<runes> rune;
 
     @FXML
@@ -1348,6 +1344,7 @@ public class runesController extends ModalControllers implements Initializable {
     }
 
     private RuneType returnType(ComboBox<String> type) {
+        RuneType rT = null;
         if (type != null) {
             for (RuneType _type : RuneType.values()) {
                 if (type.getValue().equals(_type.getRune())) {
@@ -1359,6 +1356,7 @@ public class runesController extends ModalControllers implements Initializable {
     }
 
     private RunesPrimary returnRunesP(ComboBox<String> rPrimary) {
+        RunesPrimary rP = null;
         if (rPrimary != null) {
             for (RunesPrimary _type : RunesPrimary.values()) {
                 if (rPrimary.getValue().equals(_type.getRune())) {
@@ -1369,7 +1367,20 @@ public class runesController extends ModalControllers implements Initializable {
         return rP;
     }
 
+    private RuneType returnRunesPs(ComboBox<String> rSecondary) {
+        RuneType rP = null;
+        if (rSecondary != null) {
+            for (RuneType _type : RuneType.values()) {
+                if (rSecondary.getValue().equals(_type.getRune())) {
+                    rP = _type;
+                }
+            }
+        }
+        return rP;
+    }
+
     private SlotGeneral returnSlotGeneral(ComboBox<String> s) {
+        SlotGeneral sG = null;
         if (s != null) {
             for (SlotGeneral _type : SlotGeneral.values()) {
                 if (s.getValue().equals(_type.getRune())) {
@@ -1381,7 +1392,8 @@ public class runesController extends ModalControllers implements Initializable {
     }
 
     private buffsGeneral returnBuffGeneral(ComboBox<String> b) {
-        if (bG != null) {
+        buffsGeneral bG = null;
+        if (b != null) {
             for (buffsGeneral _type : buffsGeneral.values()) {
                 if (b.getValue().equals(_type.getRune())) {
                     bG = _type;
@@ -1412,13 +1424,10 @@ public class runesController extends ModalControllers implements Initializable {
     private void addDescriptionRunesPrimaryPrecision() {
         if (type != null) {
             for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
-                if (rPrimary.getValue().equals(RunesPrimary.Conqueror.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ConquerorDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.LethalTempo.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.LethalTempoDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.FleetFootwork.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.FleetFootworkDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.PressTheAttack.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PressTheAttackDescription.getRune())) {
+                if (rPrimary.getValue().equals(RunesPrimary.Conqueror.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ConquerorDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.LethalTempo.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.LethalTempoDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.FleetFootwork.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.FleetFootworkDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.PressTheAttack.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PressTheAttackDescription.getRune())) {
                     L_RPrimary.setText(_type.getRune());
                 }
             }
@@ -1428,13 +1437,10 @@ public class runesController extends ModalControllers implements Initializable {
     private void addDescriptionRunesPrimaryDomination() {
         if (type != null) {
             for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
-                if (rPrimary.getValue().equals(RunesPrimary.Electrocute.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ElectrocuteDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.Predator.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PredatorDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.DarkHarvest.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.DarkHarvestDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.HailOfBlade.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.HailOfBladeDescription.getRune())) {
+                if (rPrimary.getValue().equals(RunesPrimary.Electrocute.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ElectrocuteDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.Predator.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PredatorDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.DarkHarvest.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.DarkHarvestDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.HailOfBlade.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.HailOfBladeDescription.getRune())) {
                     L_RPrimary.setText(_type.getRune());
                 }
             }
@@ -1444,11 +1450,9 @@ public class runesController extends ModalControllers implements Initializable {
     private void addDescriptionRunesPrimarySorcery() {
         if (type != null) {
             for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
-                if (rPrimary.getValue().equals(RunesPrimary.SummonAery.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.SummonAeryDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.ArcaneComet.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ArcaneCometDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.PhaseRush.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PhaseRushDescription.getRune())) {
+                if (rPrimary.getValue().equals(RunesPrimary.SummonAery.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.SummonAeryDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.ArcaneComet.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.ArcaneCometDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.PhaseRush.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PhaseRushDescription.getRune())) {
                     L_RPrimary.setText(_type.getRune());
                 }
             }
@@ -1458,11 +1462,9 @@ public class runesController extends ModalControllers implements Initializable {
     private void addDescriptionRunesPrimaryResolve() {
         if (type != null) {
             for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
-                if (rPrimary.getValue().equals(RunesPrimary.GraspOfTheUndying.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.GraspOfTheUndyingDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.Aftershock.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.AftershockDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.Guardian.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.GuardianDescription.getRune())) {
+                if (rPrimary.getValue().equals(RunesPrimary.GraspOfTheUndying.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.GraspOfTheUndyingDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.Aftershock.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.AftershockDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.Guardian.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.GuardianDescription.getRune())) {
                     L_RPrimary.setText(_type.getRune());
                 }
             }
@@ -1472,11 +1474,9 @@ public class runesController extends ModalControllers implements Initializable {
     private void addDescriptionRunesPrimaryInspiration() {
         if (type != null) {
             for (DescriptionRunesPrimary _type : DescriptionRunesPrimary.values()) {
-                if (rPrimary.getValue().equals(RunesPrimary.GlacialAugment.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.GlacialAugmentDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.UnsealedSpellbook.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.UnsealedSpellbookDescription.getRune())) {
-                    L_RPrimary.setText(_type.getRune());
-                } else if (rPrimary.getValue().equals(RunesPrimary.PrototypeVersatility.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PrototypeVersatilityDescription.getRune())) {
+                if (rPrimary.getValue().equals(RunesPrimary.GlacialAugment.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.GlacialAugmentDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.UnsealedSpellbook.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.UnsealedSpellbookDescription.getRune())
+                        || rPrimary.getValue().equals(RunesPrimary.PrototypeVersatility.getRune()) && _type.getRune().equals(DescriptionRunesPrimary.PrototypeVersatilityDescription.getRune())) {
                     L_RPrimary.setText(_type.getRune());
                 }
             }
@@ -1485,40 +1485,45 @@ public class runesController extends ModalControllers implements Initializable {
 
     @FXML
     public void save() {
+        runes r = null;
         //  if (isValid()) {
         if (r == null) {
-            this.r = new runes();
+            r = new runes();
             this.creating = true;
         }
-        this.r.setType(returnType(type));
-        this.r.setDescriptionType(L_Type.getText());
-        this.r.setR1(returnRunesP(rPrimary));
-        this.r.setDescriptionType(L_RPrimary.getText());
-        this.r.setS1(returnSlotGeneral(s1));
-        this.r.setDescriptionS1(L_S1.getText());
-        this.r.setS2(returnSlotGeneral(s2));
-        this.r.setDescriptionS2(L_S2.getText());
-        this.r.setS3(returnSlotGeneral(s3));
-        this.r.setDescriptionS3(L_S3.getText());
-        this.r.setR2(returnRunesP(rSecondary));
-        this.r.setS3(returnSlotGeneral(s4));
-        this.r.setDescriptionS3(L_S4.getText());
-        this.r.setS3(returnSlotGeneral(s5));
-        this.r.setDescriptionS3(L_S5.getText());
-        this.r.setB1(returnBuffGeneral(b1));
-        this.r.setDescriptionB1(L_B1.getText());
-        this.r.setB2(returnBuffGeneral(b2));
-        this.r.setDescriptionB2(L_B2.getText());
-        this.r.setB3(returnBuffGeneral(b3));
-        this.r.setDescriptionB3(L_B3.getText());
-        if (this.parentController != null) {
+        r.setType(returnType(type));
+        r.setDescriptionType(L_Type.getText());
+        r.setR1(returnRunesP(rPrimary));
+        r.setDescriptionRunesPrimary(L_RPrimary.getText());
+        System.out.println(L_RPrimary.getText());
+        r.setS1(returnSlotGeneral(s1));
+        r.setDescriptionS1(L_S1.getText());
+        r.setS2(returnSlotGeneral(s2));
+        r.setDescriptionS2(L_S2.getText());
+        r.setS3(returnSlotGeneral(s3));
+        r.setDescriptionS3(L_S3.getText());
+        r.setR2(returnRunesPs(rSecondary));
+        r.setDescriptionRunesSecondary(L_RSecondary.getText());
+        r.setS4(returnSlotGeneral(s4));
+        r.setDescriptionS4(L_S4.getText());
+        r.setS5(returnSlotGeneral(s5));
+        r.setDescriptionS5(L_S5.getText());
+        r.setB1(returnBuffGeneral(b1));
+        r.setDescriptionB1(L_B1.getText());
+        r.setB2(returnBuffGeneral(b2));
+        r.setDescriptionB2(L_B2.getText());
+        r.setB3(returnBuffGeneral(b3));
+        r.setDescriptionB3(L_B3.getText());
+
+        rune.add(r);
+        runesDao rDao = new runesDao(r);
+        int cod = rDao.save();
+        r.setCodRune(cod);
+        /*  if (this.parentController != null) {
             MapEntry<runes, Boolean> response = new MapEntry<>(this.r, creating);
             this.parentController.doOnCloseModal(response);
-            /*runesDao rDao = new runesDao(r);
-            rDao.save();
-            r.setCodRune(rDao.getCodRune());
-            rune.add(rDao);*/
-        }
+            
+        }*/
 
         this.stage.close();
         //    }

@@ -30,7 +30,7 @@ public interface DAO {
  * En caso de que id>0 realiza un UPDATE
  * Estableciendo en la tabla los valores corrrespondientes a esta instancia
  */
- void save();
+ int save();
 
  /**
  * Ojo: tanto en save como remove, hay que tener en cuenta los cambios que ocurran

@@ -12,10 +12,9 @@ package com.mycompany.projecytl.controller;
 public enum Scenes {
     RUNE("view/runes"),
     HOME("view/home"),
-    ITEMS("view/items"),
     CHAMPIONS("view/champions"),
     ROOT("view/root2");
-    
+
     private String url;
 
     Scenes(String fxmlFile) {

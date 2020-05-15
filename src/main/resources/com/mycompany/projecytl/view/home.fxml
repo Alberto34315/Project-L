@@ -12,9 +12,8 @@
    <children>
       <TableView layoutX="1.0" layoutY="43.0" prefHeight="314.0" prefWidth="600.0">
         <columns>
-          <TableColumn prefWidth="125.60003972053528" text="Champion" />
-          <TableColumn prefWidth="171.1999969482422" text="Runes" />
-            <TableColumn minWidth="0.0" prefWidth="301.60003662109375" text="Items" />
+          <TableColumn prefWidth="171.20001530647278" text="Champion" />
+          <TableColumn prefWidth="427.9999237060547" text="Runes" />
         </columns>
       </TableView>
       <Label layoutX="209.0" layoutY="7.0" text="Composition" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">

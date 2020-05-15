@@ -15,7 +15,7 @@ import com.mycompany.projecytl.Enums.buffsGeneral;
  * @author AlbertoRS
  */
 public class runes {
-   
+
     protected int codRune;
     protected RuneType type;
     protected String descriptionType;
@@ -27,7 +27,7 @@ public class runes {
     protected String descriptionS2;
     protected SlotGeneral s3;
     protected String descriptionS3;
-    protected RunesPrimary r2;
+    protected RuneType r2;
     protected String descriptionRunesSecondary;
     protected SlotGeneral s4;
     protected String descriptionS4;
@@ -41,10 +41,10 @@ public class runes {
     protected String descriptionB3;
 
     public runes() {
-        this(-1,null,"",null,"",null,"",null,"",null,"",null,"",null,"",null,"",null,"",null,"",null,"");
+        this(-1, null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "");
     }
 
-    public runes(int codRune, RuneType type, String descriptionType, RunesPrimary r1, String descriptionRunesPrimary, SlotGeneral s1, String descriptionS1, SlotGeneral s2, String descriptionS2, SlotGeneral s3, String descriptionS3, RunesPrimary r2, String descriptionRunesSecondary, SlotGeneral s4, String descriptionS4, SlotGeneral s5, String descriptionS5, buffsGeneral b1, String descriptionB1, buffsGeneral b2, String descriptionB2, buffsGeneral b3, String descriptionB3) {
+    public runes(int codRune, RuneType type, String descriptionType, RunesPrimary r1, String descriptionRunesPrimary, SlotGeneral s1, String descriptionS1, SlotGeneral s2, String descriptionS2, SlotGeneral s3, String descriptionS3, RuneType r2, String descriptionRunesSecondary, SlotGeneral s4, String descriptionS4, SlotGeneral s5, String descriptionS5, buffsGeneral b1, String descriptionB1, buffsGeneral b2, String descriptionB2, buffsGeneral b3, String descriptionB3) {
         this.codRune = codRune;
         this.type = type;
         this.descriptionType = descriptionType;
@@ -158,11 +158,11 @@ public class runes {
         this.descriptionS3 = descriptionS3;
     }
 
-    public RunesPrimary getR2() {
+    public RuneType getR2() {
         return r2;
     }
 
-    public void setR2(RunesPrimary r2) {
+    public void setR2(RuneType r2) {
         this.r2 = r2;
     }
 
@@ -254,7 +254,6 @@ public class runes {
         this.descriptionB3 = descriptionB3;
     }
 
-   
     @Override
     public int hashCode() {
         int hash = 5;
