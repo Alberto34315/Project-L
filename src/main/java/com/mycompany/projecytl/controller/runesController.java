@@ -17,10 +17,14 @@ import com.mycompany.projecytl.Enums.buffsGeneral;
 import com.mycompany.projecytl.Utils.MapEntry;
 import com.mycompany.projecytl.model.runes;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 
@@ -106,6 +110,7 @@ public class runesController extends ModalControllers implements Initializable {
                 type.getItems().add(_type.getRune());
             }
         }*/
+        this.rune = FXCollections.observableArrayList();
         selectTypeRune();
     }
 
@@ -1483,6 +1488,20 @@ public class runesController extends ModalControllers implements Initializable {
         }
     }
 
+    private boolean showConfirm() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Comfirmar");
+        alert.setHeaderText("A punto de Guardar");
+        alert.setContentText("¿Desea guardar el elemento?");
+        //alert.show();
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     @FXML
     public void save() {
         runes r = null;
@@ -1495,7 +1514,6 @@ public class runesController extends ModalControllers implements Initializable {
         r.setDescriptionType(L_Type.getText());
         r.setR1(returnRunesP(rPrimary));
         r.setDescriptionRunesPrimary(L_RPrimary.getText());
-        System.out.println(L_RPrimary.getText());
         r.setS1(returnSlotGeneral(s1));
         r.setDescriptionS1(L_S1.getText());
         r.setS2(returnSlotGeneral(s2));
@@ -1514,18 +1532,23 @@ public class runesController extends ModalControllers implements Initializable {
         r.setDescriptionB2(L_B2.getText());
         r.setB3(returnBuffGeneral(b3));
         r.setDescriptionB3(L_B3.getText());
+        
+        if (r != null) {
+            if (!showConfirm()) {
+                return;
+            }
+            rune.add(r);
+            runesDao rDao = new runesDao(r);
+            int cod = rDao.save();
+            r.setCodRune(cod);
+        }
 
-        rune.add(r);
-        runesDao rDao = new runesDao(r);
-        int cod = rDao.save();
-        r.setCodRune(cod);
         /*  if (this.parentController != null) {
             MapEntry<runes, Boolean> response = new MapEntry<>(this.r, creating);
             this.parentController.doOnCloseModal(response);
             
         }*/
-
-        this.stage.close();
+        //this.stage.close();
         //    }
     }
 

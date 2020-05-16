@@ -31,7 +31,7 @@ public class runesDao extends runes implements DAO {
 //Modificar ENUMS
 
     enum queries {
-        INSERT("INSERT INTO runes (codRune,RuneType,DescriptionType,R1,DescriptionRunesPrimary,S1,DescriptionS1,S2,DescriptionS2,S3,DescriptionS3,R2,DescriptionRunesSecondary,S4,DescriptionS4,S5,DescriptionS5,B1,DescriptionB1,B2,DescriptionB2,B3,DescriptionB3) VALUES (-1,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"),
+        INSERT("INSERT INTO runes (codRune,RuneType,DescriptionType,R1,DescriptionRunesPrimary,S1,DescriptionS1,S2,DescriptionS2,S3,DescriptionS3,R2,DescriptionRunesSecondary,S4,DescriptionS4,S5,DescriptionS5,B1,DescriptionB1,B2,DescriptionB2,B3,DescriptionB3) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"),
         ALL("SELECT * FROM runes"),
         GETBYID("SELECT * FROM runes WHERE codRune=?"),
         UPDATE("UPDATE runes SET RuneType = ?, DescriptionType = ?, R1 = ?, DescriptionRunesPrimary = ?, S1 = ?, DescriptionS1 = ?, S2 = ?, DescriptionS2 = ?, S3 = ?, DescriptionS3 = ?, R2 = ?, DescriptionRunesSecondary = ?, S4 = ?, DescriptionS4 = ?, S5 = ?, DescriptionS5 = ?, B1 = ?, DescriptionB1 = ?, B2 = ?, DescriptionB2 = ?, B3 = ?, DescriptionB3 = ?  WHERE codRune = ?"),
@@ -158,29 +158,7 @@ public class runesDao extends runes implements DAO {
     public int save() {
         int result = -1;
         queries qu = null;
-        /* List<Object> params = new ArrayList<>();
-        params.add(this.getType());
-        params.add(this.getDescriptionType());
-        params.add(this.getR1());
-        params.add(this.getDescriptionRunesPrimary());
-        params.add(this.getS1());
-        params.add(this.getDescriptionS1());
-        params.add(this.getS2());
-        params.add(this.getDescriptionS2());
-        params.add(this.getS3());
-        params.add(this.getDescriptionS3());
-        params.add(this.getR2());
-        params.add(this.getDescriptionRunesSecondary());
-        params.add(this.getS4());
-        params.add(this.getDescriptionS4());
-        params.add(this.getS5());
-        params.add(this.getDescriptionS5());
-        params.add(this.getB1());
-        params.add(this.getDescriptionB1());
-        params.add(this.getB2());
-        params.add(this.getDescriptionB2());
-        params.add(this.getB3());
-        params.add(this.getDescriptionB3());*/
+     
         try {
             java.sql.Connection csql = ConnectionUtils.getConnection();
 
@@ -215,7 +193,7 @@ public class runesDao extends runes implements DAO {
             } else {
                 //INSERT
                 String q = qu.INSERT.getQ();
-                PreparedStatement ps = csql.prepareStatement(q);
+                PreparedStatement ps = csql.prepareStatement(q, Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, type.getRune());
                 ps.setString(2, descriptionType);
                 ps.setString(3, r1.getRune());
@@ -245,7 +223,7 @@ public class runesDao extends runes implements DAO {
                     }
                 }
                 this.codRune = result;
-
+               
             }
         } catch (SQLException ex) {
             Logger.getLogger(runesDao.class.getName()).log(Level.SEVERE, null, ex);
