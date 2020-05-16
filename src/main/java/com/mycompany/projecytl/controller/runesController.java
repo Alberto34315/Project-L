@@ -32,7 +32,7 @@ import javafx.scene.control.TextArea;
  *
  * @author AlbertoRS
  */
-public class runesController extends ModalControllers implements Initializable {
+public class runesController extends Controllers implements Initializable {
 
     private boolean creating;
     private ObservableList<runes> rune;
@@ -1342,11 +1342,12 @@ public class runesController extends ModalControllers implements Initializable {
             }
         }
     }
-
+    
+/*
     @Override
     public void setParams(Object p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    }*/
 
     private RuneType returnType(ComboBox<String> type) {
         RuneType rT = null;
