@@ -268,8 +268,12 @@ public class runesDao extends runes implements DAO {
 
     public static List<runes> getAll(Connection con) {
         List<runes> result = new ArrayList<>();
-        /*   try {
-            ResultSet rs = ConnectionUtils.execQuery(con, queries.ALL.getQ(), null);
+        runesDao.queries qu = null;
+        try {
+            java.sql.Connection csql = ConnectionUtils.getConnection();
+            String qe = qu.ALL.getQ();
+            PreparedStatement ps = csql.prepareStatement(qe);
+            ResultSet rs = ps.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
                     runes n = runesDao.instanceBuilder(rs);
@@ -278,7 +282,7 @@ public class runesDao extends runes implements DAO {
             }
         } catch (SQLException ex) {
             Dialog.showError("ERRPR", "Error cargando las runas", ex.toString());
-        }*/
+        }
         return result;
     }
 

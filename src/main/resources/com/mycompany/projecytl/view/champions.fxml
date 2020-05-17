@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="1070.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecytl.controller.championsController">
    <children>
-      <ScrollPane prefHeight="490.0" prefWidth="150.0" AnchorPane.leftAnchor="5.0">
+      <ScrollPane layoutX="5.0" layoutY="7.0" prefHeight="544.0" prefWidth="150.0" AnchorPane.leftAnchor="5.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1056.0" prefWidth="115.0">
                <children>
@@ -27,32 +27,32 @@
                         <Image url="@../../../../assets/Champons/ahri.jpg" />
                      </image>
                   </ImageView>
-                  <Button fx:id="aatrox" layoutX="5.0" layoutY="131.0" mnemonicParsing="false" onAction="#showAatrox" prefHeight="37.0" prefWidth="106.0" text="Aatrox" />
-                  <Button layoutX="4.0" layoutY="309.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="106.0" text="Ahri" />
+                  <Button layoutX="5.0" layoutY="131.0" mnemonicParsing="false" onAction="#showAatrox" prefHeight="37.0" prefWidth="106.0" text="Aatrox" />
+                  <Button layoutX="4.0" layoutY="309.0" mnemonicParsing="false" onAction="#showAhri" prefHeight="37.0" prefWidth="106.0" text="Ahri" />
                   <ImageView fitHeight="124.0" fitWidth="105.0" layoutX="6.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../assets/Champons/braum.jpg" />
                      </image>
                   </ImageView>
-                  <Button layoutX="6.0" layoutY="482.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="106.0" text="Braum" />
+                  <Button layoutX="6.0" layoutY="482.0" mnemonicParsing="false" onAction="#showBraum" prefHeight="37.0" prefWidth="106.0" text="Braum" />
                   <ImageView fitHeight="124.0" fitWidth="105.0" layoutX="7.0" layoutY="541.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../assets/Champons/caitlyn.jpg" />
                      </image>
                   </ImageView>
-                  <Button layoutX="6.0" layoutY="660.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="106.0" text="Caitlyn" />
+                  <Button layoutX="6.0" layoutY="660.0" mnemonicParsing="false" onAction="#showCaitlyn" prefHeight="37.0" prefWidth="106.0" text="Caitlyn" />
                   <ImageView fitHeight="124.0" fitWidth="105.0" layoutX="5.0" layoutY="716.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../assets/Champons/leesin.jpg" />
                      </image>
                   </ImageView>
-                  <Button layoutX="4.0" layoutY="834.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="106.0" text="Lee Sin" />
+                  <Button layoutX="4.0" layoutY="834.0" mnemonicParsing="false" onAction="#showLeesin" prefHeight="37.0" prefWidth="106.0" text="Lee Sin" />
                   <ImageView fitHeight="124.0" fitWidth="105.0" layoutX="5.0" layoutY="884.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../assets/Champons/trundle.jpg" />
                      </image>
                   </ImageView>
-                  <Button layoutX="4.0" layoutY="1003.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="106.0" text="Trundle" />
+                  <Button layoutX="4.0" layoutY="1003.0" mnemonicParsing="false" onAction="#showTrundle" prefHeight="32.0" prefWidth="106.0" text="Trundle" />
                </children>
             </AnchorPane>
         </content>
@@ -68,7 +68,7 @@
             <Font name="Arial Black" size="24.0" />
          </font>
       </Label>
-      <TableView fx:id="skills" layoutX="155.0" layoutY="316.0" prefHeight="250.0" prefWidth="904.0">
+      <TableView fx:id="skills" layoutX="155.0" layoutY="316.0" prefHeight="235.0" prefWidth="904.0">
         <columns>
           <TableColumn fx:id="p" prefWidth="128.800048828125" text="Passive" />
           <TableColumn fx:id="q" prefWidth="134.4000244140625" text="Q" />

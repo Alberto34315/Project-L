@@ -18,6 +18,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -38,66 +39,73 @@ import org.xml.sax.SAXException;
  * @author AlbertoRS
  */
 public class championsController extends Controllers implements Initializable {
-    
+
     public ObservableList<champions> champs;
-    
+
     private Set<champions> champions;
-    
+
     private final static String championsXML = "champions.xml";
-    
-    private final static String imgAatrox = "assets/Champons/aatrox.jpg";
-    
+
+    private final static String imgAatrox = "src/main/resources/assets/Champons/aatrox.jpg";
+    private final static String imgAhri = "src/main/resources/assets/Champons/ahri.jpg";
+    private final static String imgBraum = "src/main/resources/assets/Champons/braum.jpg";
+    private final static String imgCaitlyn = "src/main/resources/assets/Champons/caitlyn.jpg";
+    private final static String imgLeesin = "src/main/resources/assets/Champons/leesin.jpg";
+    private final static String imgTrundle = "src/main/resources/assets/Champons/trundle.jpg";
+
     public championsController() {
         this.champions = new HashSet<>();
         this.champs = FXCollections.observableArrayList();
     }
-    
-    @FXML
-    public Button aatrox;
-    
+
+//    @FXML
+//    public Button aatrox;
+//
+//    @FXML
+//    public Button aatrox;
     @FXML
     public ImageView img;
-    
+
     @FXML
     public Label L_name;
-    
+
     @FXML
     public TextArea T_Description;
-    
+
     @FXML
     private TableView<champions> skills;
-    
+
     @FXML
     private TableColumn<champions, String> p;
-    
+
     @FXML
     private TableColumn<champions, String> q;
-    
+
     @FXML
     private TableColumn<champions, String> w;
-    
+
     @FXML
     private TableColumn<champions, String> e;
-    
+
     @FXML
     private TableColumn<champions, String> r;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         loadClientsFromDDBB();
     }
-    
+
     @FXML
     public void showAatrox() {
         skills.getItems().clear();
-       
         for (champions champion : champions) {
             if (champion.getNombre().equals("Aatrox")) {
                 //img =  new ImageView(imgAatrox);
-                //Image image = new Image("assets/Champons/aatrox.jpg");
-               // img = new ImageView(image);
+                File file = new File(imgAatrox);
+                Image image = new Image(file.toURI().toString());
+                img.setImage(image);
                 L_name.setText(champion.getNombre());
-                T_Description.setText(champion.getDescripcion());
+                T_Description.setText(champion.getDescription());
                 p.setCellValueFactory(new PropertyValueFactory<champions, String>("P"));
                 q.setCellValueFactory(new PropertyValueFactory<champions, String>("Q"));
                 w.setCellValueFactory(new PropertyValueFactory<champions, String>("W"));
@@ -108,7 +116,117 @@ public class championsController extends Controllers implements Initializable {
             }
         }
     }
-    
+
+    @FXML
+    public void showAhri() {
+        skills.getItems().clear();
+        for (champions champion : champions) {
+            if (champion.getNombre().equals("Ahri")) {
+                //img =  new ImageView(imgAatrox);
+                File file = new File(imgAhri);
+                Image image = new Image(file.toURI().toString());
+                img.setImage(image);
+                L_name.setText(champion.getNombre());
+                T_Description.setText(champion.getDescription());
+                p.setCellValueFactory(new PropertyValueFactory<champions, String>("P"));
+                q.setCellValueFactory(new PropertyValueFactory<champions, String>("Q"));
+                w.setCellValueFactory(new PropertyValueFactory<champions, String>("W"));
+                e.setCellValueFactory(new PropertyValueFactory<champions, String>("E"));
+                r.setCellValueFactory(new PropertyValueFactory<champions, String>("R"));
+                champs.add(champion);
+                skills.setItems(champs);
+            }
+        }
+    }
+
+    @FXML
+    public void showBraum() {
+        skills.getItems().clear();
+        for (champions champion : champions) {
+            if (champion.getNombre().equals("Braum")) {
+                //img =  new ImageView(imgAatrox);
+                File file = new File(imgBraum);
+                Image image = new Image(file.toURI().toString());
+                img.setImage(image);
+                L_name.setText(champion.getNombre());
+                T_Description.setText(champion.getDescription());
+                p.setCellValueFactory(new PropertyValueFactory<champions, String>("P"));
+                q.setCellValueFactory(new PropertyValueFactory<champions, String>("Q"));
+                w.setCellValueFactory(new PropertyValueFactory<champions, String>("W"));
+                e.setCellValueFactory(new PropertyValueFactory<champions, String>("E"));
+                r.setCellValueFactory(new PropertyValueFactory<champions, String>("R"));
+                champs.add(champion);
+                skills.setItems(champs);
+            }
+        }
+    }
+
+    @FXML
+    public void showCaitlyn() {
+        skills.getItems().clear();
+        for (champions champion : champions) {
+            if (champion.getNombre().equals("Caitlyn")) {
+                //img =  new ImageView(imgAatrox);
+                File file = new File(imgCaitlyn);
+                Image image = new Image(file.toURI().toString());
+                img.setImage(image);
+                L_name.setText(champion.getNombre());
+                T_Description.setText(champion.getDescription());
+                p.setCellValueFactory(new PropertyValueFactory<champions, String>("P"));
+                q.setCellValueFactory(new PropertyValueFactory<champions, String>("Q"));
+                w.setCellValueFactory(new PropertyValueFactory<champions, String>("W"));
+                e.setCellValueFactory(new PropertyValueFactory<champions, String>("E"));
+                r.setCellValueFactory(new PropertyValueFactory<champions, String>("R"));
+                champs.add(champion);
+                skills.setItems(champs);
+            }
+        }
+    }
+
+    @FXML
+    public void showLeesin() {
+        skills.getItems().clear();
+        for (champions champion : champions) {
+            if (champion.getNombre().equals("Lee Sin")) {
+                //img =  new ImageView(imgAatrox);
+                File file = new File(imgLeesin);
+                Image image = new Image(file.toURI().toString());
+                img.setImage(image);
+                L_name.setText(champion.getNombre());
+                T_Description.setText(champion.getDescription());
+                p.setCellValueFactory(new PropertyValueFactory<champions, String>("P"));
+                q.setCellValueFactory(new PropertyValueFactory<champions, String>("Q"));
+                w.setCellValueFactory(new PropertyValueFactory<champions, String>("W"));
+                e.setCellValueFactory(new PropertyValueFactory<champions, String>("E"));
+                r.setCellValueFactory(new PropertyValueFactory<champions, String>("R"));
+                champs.add(champion);
+                skills.setItems(champs);
+            }
+        }
+    }
+
+    @FXML
+    public void showTrundle() {
+        skills.getItems().clear();
+        for (champions champion : champions) {
+            if (champion.getNombre().equals("Trundle")) {
+                //img =  new ImageView(imgAatrox);
+                File file = new File(imgTrundle);
+                Image image = new Image(file.toURI().toString());
+                img.setImage(image);
+                L_name.setText(champion.getNombre());
+                T_Description.setText(champion.getDescription());
+                p.setCellValueFactory(new PropertyValueFactory<champions, String>("P"));
+                q.setCellValueFactory(new PropertyValueFactory<champions, String>("Q"));
+                w.setCellValueFactory(new PropertyValueFactory<champions, String>("W"));
+                e.setCellValueFactory(new PropertyValueFactory<champions, String>("E"));
+                r.setCellValueFactory(new PropertyValueFactory<champions, String>("R"));
+                champs.add(champion);
+                skills.setItems(champs);
+            }
+        }
+    }
+
     public boolean loadClientsFromDDBB() {
         boolean cargado = false;
         this.champions.clear();
@@ -138,7 +256,7 @@ public class championsController extends Controllers implements Initializable {
                     String e = eElement.getElementsByTagName("e").item(0).getTextContent();
                     String r = eElement.getElementsByTagName("r").item(0).getTextContent();
                     int cod = Integer.parseInt(codChamp);
-                    
+
                     champions c = new champions(cod, nombre, descripcion, p, q, w, e, r);
                     champions.add(c);
                 }

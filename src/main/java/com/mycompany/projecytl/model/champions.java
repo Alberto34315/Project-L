@@ -11,23 +11,23 @@ package com.mycompany.projecytl.model;
  */
 public class champions {
 
-    private int codChamp;
-    private String nombre;
-    private String descripcion;
-    private String p;
-    private String q;
-    private String w;
-    private String e;
-    private String r;
+    protected int codChamp;
+    protected String nombre;
+    protected String description;
+    protected String p;
+    protected String q;
+    protected String w;
+    protected String e;
+    protected String r;
 
     public champions() {
         this(-1, "", "", "", "", "", "", "");
     }
 
-    public champions(int codChamp, String nombre, String descripcion, String p, String q, String w, String e, String r) {
+    public champions(int codChamp, String nombre, String description, String p, String q, String w, String e, String r) {
         this.codChamp = codChamp;
         this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.description = description;
         this.p = p;
         this.q = q;
         this.w = w;
@@ -35,7 +35,9 @@ public class champions {
         this.r = r;
     }
 
-    
+    public void setCodChamp(int codChamp) {
+        this.codChamp = codChamp;
+    }
 
     public int getCodChamp() {
         return codChamp;
@@ -57,12 +59,12 @@ public class champions {
         this.nombre = nombre;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getQ() {
@@ -99,10 +101,8 @@ public class champions {
 
     @Override
     public String toString() {
-        return "champions{" + "codChamp=" + codChamp + ", nombre=" + nombre + ", descripcion=" + descripcion + ", p=" + p + ", q=" + q + ", w=" + w + ", e=" + e + ", r=" + r + '}';
+        return "champions{" + "codChamp=" + codChamp + ", nombre=" + nombre + ", descripcion=" + description + ", p=" + p + ", q=" + q + ", w=" + w + ", e=" + e + ", r=" + r + '}';
     }
-
-    
 
     @Override
     public int hashCode() {

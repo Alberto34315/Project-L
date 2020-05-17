@@ -8,23 +8,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecytl.controller.homeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecytl.controller.homeController">
    <children>
-      <TableView layoutX="1.0" layoutY="43.0" prefHeight="314.0" prefWidth="600.0">
+      <TableView layoutX="2.0" layoutY="74.0" prefHeight="335.0" prefWidth="970.0">
         <columns>
-          <TableColumn prefWidth="171.20001530647278" text="Champion" />
-          <TableColumn prefWidth="427.9999237060547" text="Runes" />
+          <TableColumn prefWidth="400.79998779296875" text="Champion" />
+          <TableColumn prefWidth="568.7999938964844" text="Runes" />
         </columns>
       </TableView>
-      <Label layoutX="209.0" layoutY="7.0" text="Composition" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+      <Label layoutX="338.0" layoutY="14.0" prefHeight="54.0" prefWidth="297.0" text="COMPOSITION" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" underline="true">
          <font>
-            <Font size="24.0" />
+            <Font name="Arial Black" size="36.0" />
          </font>
          <effect>
             <Blend />
          </effect>
       </Label>
-      <Button layoutX="148.0" layoutY="364.0" mnemonicParsing="false" text="Create" textFill="#1eb500" AnchorPane.bottomAnchor="10.399999999999999" AnchorPane.topAnchor="364.0" />
-      <Button layoutX="402.0" layoutY="364.0" mnemonicParsing="false" text="Remove" textFill="#d50505" AnchorPane.bottomAnchor="10.399999999999999" AnchorPane.topAnchor="364.0" />
+      <Button layoutX="148.0" layoutY="431.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="50.0" text="Create" textFill="#1eb500" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="431.0" />
+      <Button layoutX="770.0" layoutY="431.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="59.0" text="Remove" textFill="#d50505" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="431.0" />
    </children>
 </AnchorPane>
