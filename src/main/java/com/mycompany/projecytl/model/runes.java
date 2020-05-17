@@ -17,6 +17,7 @@ import com.mycompany.projecytl.Enums.buffsGeneral;
 public class runes {
 
     protected int codRune;
+    protected String name;
     protected RuneType type;
     protected String descriptionType;
     protected RunesPrimary r1;
@@ -41,11 +42,12 @@ public class runes {
     protected String descriptionB3;
 
     public runes() {
-        this(-1, null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "");
+        this(-1, "",null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "", null, "");
     }
 
-    public runes(int codRune, RuneType type, String descriptionType, RunesPrimary r1, String descriptionRunesPrimary, SlotGeneral s1, String descriptionS1, SlotGeneral s2, String descriptionS2, SlotGeneral s3, String descriptionS3, RuneType r2, String descriptionRunesSecondary, SlotGeneral s4, String descriptionS4, SlotGeneral s5, String descriptionS5, buffsGeneral b1, String descriptionB1, buffsGeneral b2, String descriptionB2, buffsGeneral b3, String descriptionB3) {
+    public runes(int codRune, String name,RuneType type, String descriptionType, RunesPrimary r1, String descriptionRunesPrimary, SlotGeneral s1, String descriptionS1, SlotGeneral s2, String descriptionS2, SlotGeneral s3, String descriptionS3, RuneType r2, String descriptionRunesSecondary, SlotGeneral s4, String descriptionS4, SlotGeneral s5, String descriptionS5, buffsGeneral b1, String descriptionB1, buffsGeneral b2, String descriptionB2, buffsGeneral b3, String descriptionB3) {
         this.codRune = codRune;
+        this.name=name;
         this.type = type;
         this.descriptionType = descriptionType;
         this.r1 = r1;
@@ -76,6 +78,14 @@ public class runes {
 
     public void setCodRune(int codRune) {
         this.codRune = codRune;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public RuneType getType() {
@@ -252,6 +262,11 @@ public class runes {
 
     public void setDescriptionB3(String descriptionB3) {
         this.descriptionB3 = descriptionB3;
+    }
+
+    @Override
+    public String toString() {
+        return "runes{" + "codRune=" + codRune + ", name=" + name + ", type=" + type + ", descriptionType=" + descriptionType + ", r1=" + r1 + ", descriptionRunesPrimary=" + descriptionRunesPrimary + ", s1=" + s1 + ", descriptionS1=" + descriptionS1 + ", s2=" + s2 + ", descriptionS2=" + descriptionS2 + ", s3=" + s3 + ", descriptionS3=" + descriptionS3 + ", r2=" + r2 + ", descriptionRunesSecondary=" + descriptionRunesSecondary + ", s4=" + s4 + ", descriptionS4=" + descriptionS4 + ", s5=" + s5 + ", descriptionS5=" + descriptionS5 + ", b1=" + b1 + ", descriptionB1=" + descriptionB1 + ", b2=" + b2 + ", descriptionB2=" + descriptionB2 + ", b3=" + b3 + ", descriptionB3=" + descriptionB3 + '}';
     }
 
     @Override

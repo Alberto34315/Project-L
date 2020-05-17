@@ -12,6 +12,9 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  *
@@ -48,6 +51,33 @@ public class AppController extends Controllers {
         }
     }
 
+    public Controllers openModal(Scenes scene, String title, Controllers parentController, Object params) {
+        try {
+            System.out.println(scene.getUrl());
+            MapEntry<Parent, Controllers> m = loadFXML(scene.getUrl());
+            Stage modalStage = new Stage();
+            modalStage.setTitle(title);
+            modalStage.initModality(Modality.APPLICATION_MODAL);
+            modalStage.initOwner(this.app.mainStage);
+
+            Scene modalScene = new Scene(m.getKey());
+            modalStage.setScene(modalScene);
+
+            if (m.getValue() != null) {
+                m.getValue().setMainApp(this.app);
+                ModalControllers mc = (ModalControllers) m.getValue();
+                mc.setParentController(parentController);
+                mc.setStage(modalStage);
+                mc.setParams(params);
+            }
+            modalStage.showAndWait();
+            return m.getValue();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
     @FXML
     public void connectionsHome() {
         changeScene(Scenes.HOME);
@@ -57,8 +87,6 @@ public class AppController extends Controllers {
     public void connectionsRune() {
         changeScene(Scenes.RUNE);
     }
-
-  
 
     @FXML
     public void connectionsChampions() {

@@ -13,7 +13,8 @@ public enum Scenes {
     RUNE("view/runes"),
     HOME("view/home"),
     CHAMPIONS("view/champions"),
-    ROOT("view/root2");
+    ROOT("view/root2"),
+    NAMERUNE("view/addNameRune");
 
     private String url;
 

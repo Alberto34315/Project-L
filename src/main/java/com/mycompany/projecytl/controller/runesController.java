@@ -1342,13 +1342,12 @@ public class runesController extends Controllers implements Initializable {
             }
         }
     }
-    
-/*
+
+    /*
     @Override
     public void setParams(Object p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }*/
-
     private RuneType returnType(ComboBox<String> type) {
         RuneType rT = null;
         if (type != null) {
@@ -1503,6 +1502,10 @@ public class runesController extends Controllers implements Initializable {
         }
     }
 
+    private void handleNameRune() {
+        addNameRunes cc = (addNameRunes) app.controller.openModal(Scenes.NAMERUNE, "Name Rune", this, null);
+    }
+
     @FXML
     public void save() {
         runes r = null;
@@ -1533,8 +1536,9 @@ public class runesController extends Controllers implements Initializable {
         r.setDescriptionB2(L_B2.getText());
         r.setB3(returnBuffGeneral(b3));
         r.setDescriptionB3(L_B3.getText());
-        
-        if (r != null) {
+
+        handleNameRune();
+        /*if (r != null) {
             if (!showConfirm()) {
                 return;
             }
@@ -1542,15 +1546,25 @@ public class runesController extends Controllers implements Initializable {
             runesDao rDao = new runesDao(r);
             int cod = rDao.save();
             r.setCodRune(cod);
-        }
+        }*/
 
-        /*  if (this.parentController != null) {
+ /*  if (this.parentController != null) {
             MapEntry<runes, Boolean> response = new MapEntry<>(this.r, creating);
             this.parentController.doOnCloseModal(response);
             
         }*/
         //this.stage.close();
         //    }
+    }
+
+    public void doOnModalClosed(Object response) {
+        if (response != null) {
+            runes newItem = (runes) response;
+            rune.add(newItem);
+            runesDao dao = new runesDao(newItem);
+            int newId = dao.save();
+            newItem.setCodRune(newId);
+        }
     }
 
 }

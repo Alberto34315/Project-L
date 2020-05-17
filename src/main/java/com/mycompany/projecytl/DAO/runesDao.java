@@ -31,10 +31,10 @@ public class runesDao extends runes implements DAO {
 //Modificar ENUMS
 
     enum queries {
-        INSERT("INSERT INTO runes (codRune,RuneType,DescriptionType,R1,DescriptionRunesPrimary,S1,DescriptionS1,S2,DescriptionS2,S3,DescriptionS3,R2,DescriptionRunesSecondary,S4,DescriptionS4,S5,DescriptionS5,B1,DescriptionB1,B2,DescriptionB2,B3,DescriptionB3) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"),
+        INSERT("INSERT INTO runes (codRune,name,RuneType,DescriptionType,R1,DescriptionRunesPrimary,S1,DescriptionS1,S2,DescriptionS2,S3,DescriptionS3,R2,DescriptionRunesSecondary,S4,DescriptionS4,S5,DescriptionS5,B1,DescriptionB1,B2,DescriptionB2,B3,DescriptionB3) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"),
         ALL("SELECT * FROM runes"),
         GETBYID("SELECT * FROM runes WHERE codRune=?"),
-        UPDATE("UPDATE runes SET RuneType = ?, DescriptionType = ?, R1 = ?, DescriptionRunesPrimary = ?, S1 = ?, DescriptionS1 = ?, S2 = ?, DescriptionS2 = ?, S3 = ?, DescriptionS3 = ?, R2 = ?, DescriptionRunesSecondary = ?, S4 = ?, DescriptionS4 = ?, S5 = ?, DescriptionS5 = ?, B1 = ?, DescriptionB1 = ?, B2 = ?, DescriptionB2 = ?, B3 = ?, DescriptionB3 = ?  WHERE codRune = ?"),
+        UPDATE("UPDATE runes SET RuneType = ?, name = ?, DescriptionType = ?, R1 = ?, DescriptionRunesPrimary = ?, S1 = ?, DescriptionS1 = ?, S2 = ?, DescriptionS2 = ?, S3 = ?, DescriptionS3 = ?, R2 = ?, DescriptionRunesSecondary = ?, S4 = ?, DescriptionS4 = ?, S5 = ?, DescriptionS5 = ?, B1 = ?, DescriptionB1 = ?, B2 = ?, DescriptionB2 = ?, B3 = ?, DescriptionB3 = ?  WHERE codRune = ?"),
         REMOVE("DELETE FROM runes WHERE codRune=?");
         private String q;
 
@@ -49,8 +49,8 @@ public class runesDao extends runes implements DAO {
     Connection con;
     private boolean persist;
 
-    public runesDao(int codRune, RuneType type, String descriptionType, RunesPrimary r1, String descriptionRunesPrimary, SlotGeneral s1, String descriptionS1, SlotGeneral s2, String descriptionS2, SlotGeneral s3, String descriptionS3, RuneType r2, String descriptionRunesSecondary, SlotGeneral s4, String descriptionS4, SlotGeneral s5, String descriptionS5, buffsGeneral b1, String descriptionB1, buffsGeneral b2, String descriptionB2, buffsGeneral b3, String descriptionB3) {
-        super(codRune, type, descriptionType, r1, descriptionRunesPrimary, s1, descriptionS1, s2, descriptionS2, s3, descriptionS3, r2, descriptionRunesSecondary, s4, descriptionS4, s5, descriptionS5, b1, descriptionB1, b2, descriptionB2, b3, descriptionB3);
+    public runesDao(int codRune, String name, RuneType type, String descriptionType, RunesPrimary r1, String descriptionRunesPrimary, SlotGeneral s1, String descriptionS1, SlotGeneral s2, String descriptionS2, SlotGeneral s3, String descriptionS3, RuneType r2, String descriptionRunesSecondary, SlotGeneral s4, String descriptionS4, SlotGeneral s5, String descriptionS5, buffsGeneral b1, String descriptionB1, buffsGeneral b2, String descriptionB2, buffsGeneral b3, String descriptionB3) {
+        super(codRune, name, type, descriptionType, r1, descriptionRunesPrimary, s1, descriptionS1, s2, descriptionS2, s3, descriptionS3, r2, descriptionRunesSecondary, s4, descriptionS4, s5, descriptionS5, b1, descriptionB1, b2, descriptionB2, b3, descriptionB3);
         try {
             con = ConnectionUtils.connect(AppController.currentConnection);
         } catch (ClassNotFoundException ex) {
@@ -74,7 +74,7 @@ public class runesDao extends runes implements DAO {
     }
 
     public runesDao(runes r) {
-        this(r.getCodRune(), r.getType(), r.getDescriptionType(), r.getR1(), r.getDescriptionRunesPrimary(), r.getS1(), r.getDescriptionS1(), r.getS2(), r.getDescriptionS2(), r.getS3(), r.getDescriptionS3(), r.getR2(), r.getDescriptionRunesSecondary(), r.getS4(), r.getDescriptionS4(), r.getS5(), r.getDescriptionS5(), r.getB1(), r.getDescriptionB1(), r.getB2(), r.getDescriptionB2(), r.getB3(), r.getDescriptionB3());
+        this(r.getCodRune(),r.getName(), r.getType(), r.getDescriptionType(), r.getR1(), r.getDescriptionRunesPrimary(), r.getS1(), r.getDescriptionS1(), r.getS2(), r.getDescriptionS2(), r.getS3(), r.getDescriptionS3(), r.getR2(), r.getDescriptionRunesSecondary(), r.getS4(), r.getDescriptionS4(), r.getS5(), r.getDescriptionS5(), r.getB1(), r.getDescriptionB1(), r.getB2(), r.getDescriptionB2(), r.getB3(), r.getDescriptionB3());
     }
 
     public runesDao(int i) {
@@ -92,6 +92,7 @@ public class runesDao extends runes implements DAO {
                 while (rs.next()) {
                     runes r = instanceBuilder(rs);
                     this.codRune = r.getCodRune();
+                    this.name = r.getName();
                     this.type = r.getType();
                     this.descriptionType = r.getDescriptionType();
                     this.r1 = r.getR1();
@@ -167,55 +168,57 @@ public class runesDao extends runes implements DAO {
                 String q = qu.UPDATE.getQ();
                 PreparedStatement ps = csql.prepareStatement(q);
                 ps.setString(1, type.getRune());
-                ps.setString(2, descriptionType);
-                ps.setString(3, r1.getRune());
-                ps.setString(4, descriptionRunesPrimary);
-                ps.setString(5, s1.getRune());
-                ps.setString(6, descriptionS1);
-                ps.setString(7, s2.getRune());
-                ps.setString(8, descriptionS2);
-                ps.setString(9, s3.getRune());
-                ps.setString(10, descriptionS3);
-                ps.setString(11, r2.getRune());
-                ps.setString(12, descriptionRunesSecondary);
-                ps.setString(13, s4.getRune());
-                ps.setString(14, descriptionS4);
-                ps.setString(15, s5.getRune());
-                ps.setString(16, descriptionS5);
-                ps.setString(17, b1.getRune());
-                ps.setString(18, descriptionB1);
-                ps.setString(19, b2.getRune());
-                ps.setString(20, descriptionB2);
-                ps.setString(21, b3.getRune());
-                ps.setString(22, descriptionB3);
-                ps.setInt(23, codRune);
+                ps.setString(2, name);                
+                ps.setString(3, descriptionType);
+                ps.setString(4, r1.getRune());
+                ps.setString(5, descriptionRunesPrimary);
+                ps.setString(6, s1.getRune());
+                ps.setString(7, descriptionS1);
+                ps.setString(8, s2.getRune());
+                ps.setString(9, descriptionS2);
+                ps.setString(10, s3.getRune());
+                ps.setString(11, descriptionS3);
+                ps.setString(12, r2.getRune());
+                ps.setString(13, descriptionRunesSecondary);
+                ps.setString(14, s4.getRune());
+                ps.setString(15, descriptionS4);
+                ps.setString(16, s5.getRune());
+                ps.setString(17, descriptionS5);
+                ps.setString(18, b1.getRune());
+                ps.setString(19, descriptionB1);
+                ps.setString(20, b2.getRune());
+                ps.setString(21, descriptionB2);
+                ps.setString(22, b3.getRune());
+                ps.setString(23, descriptionB3);
+                ps.setInt(24, codRune);
                 result = ps.executeUpdate();
             } else {
                 //INSERT
                 String q = qu.INSERT.getQ();
                 PreparedStatement ps = csql.prepareStatement(q, Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, type.getRune());
-                ps.setString(2, descriptionType);
-                ps.setString(3, r1.getRune());
-                ps.setString(4, descriptionRunesPrimary);
-                ps.setString(5, s1.getRune());
-                ps.setString(6, descriptionS1);
-                ps.setString(7, s2.getRune());
-                ps.setString(8, descriptionS2);
-                ps.setString(9, s3.getRune());
-                ps.setString(10, descriptionS3);
-                ps.setString(11, r2.getRune());
-                ps.setString(12, descriptionRunesSecondary);
-                ps.setString(13, s4.getRune());
-                ps.setString(14, descriptionS4);
-                ps.setString(15, s5.getRune());
-                ps.setString(16, descriptionS5);
-                ps.setString(17, b1.getRune());
-                ps.setString(18, descriptionB1);
-                ps.setString(19, b2.getRune());
-                ps.setString(20, descriptionB2);
-                ps.setString(21, b3.getRune());
-                ps.setString(22, descriptionB3);
+                ps.setString(2, name);                
+                ps.setString(3, descriptionType);
+                ps.setString(4, r1.getRune());
+                ps.setString(5, descriptionRunesPrimary);
+                ps.setString(6, s1.getRune());
+                ps.setString(7, descriptionS1);
+                ps.setString(8, s2.getRune());
+                ps.setString(9, descriptionS2);
+                ps.setString(10, s3.getRune());
+                ps.setString(11, descriptionS3);
+                ps.setString(12, r2.getRune());
+                ps.setString(13, descriptionRunesSecondary);
+                ps.setString(14, s4.getRune());
+                ps.setString(15, descriptionS4);
+                ps.setString(16, s5.getRune());
+                ps.setString(17, descriptionS5);
+                ps.setString(18, b1.getRune());
+                ps.setString(19, descriptionB1);
+                ps.setString(20, b2.getRune());
+                ps.setString(21, descriptionB2);
+                ps.setString(22, b3.getRune());
+                ps.setString(23, descriptionB3);
                 result = ps.executeUpdate();
                 try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
@@ -237,6 +240,7 @@ public class runesDao extends runes implements DAO {
         if (rs != null) {
             try {
                 c.setCodRune(rs.getInt("codRune"));
+                c.setName(rs.getString("name"));
                 c.setType((RuneType) rs.getObject("RuneType"));
                 c.setDescriptionType(rs.getString("DescriptionRuneType"));
                 c.setR1((RunesPrimary) rs.getObject("RunesPrimary"));
