@@ -1502,6 +1502,7 @@ public class runesController extends Controllers implements Initializable {
         }
     }
 
+    @FXML
     private void handleNameRune() {
         addNameRunes cc = (addNameRunes) app.controller.openModal(Scenes.NAMERUNE, "Name Rune", this, null);
     }
@@ -1509,6 +1510,7 @@ public class runesController extends Controllers implements Initializable {
     @FXML
     public void save() {
         runes r = null;
+        addNameRunes add = new addNameRunes();
         //  if (isValid()) {
         if (r == null) {
             r = new runes();
@@ -1536,8 +1538,8 @@ public class runesController extends Controllers implements Initializable {
         r.setDescriptionB2(L_B2.getText());
         r.setB3(returnBuffGeneral(b3));
         r.setDescriptionB3(L_B3.getText());
-
-        handleNameRune();
+        
+        r = add.returnRune(r);
         /*if (r != null) {
             if (!showConfirm()) {
                 return;

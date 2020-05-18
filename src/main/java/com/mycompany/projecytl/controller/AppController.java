@@ -61,6 +61,7 @@ public class AppController extends Controllers {
             modalStage.initOwner(this.app.mainStage);
 
             Scene modalScene = new Scene(m.getKey());
+            
             modalStage.setScene(modalScene);
 
             if (m.getValue() != null) {
