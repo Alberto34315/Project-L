@@ -74,7 +74,7 @@ public class runesDao extends runes implements DAO {
     }
 
     public runesDao(runes r) {
-        this(r.getCodRune(),r.getName(), r.getType(), r.getDescriptionType(), r.getR1(), r.getDescriptionRunesPrimary(), r.getS1(), r.getDescriptionS1(), r.getS2(), r.getDescriptionS2(), r.getS3(), r.getDescriptionS3(), r.getR2(), r.getDescriptionRunesSecondary(), r.getS4(), r.getDescriptionS4(), r.getS5(), r.getDescriptionS5(), r.getB1(), r.getDescriptionB1(), r.getB2(), r.getDescriptionB2(), r.getB3(), r.getDescriptionB3());
+        this(r.getCodRune(), r.getName(), r.getType(), r.getDescriptionType(), r.getR1(), r.getDescriptionRunesPrimary(), r.getS1(), r.getDescriptionS1(), r.getS2(), r.getDescriptionS2(), r.getS3(), r.getDescriptionS3(), r.getR2(), r.getDescriptionRunesSecondary(), r.getS4(), r.getDescriptionS4(), r.getS5(), r.getDescriptionS5(), r.getB1(), r.getDescriptionB1(), r.getB2(), r.getDescriptionB2(), r.getB3(), r.getDescriptionB3());
     }
 
     public runesDao(int i) {
@@ -159,7 +159,7 @@ public class runesDao extends runes implements DAO {
     public int save() {
         int result = -1;
         queries qu = null;
-     
+
         try {
             java.sql.Connection csql = ConnectionUtils.getConnection();
 
@@ -167,8 +167,8 @@ public class runesDao extends runes implements DAO {
                 //UPDATE
                 String q = qu.UPDATE.getQ();
                 PreparedStatement ps = csql.prepareStatement(q);
-                ps.setString(1, type.getRune());
-                ps.setString(2, name);                
+                ps.setString(1, name);
+                ps.setString(2, type.getRune());
                 ps.setString(3, descriptionType);
                 ps.setString(4, r1.getRune());
                 ps.setString(5, descriptionRunesPrimary);
@@ -196,8 +196,8 @@ public class runesDao extends runes implements DAO {
                 //INSERT
                 String q = qu.INSERT.getQ();
                 PreparedStatement ps = csql.prepareStatement(q, Statement.RETURN_GENERATED_KEYS);
-                ps.setString(1, type.getRune());
-                ps.setString(2, name);                
+                ps.setString(1, name);
+                ps.setString(2, type.getRune());
                 ps.setString(3, descriptionType);
                 ps.setString(4, r1.getRune());
                 ps.setString(5, descriptionRunesPrimary);
@@ -226,7 +226,7 @@ public class runesDao extends runes implements DAO {
                     }
                 }
                 this.codRune = result;
-               
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(runesDao.class.getName()).log(Level.SEVERE, null, ex);

@@ -9,6 +9,8 @@ import com.mycompany.projecytl.App;
 import com.mycompany.projecytl.Utils.MapEntry;
 import com.mycompany.projecytl.model.Connection;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -52,7 +54,8 @@ public class AppController extends Controllers {
     }
 
     public Controllers openModal(Scenes scene, String title, Controllers parentController, Object params) {
-        try {
+
+        /*   try {
             System.out.println(scene.getUrl());
             MapEntry<Parent, Controllers> m = loadFXML(scene.getUrl());
             Stage modalStage = new Stage();
@@ -65,18 +68,44 @@ public class AppController extends Controllers {
             modalStage.setScene(modalScene);
 
             if (m.getValue() != null) {
-                m.getValue().setMainApp(this.app);
-                ModalControllers mc = (ModalControllers) m.getValue();
-                mc.setParentController(parentController);
-                mc.setStage(modalStage);
-                mc.setParams(params);
+            m.getValue().setMainApp(this.app);
+            ModalControllers mc = (ModalControllers) m.getValue();
+            mc.setParentController(parentController);
+            mc.setStage(modalStage);
+            mc.setParams(params);
             }
             modalStage.showAndWait();
             return m.getValue();
-        } catch (IOException ex) {
+            } catch (IOException ex) {
             ex.printStackTrace();
             return null;
+            }*/
+        // FXMLLoader fxmlLoader = new FXMLLoader(scene.getUrl());
+        try {
+            MapEntry<Parent, Controllers> m = loadFXML(scene.getUrl());
+            Parent modal;
+            modal = m.getKey();
+            Stage modalStage = new Stage();
+            modalStage.setTitle(title);
+            modalStage.initModality(Modality.APPLICATION_MODAL);
+            modalStage.initOwner(this.app.mainStage); //ojo no existía, hay que crearlo
+            Scene modalScene = new Scene(modal);
+            modalStage.setScene(modalScene);
+            ModalControllers modalController = (ModalControllers) m.getValue();
+            if (modalController != null) {
+                //Para autocerrar
+                modalController.setStage(modalStage);
+                //Comunicacion hijo -> padre
+                modalController.setParent(parentController);
+                //Comunicacion padre -> hijo
+                modalController.setParams(params);
+            }
+            modalStage.showAndWait();
+           
+        } catch (IOException ex) {
+            Logger.getLogger(AppController.class.getName()).log(Level.SEVERE, null, ex);
         }
+         return null;
     }
 
     @FXML

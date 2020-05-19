@@ -103,6 +103,10 @@ public class runesController extends Controllers implements Initializable {
     @FXML
     private TextArea L_B3;
 
+    public runesController() {
+        this.rune = FXCollections.observableArrayList();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         /* if (type != null) {
@@ -1508,7 +1512,7 @@ public class runesController extends Controllers implements Initializable {
     }
 
     @FXML
-    public void save() {
+    public runes save() {
         runes r = null;
         addNameRunes add = new addNameRunes();
         //  if (isValid()) {
@@ -1538,28 +1542,11 @@ public class runesController extends Controllers implements Initializable {
         r.setDescriptionB2(L_B2.getText());
         r.setB3(returnBuffGeneral(b3));
         r.setDescriptionB3(L_B3.getText());
-        
-        r = add.returnRune(r);
-        /*if (r != null) {
-            if (!showConfirm()) {
-                return;
-            }
-            rune.add(r);
-            runesDao rDao = new runesDao(r);
-            int cod = rDao.save();
-            r.setCodRune(cod);
-        }*/
 
- /*  if (this.parentController != null) {
-            MapEntry<runes, Boolean> response = new MapEntry<>(this.r, creating);
-            this.parentController.doOnCloseModal(response);
-            
-        }*/
-        //this.stage.close();
-        //    }
+        return r;
     }
 
-    public void doOnModalClosed(Object response) {
+    public void doOnClosedModal(Object response) {
         if (response != null) {
             runes newItem = (runes) response;
             rune.add(newItem);

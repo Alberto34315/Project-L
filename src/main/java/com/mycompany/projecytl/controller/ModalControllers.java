@@ -11,7 +11,9 @@ public abstract class ModalControllers extends Controllers {
 
     Controllers parentController;
     Stage stage;
-
+    Controllers parent;
+    Object params;
+    
     public Controllers getParentController() {
         return parentController;
     }
@@ -27,6 +29,11 @@ public abstract class ModalControllers extends Controllers {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+    public void setParent(Controllers p) {
+        this.parent = p;
+    }
+    
 
     abstract public void setParams(Object p);
 
