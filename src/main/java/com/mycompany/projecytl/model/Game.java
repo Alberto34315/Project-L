@@ -11,7 +11,7 @@ package com.mycompany.projecytl.model;
  */
 public class Game {
 
-    private int codGame;
+    protected int codGame;
 
     public Game() {
         this.codGame=-1;

@@ -10,10 +10,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="977.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecytl.controller.homeController">
    <children>
-      <TableView layoutX="2.0" layoutY="74.0" prefHeight="335.0" prefWidth="970.0">
+      <TableView fx:id="composition" layoutX="2.0" layoutY="74.0" prefHeight="335.0" prefWidth="970.0">
         <columns>
-          <TableColumn prefWidth="400.79998779296875" text="Champion" />
-          <TableColumn prefWidth="568.7999938964844" text="Runes" />
+          <TableColumn fx:id="champion" prefWidth="400.79998779296875" text="Champion" />
+          <TableColumn fx:id="runes" prefWidth="568.7999938964844" text="Runes" />
         </columns>
       </TableView>
       <Label layoutX="338.0" layoutY="14.0" prefHeight="54.0" prefWidth="297.0" text="COMPOSITION" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" underline="true">
@@ -24,7 +24,7 @@
             <Blend />
          </effect>
       </Label>
-      <Button layoutX="148.0" layoutY="431.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="50.0" text="Create" textFill="#1eb500" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="431.0" />
+      <Button layoutX="148.0" layoutY="431.0" mnemonicParsing="false" onAction="#handleNewComposition" prefHeight="27.0" prefWidth="50.0" text="Create" textFill="#1eb500" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="431.0" />
       <Button layoutX="770.0" layoutY="431.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="59.0" text="Remove" textFill="#d50505" AnchorPane.bottomAnchor="10.0" AnchorPane.topAnchor="431.0" />
    </children>
 </AnchorPane>

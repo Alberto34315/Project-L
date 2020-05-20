@@ -241,27 +241,71 @@ public class runesDao extends runes implements DAO {
             try {
                 c.setCodRune(rs.getInt("codRune"));
                 c.setName(rs.getString("name"));
-                c.setType((RuneType) rs.getObject("RuneType"));
-                c.setDescriptionType(rs.getString("DescriptionRuneType"));
-                c.setR1((RunesPrimary) rs.getObject("RunesPrimary"));
+                for (RuneType _type : RuneType.values()) {
+                    if (_type.getRune().equals(rs.getString("RuneType"))) {
+                        c.setType(_type);
+                    }
+                }
+                c.setDescriptionType(rs.getString("DescriptionType"));
+                for (RunesPrimary _type : RunesPrimary.values()) {
+                    if (_type.getRune().equals(rs.getString("R1"))) {
+                        c.setR1(_type);
+                    }
+                }
                 c.setDescriptionRunesPrimary(rs.getString("DescriptionRunesPrimary"));
-                c.setS1((SlotGeneral) rs.getObject("S1"));
+                for (SlotGeneral _type : SlotGeneral.values()) {
+                    if (_type.getRune().equals(rs.getString("S1"))) {
+                        c.setS1(_type);
+                    }
+                }
                 c.setDescriptionS1(rs.getString("DescriptionS1"));
-                c.setS2((SlotGeneral) rs.getObject("S2"));
+                for (SlotGeneral _type : SlotGeneral.values()) {
+                    if (_type.getRune().equals(rs.getString("S2"))) {
+                        c.setS2(_type);
+                    }
+                }
                 c.setDescriptionS2(rs.getString("DescriptionS2"));
-                c.setS3((SlotGeneral) rs.getObject("S3"));
+                for (SlotGeneral _type : SlotGeneral.values()) {
+                    if (_type.getRune().equals(rs.getString("S3"))) {
+                        c.setS3(_type);
+                    }
+                }
                 c.setDescriptionS3(rs.getString("DescriptionS3"));
-                c.setR2((RuneType) rs.getObject("RunesSecondary"));
+                for (RuneType _type : RuneType.values()) {
+                    if (_type.getRune().equals(rs.getString("R2"))) {
+                        c.setR2(_type);
+                    }
+                }
                 c.setDescriptionRunesSecondary(rs.getString("DescriptionRunesSecondary"));
-                c.setS4((SlotGeneral) rs.getObject("S4"));
+                for (SlotGeneral _type : SlotGeneral.values()) {
+                    if (_type.getRune().equals(rs.getString("S4"))) {
+                        c.setS4(_type);
+                    }
+                }
                 c.setDescriptionS4(rs.getString("DescriptionS4"));
-                c.setS5((SlotGeneral) rs.getObject("S5"));
+                for (SlotGeneral _type : SlotGeneral.values()) {
+                    if (_type.getRune().equals(rs.getString("S5"))) {
+                        c.setS5(_type);
+                    }
+                }
                 c.setDescriptionS5(rs.getString("DescriptionS5"));
-                c.setB1((buffsGeneral) rs.getObject("B1"));
+                for (buffsGeneral _type : buffsGeneral.values()) {
+                    if (_type.getRune().equals(rs.getString("B1"))) {
+                        c.setB1(_type);
+                    }
+                }
                 c.setDescriptionB1(rs.getString("DescriptionB1"));
-                c.setB2((buffsGeneral) rs.getObject("B2"));
+                for (buffsGeneral _type : buffsGeneral.values()) {
+                    if (_type.getRune().equals(rs.getString("B2"))) {
+                        c.setB2(_type);
+                    }
+                }
                 c.setDescriptionB2(rs.getString("DescriptionB2"));
-                c.setB3((buffsGeneral) rs.getObject("B3"));
+                for (buffsGeneral _type : buffsGeneral.values()) {
+                    if (_type.getRune().equals(rs.getString("B3"))) {
+                        c.setB3(_type);
+                    }
+                }
                 c.setDescriptionB3(rs.getString("DescriptionB3"));
             } catch (SQLException ex) {
                 Dialog.showError("Error SQL", "SQL creando runas", ex.toString());

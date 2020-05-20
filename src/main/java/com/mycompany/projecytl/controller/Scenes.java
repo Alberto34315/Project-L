@@ -14,6 +14,7 @@ public enum Scenes {
     HOME("view/home"),
     CHAMPIONS("view/champions"),
     ROOT("view/root2"),
+    CREATECOMPOSITION("view/createComposition"),
     NAMERUNE("view/addNameRune");
 
     private String url;

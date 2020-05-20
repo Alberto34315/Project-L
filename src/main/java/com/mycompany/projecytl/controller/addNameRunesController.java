@@ -20,21 +20,19 @@ import javafx.stage.Stage;
  *
  * @author AlbertoRS
  */
-public class addNameRunes extends ModalControllers implements Initializable {
+public class addNameRunesController extends ModalControllers implements Initializable {
 
     @FXML
     private TextField L_Name;
     private runes r;
 
-    @FXML
-    private Button ok;
     private boolean creating;
     private runesController parent;
     //recibir ifo de mi padre
     private Object params;
     private Stage myStage;
 
-    public addNameRunes() {
+    public addNameRunesController() {
         r = new runes();
     }
 

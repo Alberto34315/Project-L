@@ -5,6 +5,7 @@
  */
 package com.mycompany.projecytl.controller;
 
+import com.mycompany.projecytl.DAO.championsDao;
 import com.mycompany.projecytl.model.champions;
 import java.io.File;
 import java.io.IOException;
@@ -16,9 +17,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
@@ -28,6 +27,13 @@ import javafx.scene.image.ImageView;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -40,7 +46,7 @@ import org.xml.sax.SAXException;
  */
 public class championsController extends Controllers implements Initializable {
 
-    public ObservableList<champions> champs;
+    private ObservableList<champions> champs;
 
     private Set<champions> champions;
 
@@ -92,7 +98,9 @@ public class championsController extends Controllers implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        loadClientsFromDDBB();
+        loadChampionsFromXML();
+        loadChampionsFromDB();
+        //loadChampionsFromDB();
     }
 
     @FXML
@@ -227,7 +235,7 @@ public class championsController extends Controllers implements Initializable {
         }
     }
 
-    public boolean loadClientsFromDDBB() {
+    public boolean loadChampionsFromXML() {
         boolean cargado = false;
         this.champions.clear();
         try {
@@ -259,6 +267,7 @@ public class championsController extends Controllers implements Initializable {
 
                     champions c = new champions(cod, nombre, descripcion, p, q, w, e, r);
                     champions.add(c);
+
                 }
             }
             cargado = true;
@@ -270,5 +279,84 @@ public class championsController extends Controllers implements Initializable {
             System.out.println(ex);
         }
         return cargado;
+    }
+
+    public boolean saveChampionsFromDDBB(champions cha) {
+        boolean guardado = false;
+        try {
+
+            DocumentBuilderFactory dFact = DocumentBuilderFactory.newInstance();
+            DocumentBuilder build;
+
+            build = dFact.newDocumentBuilder();
+
+            org.w3c.dom.Document doc = build.newDocument();
+            Element raiz = doc.createElement("Champions");
+            for (champions c : champions) {
+                if (c.getNombre().equals(cha.getNombre())) {
+                    Element e = doc.createElement("Champion");
+                    String codigo = String.valueOf(c.getCodChamp());
+                    Element k = doc.createElement("codChamp");
+                    k.appendChild(doc.createTextNode(codigo));
+                    e.appendChild(k);
+                    Element name = doc.createElement("nombre");
+                    name.appendChild(doc.createTextNode(c.getNombre()));
+                    e.appendChild(name);
+                    Element des = doc.createElement("descripcion");
+                    des.appendChild(doc.createTextNode(c.getDescription()));
+                    e.appendChild(des);
+                    Element p = doc.createElement("p");
+                    p.appendChild(doc.createTextNode(c.getP()));
+                    e.appendChild(p);
+                    Element q = doc.createElement("q");
+                    q.appendChild(doc.createTextNode(c.getQ()));
+                    e.appendChild(q);
+                    Element w = doc.createElement("w");
+                    w.appendChild(doc.createTextNode(c.getW()));
+                    e.appendChild(w);
+                    Element es = doc.createElement("e");
+                    es.appendChild(doc.createTextNode(c.getE()));
+                    e.appendChild(es);
+                    Element r = doc.createElement("r");
+                    r.appendChild(doc.createTextNode(c.getR()));
+                    e.appendChild(r);
+
+                    raiz.appendChild(e);
+                }
+            }
+            doc.appendChild(raiz);
+
+            //Guardar el xml en el disco duro
+            TransformerFactory tFact = TransformerFactory.newInstance();
+            Transformer trans = tFact.newTransformer();
+            //<-- OPCIONES DEL ARCHIVO
+            trans.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+            trans.setOutputProperty(OutputKeys.INDENT, "yes");
+            trans.setOutputProperty("{http://xml.apache.org/xlst}indent-amount", "4");
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File(championsXML));
+
+            trans.transform(source, result);
+            guardado = true;
+
+        } catch (ParserConfigurationException ex) {
+            System.out.println(ex);
+        } catch (TransformerConfigurationException ex) {
+            System.out.println(ex);
+        } catch (TransformerException ex) {
+            System.out.println(ex);
+
+        }
+        return guardado;
+    }
+
+    public void loadChampionsFromDB() {
+        for (champions champ : champions) {
+            champs.add(champ);
+            championsDao dao = new championsDao(champ);
+            int newId = dao.save();
+            champ.setCodChamp(newId);
+            saveChampionsFromDDBB(champ);
+        }
     }
 }

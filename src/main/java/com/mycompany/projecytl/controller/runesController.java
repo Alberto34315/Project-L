@@ -114,7 +114,7 @@ public class runesController extends Controllers implements Initializable {
                 type.getItems().add(_type.getRune());
             }
         }*/
-        this.rune = FXCollections.observableArrayList();
+       // this.rune = FXCollections.observableArrayList();
         selectTypeRune();
     }
 
@@ -1508,13 +1508,13 @@ public class runesController extends Controllers implements Initializable {
 
     @FXML
     private void handleNameRune() {
-        addNameRunes cc = (addNameRunes) app.controller.openModal(Scenes.NAMERUNE, "Name Rune", this, null);
+        addNameRunesController cc = (addNameRunesController) app.controller.openModal(Scenes.NAMERUNE, "Name Rune", this, null);
     }
 
     @FXML
     public runes save() {
         runes r = null;
-        addNameRunes add = new addNameRunes();
+        addNameRunesController add = new addNameRunesController();
         //  if (isValid()) {
         if (r == null) {
             r = new runes();

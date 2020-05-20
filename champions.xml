@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Champions>
 <Champion>
-<codChamp>1</codChamp>
+<codChamp>-1</codChamp>
 <nombre>Aatrox</nombre>
 <descripcion>Aatrox and his brothers, once respected defenders of Shurima against the Void, would end up becoming an even 
 greater threat to Runeterra and knew only defeat from the cunning use of deadly spells. 
@@ -49,7 +49,7 @@ the duration of World Ender is extended by 5 seconds
 and the movement speed increase is refreshed.</r>
 </Champion>
 <Champion>
-<codChamp>2</codChamp>
+<codChamp>-2</codChamp>
 <nombre>Ahri</nombre>
 <descripcion>Ahri is a vastaya innately connected to the latent power of Runeterra, 
 and is capable of turning magic into orbs of pure energy. It likes to play with its prey, 
@@ -88,7 +88,7 @@ for 60 / 90 / 120 (+35% of ability power) magic damage per bolt.
  target is 210 / 330 / 450 (+75% of ability power).</r>
 </Champion>
 <Champion>
-<codChamp>3</codChamp>
+<codChamp>-3</codChamp>
 <nombre>Braum</nombre>
 <descripcion>Blessed with huge biceps and an even bigger heart,
  Braum is a highly regarded hero in Freljord. 
@@ -128,7 +128,7 @@ magic damage to all enemies in a line as well as those in an X-radius area aroun
  slowing enemies that enter the area by 40 / 50 / 60% for 0.25 seconds.</r>
 </Champion>
 <Champion>
-<codChamp>4</codChamp>
+<codChamp>-4</codChamp>
 <nombre>Caitlyn</nombre>
 <descripcion>Recognized as her best peacemaker, Caitlyn is also Piltover's
  best weapon to rid the city of its elusive criminal elements.
@@ -164,7 +164,7 @@ Caitlyn can also Headshot netted targets once at 1300 range.</e>
  It provides vision of the target for the duration.</r>
 </Champion>
 <Champion>
-<codChamp>5</codChamp>
+<codChamp>-5</codChamp>
 <nombre>Lee Sin</nombre>
 <descripcion>Lee Sin, Ionia's master of ancient martial arts, 
 is a principled fighter who channels the essence of the dragon
@@ -199,7 +199,7 @@ target back 1200 units, dealing 175 / 400 / 625 (+2.0 per bonus attack damage)
 </r>
 </Champion>
 <Champion>
-<codChamp>6</codChamp>
+<codChamp>-6</codChamp>
 <nombre>Trundle</nombre>
 <descripcion>Trundle is a colossal twisted troll with a ruthless personality.
  There is nothing that he is not able to subdue with a blow, not even the Freljord himself.
