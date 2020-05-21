@@ -6,9 +6,13 @@
 package com.mycompany.projecytl.controller;
 
 import com.mycompany.projecytl.DAO.championsDao;
+import com.mycompany.projecytl.DAO.gameDao;
 import com.mycompany.projecytl.DAO.runesDao;
 import com.mycompany.projecytl.Utils.ConnectionUtils;
+import com.mycompany.projecytl.Utils.MapEntry;
+import com.mycompany.projecytl.model.Game;
 import com.mycompany.projecytl.model.champions;
+import com.mycompany.projecytl.model.participates;
 import com.mycompany.projecytl.model.runes;
 import java.net.URL;
 import java.sql.Connection;
@@ -17,6 +21,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -30,9 +36,10 @@ import javafx.stage.Stage;
 public class createCompositionController extends ModalControllers implements Initializable {
 
     private boolean creating;
-
+    private ObservableList<Game> game;
     Connection con;
-
+    private List<champions> lChamp;
+    private List<runes> r;
     @FXML
     public ComboBox<String> namesRune;
 
@@ -77,12 +84,11 @@ public class createCompositionController extends ModalControllers implements Ini
         }
         selectTypeRune();
         selectChampions();
-        T_namesRune.setText(namesRune.getSelectionModel().getSelectedItem());
-        T_namesChampion.setText(namesChampion.getValue());
+        this.game = FXCollections.observableArrayList();
     }
 
     private void selectTypeRune() {
-        List<runes> r = runesDao.getAll(con);
+        r = runesDao.getAll(con);
         if (namesRune != null) {
             for (runes rune : r) {
                 namesRune.getItems().add(rune.getName());
@@ -91,12 +97,22 @@ public class createCompositionController extends ModalControllers implements Ini
     }
 
     private void selectChampions() {
-        List<champions> lChamp = championsDao.getAll(con);
+        lChamp = championsDao.getAll(con);
         if (namesChampion != null) {
             for (champions champ : lChamp) {
                 namesChampion.getItems().add(champ.getNombre());
             }
         }
+    }
+
+    @FXML
+    private void selectTextRune() {
+        T_namesRune.setText(namesRune.getSelectionModel().getSelectedItem());
+    }
+
+    @FXML
+    private void selectTextChampion() {
+        T_namesChampion.setText(namesChampion.getSelectionModel().getSelectedItem());
     }
 
     @FXML
@@ -108,15 +124,44 @@ public class createCompositionController extends ModalControllers implements Ini
         this.myStage.close();
     }
 
+    private int returnCodRune() {
+        int cod = 0;
+        for (runes rune : r) {
+            if (rune.getName().equals(T_namesRune.getText())) {
+                cod = rune.getCodRune();
+            }
+        }
+        return cod;
+    }
+
+    private int returnCodChampion() {
+        int cod = 0;
+        for (champions c : lChamp) {
+            if (c.getNombre().equals(namesChampion.getSelectionModel().getSelectedItem())) {
+                cod = c.getCodChamp();
+            }
+        }
+        return cod;
+    }
+
+    private int returnCodGame() {
+        int cod = 0;
+        Game newItem = new Game();
+        game.add(newItem);
+        gameDao dao = new gameDao(newItem);
+        int newId = dao.save();
+        newItem.setCodGame(newId);
+        return newId;
+    }
+
     @FXML
     public void handleOK() {
-        //   r = parent.save();
-        //  r.setName(L_Name.getText());
+        participates p = new participates(returnCodGame(), returnCodRune(), returnCodChampion());
         //runes r = (runes) params;
         if (this.parent != null) {
             this.creating = true;
-            //  MapEntry<participates, Boolean> response = new MapEntry<>(r, creating);
-            //  this.parent.doOnClosedModal(response.getKey());
+            MapEntry<participates, Boolean> response = new MapEntry<>(p, creating);
+            this.parent.doOnClosedModal(response.getKey());
         }
         this.myStage.close();
     }

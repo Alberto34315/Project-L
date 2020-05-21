@@ -32,6 +32,7 @@ public class participatesDao extends participates implements DAO {
         INSERT("INSERT INTO participates (codGame,codRune,codChamp) VALUES (?,?,?)"),
         ALL("SELECT * FROM participates"),
         GETBYID("SELECT * FROM participates WHERE codGame=?, codRune=?,codChamp=?"),
+        GETCHAMPIONBYID("SELECT c.* FROM participates p,champions c WHERE p.codChamp = c.codChamp"),
         // UPDATE("UPDATE participates SET nombre = ?, description = ?, p = ?, q = ?, w = ?, e = ?, r = ? WHERE codChamp = ?"),
         REMOVE("DELETE FROM participates WHERE codGame=?, codRune=?,codChamp=?");
         private String q;
@@ -94,22 +95,22 @@ public class participatesDao extends participates implements DAO {
     public int save() {
         int result = -1;
         participatesDao.queries qu = null;
-        List<runes> runes = runesDao.getAll(con);
-        List<champions> champions = championsDao.getAll(con);
-        List<Game> games = gameDao.getAll(con);
-        int codC = searchCodChamp(champions);
-        int codR = searchCodRunes(runes);
-        int codG = searchCodGame(games);
+//        List<runes> runes = runesDao.getAll(con);
+//        List<champions> champions = championsDao.getAll(con);
+//        List<Game> games = gameDao.getAll(con);
+//        int codC = searchCodChamp(champions);
+//        int codR = searchCodRunes(runes);
+//        int codG = searchCodGame(games);
         try {
             java.sql.Connection csql = ConnectionUtils.getConnection();
 
-            if (codC > 0 && codR > 0 && codG > 0) {
+            if (this.codChamp > 0 && this.codRune > 0 && this.codGame > 0) {
                 //INSERT
                 String qe = qu.INSERT.getQ();
                 PreparedStatement ps = csql.prepareStatement(qe);
-                ps.setInt(1, codG);
-                ps.setInt(2, codR);
-                ps.setInt(3, codC);
+                ps.setInt(1, codGame);
+                ps.setInt(2, codRune);
+                ps.setInt(3, codChamp);
                 result = ps.executeUpdate();
             }
         } catch (SQLException ex) {
@@ -147,6 +148,7 @@ public class participatesDao extends participates implements DAO {
         }
         return cod;
     }
+    
       public static participates instanceBuilder(ResultSet rs) {
        participates c = new participates();
         if (rs != null) {
@@ -168,10 +170,30 @@ public class participatesDao extends participates implements DAO {
             java.sql.Connection csql = ConnectionUtils.getConnection();
             String qe = qu.ALL.getQ();
             PreparedStatement ps = csql.prepareStatement(qe);
-            ResultSet rs = ps.executeQuery();
+        ResultSet rs = ps.executeQuery();
             if (rs != null) {
                 while (rs.next()) {
                     participates n = participatesDao.instanceBuilder(rs);
+                    result.add(n);
+                }
+            }
+        } catch (SQLException ex) {
+            Dialog.showError("ERRPR", "Error cargando las runas", ex.toString());
+        }
+        return result;
+    }
+    
+     public static List<champions> getAllChamp(Connection con) {
+        List<champions> result = new ArrayList<>();
+        participatesDao.queries qu = null;
+        try {
+            java.sql.Connection csql = ConnectionUtils.getConnection();
+            String qe = qu.GETCHAMPIONBYID.getQ();
+            PreparedStatement ps = csql.prepareStatement(qe);
+        ResultSet rs = ps.executeQuery();
+            if (rs != null) {
+                while (rs.next()) {
+                    champions n = championsDao.instanceBuilder(rs);
                     result.add(n);
                 }
             }
