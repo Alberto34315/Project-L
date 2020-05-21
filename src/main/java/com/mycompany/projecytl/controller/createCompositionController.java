@@ -5,8 +5,10 @@
  */
 package com.mycompany.projecytl.controller;
 
+import com.mycompany.projecytl.DAO.championsDao;
 import com.mycompany.projecytl.DAO.runesDao;
 import com.mycompany.projecytl.Utils.ConnectionUtils;
+import com.mycompany.projecytl.model.champions;
 import com.mycompany.projecytl.model.runes;
 import java.net.URL;
 import java.sql.Connection;
@@ -74,14 +76,25 @@ public class createCompositionController extends ModalControllers implements Ini
             Logger.getLogger(createCompositionController.class.getName()).log(Level.SEVERE, null, ex);
         }
         selectTypeRune();
+        selectChampions();
+        T_namesRune.setText(namesRune.getSelectionModel().getSelectedItem());
+        T_namesChampion.setText(namesChampion.getValue());
     }
 
     private void selectTypeRune() {
-        runesDao eDao = new runesDao();
-        List<runes> r = eDao.getAll(con);
+        List<runes> r = runesDao.getAll(con);
         if (namesRune != null) {
             for (runes rune : r) {
                 namesRune.getItems().add(rune.getName());
+            }
+        }
+    }
+
+    private void selectChampions() {
+        List<champions> lChamp = championsDao.getAll(con);
+        if (namesChampion != null) {
+            for (champions champ : lChamp) {
+                namesChampion.getItems().add(champ.getNombre());
             }
         }
     }

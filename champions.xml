@@ -1,19 +1,19 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Champions>
-<Champion>
-<codChamp>-1</codChamp>
-<nombre>Aatrox</nombre>
-<descripcion>Aatrox and his brothers, once respected defenders of Shurima against the Void, would end up becoming an even 
+    <Champion>
+        <codChamp>1</codChamp>
+        <nombre>Aatrox</nombre>
+        <descripcion>Aatrox and his brothers, once respected defenders of Shurima against the Void, would end up becoming an even 
 greater threat to Runeterra and knew only defeat from the cunning use of deadly spells. 
 However, after centuries of seclusion, Aatrox was the first to regain his freedom and dedicated himself to corrupting and 
 transforming any fool who tried to wield the magic weapon that contained its essence.</descripcion>
-<p>Aatrox's next basic attack gains 50 bonus range 
+        <p>Aatrox's next basic attack gains 50 bonus range 
 and deals 5-12% of the target's maximum health 
 as bonus physical damage (based on level),
  while healing Aatrox for 100% of the bonus physical
  damage dealt (reduced to 25% against minions). 
  This damage is capped at 100 against monsters.</p>
-<q>Aatrox swings his greatsword in the target direction, 
+        <q>Aatrox swings his greatsword in the target direction, 
 striking enemies in a line.
  The Darkin Blade can then be 
  reactivated twice within 4 seconds,
@@ -24,7 +24,7 @@ striking enemies in a line.
  (+0.6 / 0.65 / 0.7 / 0.75 / 0.8 per attack damage) physical damage,
  increasing by 25% on the second cast and 50% on the third.
  The Darkin Blade deals 55% damage to minions.</q>
-<w>Aatrox smashes the ground in the target direction, 
+        <w>Aatrox smashes the ground in the target direction, 
 creating a chain that stops on the first enemy hit, 
 dealing 30 / 40 / 50 / 60 / 70 (+0.4 per attack damage) 
 physical damage (doubled against minions) 
@@ -33,12 +33,12 @@ and slowing them by 25% for 1.5 seconds.
  they are chained to the impact area. 
  If the chained enemy is still in the impact area after 1.5 seconds,
  they are dragged to the center and take the same damage again.</w>
-<e>Passive: Aatrox heals for 20 / 22.5 / 25 / 27.5 / 30% 
+        <e>Passive: Aatrox heals for 20 / 22.5 / 25 / 27.5 / 30% 
 of the non-periodic damage he deals to champions.
 Active: Aatrox dashes in the target direction.
 Umbral Dash can be cast during his other 
 spellcasts without interrupting them.</e>
-<r>After 0.25 seconds, Aatrox reveals his true demonic form for 10 seconds. 
+        <r>After 0.25 seconds, Aatrox reveals his true demonic form for 10 seconds. 
 On activation, he fears nearby enemy minions for 3 seconds 
 and gains 60 / 80 / 100% bonus movement speed,
  decaying over the duration.
@@ -47,18 +47,18 @@ and receives 50 / 60 / 70% increased self-healing.
 On enemy champion takedown, 
 the duration of World Ender is extended by 5 seconds 
 and the movement speed increase is refreshed.</r>
-</Champion>
-<Champion>
-<codChamp>-2</codChamp>
-<nombre>Ahri</nombre>
-<descripcion>Ahri is a vastaya innately connected to the latent power of Runeterra, 
+    </Champion>
+    <Champion>
+        <codChamp>2</codChamp>
+        <nombre>Ahri</nombre>
+        <descripcion>Ahri is a vastaya innately connected to the latent power of Runeterra, 
 and is capable of turning magic into orbs of pure energy. It likes to play with its prey, 
 manipulating its emotions before devouring its essence of life. 
 Despite her predatory nature, Ahri has a certain sense of empathy, 
 as she receives memories from every soul she consumes.</descripcion>
-<p>If Ahri earns 2 spell hits against an enemy champion within a 1.5 second period,
+        <p>If Ahri earns 2 spell hits against an enemy champion within a 1.5 second period,
  she gains 20% movement speed for 3 seconds.</p>
-<q>Ahri throws out and pulls back her orb, 
+        <q>Ahri throws out and pulls back her orb, 
 dealing 40 / 65 / 90 / 115 / 140 (+35% of ability power) 
 magic damage on the way out and
 40 / 65 / 90 / 115 / 140 (+35% of ability power) true damage on the way back.
@@ -66,38 +66,38 @@ If Ahri earns 9 spell hits (max 3 per cast),
 she gains Essence Theft, causing her next Q cast that 
 lands to restore 3 / 5 / 9 / 18 (at levels 1 / 6 / 11 / 16)
  health for each enemy hit.</q>
-<w>attack nearby enemies (prioritizes champions),
+        <w>attack nearby enemies (prioritizes champions),
  dealing 40 / 65 / 90 / 115 / 140 (+30% of ability power) magic damage.
  Additional fox-fires that hit the same target deal 30% damage,
  up to a maximum total damage of 64 / 104 / 144 / 184 / 224 (+48% of ability power).
 Fox-Fire prioritizes any enemy champion affected by Charm's damage amp 
 and the target Ahri most recently basic-attacked within the past 3 seconds.</w>
-<e>Ahri blows a kiss that deals 60 / 90 / 120 / 150 / 180 (+40% of ability power)
+        <e>Ahri blows a kiss that deals 60 / 90 / 120 / 150 / 180 (+40% of ability power)
  magic damage to an enemy and charms it,
  interrupting in-progress dashes and
  causing them to walk harmlessly towards her 
  for 1.4 / 1.55 / 1.7 / 1.85 / 2 seconds.
 When Charm damages a champion, 
 Ahri's abilities deal 20% more damage to them for 3 seconds.</e>
-<r>Ahri dashes forward and fires essence bolts, 
+        <r>Ahri dashes forward and fires essence bolts, 
 damaging 3 nearby enemies (prioritizes champions) 
 for 60 / 90 / 120 (+35% of ability power) magic damage per bolt.
  Spirit Rush can be cast up to three times 
  within ten seconds before going on cooldown.
  Maximum total magic damage to a single
  target is 210 / 330 / 450 (+75% of ability power).</r>
-</Champion>
-<Champion>
-<codChamp>-3</codChamp>
-<nombre>Braum</nombre>
-<descripcion>Blessed with huge biceps and an even bigger heart,
+    </Champion>
+    <Champion>
+        <codChamp>3</codChamp>
+        <nombre>Braum</nombre>
+        <descripcion>Blessed with huge biceps and an even bigger heart,
  Braum is a highly regarded hero in Freljord. 
  All the taverns to the north of Frozen Fort toast their legendary strength.
  He is said to have cut down an oak forest in one night and turned an entire mountain into rubble.
  Carrying an enchanted armored door behind him as a shield, 
  Braum walks the icy north wearing a mustached 
  smile as big as his muscles: a true friend to all in need.</descripcion>
-<p>Braum's basic attacks and Winter's Bite apply stacks of Concussive Blows.
+        <p>Braum's basic attacks and Winter's Bite apply stacks of Concussive Blows.
  Once the first stack has been applied, the basic attacks of any allied 
  champion will generate Concussive Blow stacks. 
  Upon reaching 4 stacks, the target is stunned for 1.25 / 1.5 / 1.75
@@ -105,127 +105,127 @@ for 60 / 90 / 120 (+35% of ability power) magic damage per bolt.
  is stunned from Concussive Blows, they no longer gain concussive blow
  stacks and instead take 14-48 bonus magic damage 
  from basic attacks for the next 8 seconds.</p>
-<q>Braum propels ice from his shield that travels forward in a line,
+        <q>Braum propels ice from his shield that travels forward in a line,
  dealing 60 / 105 / 150 / 195 / 240 (+2.5% of Braum's max. health) 
  magic damage and slowing the first enemy hit by 70% that decays over 2 seconds.</q>
-<w>Braum leaps to the aid of a nearby ally, 
+        <w>Braum leaps to the aid of a nearby ally, 
 positioning himself between his target and their nearest enemy champion.
  On arrival, the ally gains 10 / 14 / 18 / 22 / 26 (+12% bonus armor and magic resist)
  bonus resistances and Braum 
  gains 10 / 14 / 18 / 22 / 26 (+36% bonus armor and magic resist) 
  bonus resistances for 3 seconds.</w>
-<e>Braum raises his shield, creating a barrier that intercepts all oncoming,
+        <e>Braum raises his shield, creating a barrier that intercepts all oncoming,
  hostile projectiles for the next 3 / 3.25 / 3.5 / 3.75 / 4 seconds.
 Braum takes no damage from the first projectile he intercepts
  and 30 / 32.5 / 35 / 37.5 / 40% reduced damage from intercepted 
  projectiles thereafter, and gains 10% movement speed for the duration.</e>
-<r>Braum slams his shield into the ground, dealing 150 / 300 / 450 (+60% AP)
+        <r>Braum slams his shield into the ground, dealing 150 / 300 / 450 (+60% AP)
 magic damage to all enemies in a line as well as those in an X-radius area around him.
  The first champion hit is knocked up for 1-1.5 seconds based on distance from 
  Braum for the first target hit in the fissure, every other target hit 
  or within close vicinity is knocked up for 0.25 seconds.
  For the next 4 seconds a field of ice remains,
  slowing enemies that enter the area by 40 / 50 / 60% for 0.25 seconds.</r>
-</Champion>
-<Champion>
-<codChamp>-4</codChamp>
-<nombre>Caitlyn</nombre>
-<descripcion>Recognized as her best peacemaker, Caitlyn is also Piltover's
+    </Champion>
+    <Champion>
+        <codChamp>4</codChamp>
+        <nombre>Caitlyn</nombre>
+        <descripcion>Recognized as her best peacemaker, Caitlyn is also Piltover's
  best weapon to rid the city of its elusive criminal elements.
  She often works with Vi, and acts as a cold and efficient counterpoint to 
  her partner's most brash nature. Despite carrying a unique hextech rifle,
  Caitlyn's most powerful weapon is her superior intelligence, 
  allowing her to set up elaborate traps for any lawbreaker
  foolish enough to operate in the City of Progress.</descripcion>
-<p>Caitlyn's next basic attack against enemies rooted by 
+        <p>Caitlyn's next basic attack against enemies rooted by 
 Yordle Snap Trap or Slow icon slowed by 90 Caliber Net has 1300 range
  and deals 50-100% AD (at levels 1-18) (+ 150% critical strike chance)
  bonus physical damage, increased to 100% AD + (+ 150% critical strike chance) versus non-champions.</p>
-<q>Caitlyn revs up her rifle for 1 second to unleash a penetrating 
+        <q>Caitlyn revs up her rifle for 1 second to unleash a penetrating 
 shot which deals 50 / 90 / 130 / 170 / 210 (+1.3 / 1.4 / 1.5 / 1.6 / 1.7 per attack damage)
 to the first target struck, then widens by 30 units,
 dealing 60% damage to any additional enemies.
 Piltover Peacemaker always deals 100% damage to champions revealed by Yordle Snap Trap.</q>
-<w>Caitlyn sets up to 3 / 3 / 4 / 4 / 5 
+        <w>Caitlyn sets up to 3 / 3 / 4 / 4 / 5 
 traps which trigger on champions.
 When sprung, the trap immobilizes the champion for 1.5 
 seconds and reveals it for 3 seconds. Traps last 30 / 35 / 40 / 45 / 50 seconds.
 Caitlyn can also fire one 1300 range Headshot at trapped targets, 
 dealing 60 / 105 / 150 / 195 / 240 
 (+0.4 / 0.55 / 0.7 / 0.85 / 1.0 per bonus attack damage) physical damage.</w>
-<e>Caitlyn fires a heavy net that slows down her target by 50% 
+        <e>Caitlyn fires a heavy net that slows down her target by 50% 
 for 1 second and deals 70 / 110 / 150 / 190 / 230 (+80% of ability power) magic damage.
 The recoil knocks Caitlyn back 400 units.
 Caitlyn can also Headshot netted targets once at 1300 range.</e>
-<r>Caitlyn takes time to line up the perfect shot,
+        <r>Caitlyn takes time to line up the perfect shot,
  dealing 300 / 525 / 750 (+2.0 per bonus attack damage) 
  physical damage to a single target at a huge range.
  Enemy champions can intercept the bullet for their ally.
  It provides vision of the target for the duration.</r>
-</Champion>
-<Champion>
-<codChamp>-5</codChamp>
-<nombre>Lee Sin</nombre>
-<descripcion>Lee Sin, Ionia's master of ancient martial arts, 
+    </Champion>
+    <Champion>
+        <codChamp>5</codChamp>
+        <nombre>Lee Sin</nombre>
+        <descripcion>Lee Sin, Ionia's master of ancient martial arts, 
 is a principled fighter who channels the essence of the dragon
  spirit to meet any challenge. Although he lost his sight many years ago,
  the warrior monk has dedicated his life to protecting his home against anyone
  who dares to upset his sacred balance. Enemies who underestimate his meditative 
  attitude will have to deal with his legendary fiery fists and blazing spinning kicks.</descripcion>
-<p>After Lee Sin uses an ability, his next 2 basic attacks within 3 
+        <p>After Lee Sin uses an ability, his next 2 basic attacks within 3 
 seconds gain 40% Attack Speed and return 20 / 30 / 40 and 10 / 15 / 20 
 energy respectively (at levels 1 / 7 / 13).</p>
-<q>Sonic Wave: Lee Sin projects a discordant wave of sound to locate his enemies,
+        <q>Sonic Wave: Lee Sin projects a discordant wave of sound to locate his enemies,
 dealing 55 / 80 / 105 / 130 / 155 (+1.0 per bonus attack damage) physical damage 
 to the first enemy it encounters and revealing them for 3 seconds. 
 If Sonic Wave hits, Lee Sin can cast Resonating Strike within the next 3 seconds.</q>
-<w>Safeguard: Lee Sin rushes towards a target ally, shielding him 
+        <w>Safeguard: Lee Sin rushes towards a target ally, shielding him 
 (and his target if it is a champion) for 55 / 110 / 165 / 220 / 275 (+80% of ability power)
 for the next 2 seconds. After using Safeguard, Lee Sin can cast Iron Will for the next 3 seconds.Iron Will (30 energy):
 Lee Sin's intense training allows him to thrive in battle. For 5 seconds,
 Lee Sin gains 10 / 15 / 20 / 25 / 30 % lifesteal and spell vamp.</w>
-<e>Tempest: Lee Sin smashes the ground sending out a shockwave that deals 
+        <e>Tempest: Lee Sin smashes the ground sending out a shockwave that deals 
 80 / 120 / 160 / 200 / 240 (+1.0 per bonus attack damage)
 magic damage and reveals enemy units hit for 4 seconds.
 If Tempest hits an enemy, Lee Sin can cast cripple for the next 3 seconds.
 Cripple (30 energy): Lee Sin cripples nearby enemies revealed by Tempest,
 reducing their Movement Speed by 20 / 30 / 40 / 50 / 60 % for 4 seconds.
 Movement Speed recovers gradually over the duration.</e>
-<r>Lee Sin performs a powerful roundhouse kick launching his
+        <r>Lee Sin performs a powerful roundhouse kick launching his
 target back 1200 units, dealing 175 / 400 / 625 (+2.0 per bonus attack damage)
  physical damage to the target and any enemies they collide with.
  Enemies the target collides with are knocked into the air for a short
  duration and take 15 / 18 / 21% of the target's bonus health as physical damage.
 </r>
-</Champion>
-<Champion>
-<codChamp>-6</codChamp>
-<nombre>Trundle</nombre>
-<descripcion>Trundle is a colossal twisted troll with a ruthless personality.
+    </Champion>
+    <Champion>
+        <codChamp>6</codChamp>
+        <nombre>Trundle</nombre>
+        <descripcion>Trundle is a colossal twisted troll with a ruthless personality.
  There is nothing that he is not able to subdue with a blow, not even the Freljord himself.
  His tremendous territorial instinct moves him to chase anyone bold enough to venture into his domain.
  When he brandishes his tremendous club of pure ice, 
  it leaves enemies frozen to the bone and pierces them with sharp frozen pillars.
  Later, he mocks as they bleed to death in the cold tundra.</descripcion>
-<p>Whenever an enemy unit near Trundle dies, he heals for 2 / 3 / 4 / 5 / 6 %
+        <p>Whenever an enemy unit near Trundle dies, he heals for 2 / 3 / 4 / 5 / 6 %
  of their maximum health. The amount is increased at levels 5, 9, 12 and 15.</p>
-<q>Trundle enhances his next basic attack, dealing 20 / 40 / 60 / 80 / 100 
+        <q>Trundle enhances his next basic attack, dealing 20 / 40 / 60 / 80 / 100 
 (+ 110 / 120 / 130 / 140 / 150 % of total AD) physical damage 
 and slowing its target by 75% for 0.1 seconds. This attack increases Trundle's 
 attack damage by 20 / 25 / 30 / 35 / 40 for 5 seconds, 
 with his opponent losing half of this amount for the same duration.</q>
-<w>Trundle coats a target 1000-radius location with ice for 8 seconds, 
+        <w>Trundle coats a target 1000-radius location with ice for 8 seconds, 
 gaining 30 / 35 / 40 / 45 / 50% bonus movement speed,
  30 / 47.5 / 65 / 82.5 / 100% attack speed, and 25% increased healing 
  and regeneration from all sources while he is on it.</w>
-<e>Trundle creates an icy pillar at a target location for 6 seconds,
+        <e>Trundle creates an icy pillar at a target location for 6 seconds,
 creating impassable terrain and slowing all enemy units by 20 / 30 / 40 / 50 / 60%
 around the pillar for 0.25 seconds. The slow duration is refreshed
 if enemies stay within the area around the pillar.
 Enemies caught in the center of the eruption are briefly knocked back.</e>
-<r>Trundle drains 20 / 27.5 / 35 % (+ 2% per 100AP) of an enemy champion's
+        <r>Trundle drains 20 / 27.5 / 35 % (+ 2% per 100AP) of an enemy champion's
  max health as magic damage and 40% of their armor and magic resist,
  half immediately and half over 4 seconds. The armor and magic resist bonus/reduction
  lasts for 4 after it has been fully applied.</r>
-</Champion>
+    </Champion>
 </Champions>

@@ -6,13 +6,19 @@
 package com.mycompany.projecytl.controller;
 
 import com.mycompany.projecytl.DAO.championsDao;
+import com.mycompany.projecytl.Utils.ConnectionUtils;
 import com.mycompany.projecytl.model.champions;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.HashSet;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -46,6 +52,7 @@ import org.xml.sax.SAXException;
  */
 public class championsController extends Controllers implements Initializable {
 
+    Connection con;
     private ObservableList<champions> champs;
 
     private Set<champions> champions;
@@ -98,6 +105,13 @@ public class championsController extends Controllers implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        try {
+            con = ConnectionUtils.connect(AppController.currentConnection);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(championsController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(championsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         loadChampionsFromXML();
         loadChampionsFromDB();
         //loadChampionsFromDB();
@@ -289,40 +303,42 @@ public class championsController extends Controllers implements Initializable {
             DocumentBuilder build;
 
             build = dFact.newDocumentBuilder();
-
+            List<champions> lChamp = championsDao.getAll(con);
             org.w3c.dom.Document doc = build.newDocument();
             Element raiz = doc.createElement("Champions");
-            for (champions c : champions) {
-                if (c.getNombre().equals(cha.getNombre())) {
-                    Element e = doc.createElement("Champion");
+            for (champions c : lChamp) {
+
+                Element e = doc.createElement("Champion");
+               // if (c.getNombre().equals(cha.getNombre())) {
                     String codigo = String.valueOf(c.getCodChamp());
                     Element k = doc.createElement("codChamp");
                     k.appendChild(doc.createTextNode(codigo));
                     e.appendChild(k);
-                    Element name = doc.createElement("nombre");
-                    name.appendChild(doc.createTextNode(c.getNombre()));
-                    e.appendChild(name);
-                    Element des = doc.createElement("descripcion");
-                    des.appendChild(doc.createTextNode(c.getDescription()));
-                    e.appendChild(des);
-                    Element p = doc.createElement("p");
-                    p.appendChild(doc.createTextNode(c.getP()));
-                    e.appendChild(p);
-                    Element q = doc.createElement("q");
-                    q.appendChild(doc.createTextNode(c.getQ()));
-                    e.appendChild(q);
-                    Element w = doc.createElement("w");
-                    w.appendChild(doc.createTextNode(c.getW()));
-                    e.appendChild(w);
-                    Element es = doc.createElement("e");
-                    es.appendChild(doc.createTextNode(c.getE()));
-                    e.appendChild(es);
-                    Element r = doc.createElement("r");
-                    r.appendChild(doc.createTextNode(c.getR()));
-                    e.appendChild(r);
+               // }
+                Element name = doc.createElement("nombre");
+                name.appendChild(doc.createTextNode(c.getNombre()));
+                e.appendChild(name);
+                Element des = doc.createElement("descripcion");
+                des.appendChild(doc.createTextNode(c.getDescription()));
+                e.appendChild(des);
+                Element p = doc.createElement("p");
+                p.appendChild(doc.createTextNode(c.getP()));
+                e.appendChild(p);
+                Element q = doc.createElement("q");
+                q.appendChild(doc.createTextNode(c.getQ()));
+                e.appendChild(q);
+                Element w = doc.createElement("w");
+                w.appendChild(doc.createTextNode(c.getW()));
+                e.appendChild(w);
+                Element es = doc.createElement("e");
+                es.appendChild(doc.createTextNode(c.getE()));
+                e.appendChild(es);
+                Element r = doc.createElement("r");
+                r.appendChild(doc.createTextNode(c.getR()));
+                e.appendChild(r);
 
-                    raiz.appendChild(e);
-                }
+                raiz.appendChild(e);
+
             }
             doc.appendChild(raiz);
 
