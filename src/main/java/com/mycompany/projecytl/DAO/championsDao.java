@@ -113,7 +113,7 @@ public class championsDao extends champions implements DAO {
     }
 
     @Override
-    public void remove() {
+    public int remove() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

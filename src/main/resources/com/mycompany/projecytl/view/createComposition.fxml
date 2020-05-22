@@ -10,10 +10,10 @@
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.projecytl.controller.createCompositionController">
    <children>
       <Button layoutX="497.0" layoutY="331.0" mnemonicParsing="false" onAction="#handleCancel" text="Cancel" textFill="#f80000" AnchorPane.bottomAnchor="43.4" AnchorPane.rightAnchor="51.8" />
-      <ComboBox fx:id="namesRune" layoutX="88.0" layoutY="229.0" onAction="#selectTextRune" prefWidth="150.0" promptText="Names Runes" />
-      <ComboBox fx:id="namesChampion" layoutX="361.0" layoutY="229.0" onAction="#selectTextChampion" prefWidth="150.0" promptText="Names Champions" />
-      <TextField fx:id="T_namesRune" editable="false" layoutX="89.0" layoutY="139.0" />
-      <TextField fx:id="T_namesChampion" editable="false" layoutX="360.0" layoutY="139.0" />
+      <ComboBox fx:id="namesRune" layoutX="359.0" layoutY="234.0" onAction="#selectTextRune" prefWidth="150.0" promptText="Names Runes" />
+      <ComboBox fx:id="namesChampion" layoutX="88.0" layoutY="234.0" onAction="#selectTextChampion" prefWidth="150.0" promptText="Names Champions" />
+      <TextField fx:id="T_namesRune" editable="false" layoutX="360.0" layoutY="139.0" />
+      <TextField fx:id="T_namesChampion" editable="false" layoutX="89.0" layoutY="139.0" />
       <Button layoutX="56.0" layoutY="330.0" mnemonicParsing="false" onAction="#handleOK" prefHeight="26.0" prefWidth="51.0" text="OK" textFill="#5fb54a" AnchorPane.bottomAnchor="43.60000000000002" AnchorPane.leftAnchor="51.8" />
       <Label layoutX="22.0" layoutY="38.0" prefHeight="78.0" prefWidth="576.0" text="SELECT THE RUNE PAGE NAME AND A CHAMPION" textFill="#181a18d0" underline="true">
          <font>

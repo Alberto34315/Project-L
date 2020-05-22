@@ -133,26 +133,8 @@ public class runesDao extends runes implements DAO {
     }
 
     @Override
-    public void remove() {
-        if (this.codRune != -1) {
-            try {
-                //Comienza transacción
-                con.setAutoCommit(false);
-                //Boorando aquellos que no están ya -> coherencia
-                //  List<Channel> oldChannels = ChannelDao.getByContact(con, id);
-
-                /* for (Channel oldChannel : oldChannels) {
-                    ChannelDao cd = new ChannelDao(oldChannel);
-                    cd.remove();
-                }*/
-                // int rs = ConnectionUtils.execUpdate(con, queries.REMOVE.getQ(), this.codRune, false);
-                //Fin de la transacción
-                con.commit();
-                con.setAutoCommit(true);
-            } catch (SQLException ex) {
-                Dialog.showError("ERROR", "Error borrando runas", ex.toString());
-            }
-        }
+    public int remove() {
+        return -1;
     }
 
     @Override

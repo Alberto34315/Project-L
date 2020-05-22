@@ -24,7 +24,7 @@ public interface DAO {
  /**
  * Elimina en la tabla el elemento que coincida con esta instancia (mismo id)
  */
- void remove();
+ int remove();
  /**
  * En caso de que id=-1 realiza un INSERT
  * En caso de que id>0 realiza un UPDATE

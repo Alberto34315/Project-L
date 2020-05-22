@@ -14,6 +14,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +23,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -43,7 +46,59 @@ public class homeController extends Controllers implements Initializable {
     @FXML
     private TableColumn<participates, runes> runes;
 
-    private ObservableList<participates> data;
+    @FXML
+    private TableColumn<participates, String> nameChamp;
+
+    @FXML
+    private TableColumn<champions, String> p;
+
+    @FXML
+    private TableColumn<champions, String> q;
+
+    @FXML
+    private TableColumn<champions, String> w;
+
+    @FXML
+    private TableColumn<champions, String> e;
+
+    @FXML
+    private TableColumn<champions, String> r;
+
+    @FXML
+    private TableColumn<runes, String> namePageRune;
+
+    @FXML
+    private TableColumn<runes, String> rune;
+
+    @FXML
+    private TableColumn<runes, String> runePrimary;
+
+    @FXML
+    private TableColumn<runes, String> slot1;
+
+    @FXML
+    private TableColumn<runes, String> slot2;
+
+    @FXML
+    private TableColumn<runes, String> slot3;
+
+    @FXML
+    private TableColumn<runes, String> runeSecondary;
+
+    @FXML
+    private TableColumn<runes, String> slot4;
+
+    @FXML
+    private TableColumn<runes, String> slot5;
+
+    @FXML
+    private TableColumn<runes, String> buff1;
+
+    @FXML
+    private TableColumn<runes, String> buff2;
+
+    @FXML
+    private TableColumn<runes, String> buff3;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -55,41 +110,122 @@ public class homeController extends Controllers implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(createCompositionController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.data = FXCollections.observableArrayList();
         List<participates> misitems = participatesDao.getAll(con);
-        data.addAll(misitems);
-        //    List<champions> listChamp = participatesDao.getAllChamp(con);
+        compos.addAll(misitems);
+
+        List<champions> listChamp = participatesDao.getAllChamp(con);
+        List<runes> listRune = participatesDao.getAllRunes(con);
+
         for (participates misitem : misitems) {
-            this.champion.setCellValueFactory(new PropertyValueFactory<participates, champions>("champion"));
-            this.runes.setCellValueFactory(new PropertyValueFactory<participates, runes>("runes"));
-            compos.add(misitem);
-            composition.setItems(data);
-        }
+            for (champions lc : listChamp) {
+                if (misitem.getCodChamp() == lc.getCodChamp()) {
+                    this.nameChamp.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lc.getNombre());
+                    });
+                    this.p.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lc.getP());
+                    });
+                    this.q.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lc.getQ());
+                    });
+                    this.w.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lc.getW());
+                    });
+                    this.e.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lc.getE());
+                    });
+                    this.r.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lc.getR());
+                    });
 
-    }
-
-    /*
-    public void showAatrox() {
-        for (champions champion : champions) {
-            if (champion.getNombre().equals("Aatrox")) {
-                //img =  new ImageView(imgAatrox);
-
-                L_name.setText(champion.getNombre());
-                T_Description.setText(champion.getDescription());
-                p.setCellValueFactory(new PropertyValueFactory<champions, String>("P"));
-                q.setCellValueFactory(new PropertyValueFactory<champions, String>("Q"));
-                w.setCellValueFactory(new PropertyValueFactory<champions, String>("W"));
-                e.setCellValueFactory(new PropertyValueFactory<champions, String>("E"));
-                r.setCellValueFactory(new PropertyValueFactory<champions, String>("R"));
-                champs.add(champion);
-                skills.setItems(champs);
+                }
             }
+            for (runes lr : listRune) {
+                if (misitem.getCodRune() == lr.getCodRune()) {
+                    this.namePageRune.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getName());
+                    });
+                    this.rune.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getType().getRune());
+                    });
+                    this.runePrimary.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getR1().getRune());
+                    });
+                    this.slot1.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getS1().getRune());
+                    });
+                    this.slot2.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getS2().getRune());
+                    });
+                    this.slot3.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getS3().getRune());
+                    });
+                    this.runeSecondary.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getR2().getRune());
+                    });
+                    this.slot4.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getS4().getRune());
+                    });
+                    this.slot5.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getS5().getRune());
+                    });
+                    this.buff1.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getB1().getRune());
+                    });
+                    this.buff2.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getB2().getRune());
+                    });
+                    this.buff3.setCellValueFactory(eachRowData -> {
+                        return new SimpleObjectProperty<>(lr.getB3().getRune());
+                    });
+                }
+            }
+            // compos.add(misitem);
+            composition.setItems(compos);
         }
+
     }
-     */
+
     @FXML
     private void handleNewComposition() {
         addNameRunesController cc = (addNameRunesController) app.controller.openModal(Scenes.CREATECOMPOSITION, "Create Composition", this, null);
+    }
+
+    @FXML
+    public void deleteIetem() {
+        participates selected = composition.getSelectionModel().getSelectedItem();
+        if (selected != null) {
+            if (!showConfirm("")) {
+                return;
+            }
+            compos.remove(selected);
+            participatesDao dao = new participatesDao(selected);
+            dao.remove();
+        } else {
+            showWarning("¡Ojo!", "Ningún Item a borrar", "Seleccione un item antes de presionar delete");
+        }
+    }
+
+    public void showWarning(String title, String header, String description) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(header);
+        alert.setContentText(description);
+        alert.showAndWait();
+    }
+
+    private boolean showConfirm(String title) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Comfirmar");
+        alert.setHeaderText("A punto de Eliminar");
+        alert.setContentText("Desea eliminar el elemento " + title);
+        //alert.showAndWait();
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void doOnClosedModal(Object response) {
