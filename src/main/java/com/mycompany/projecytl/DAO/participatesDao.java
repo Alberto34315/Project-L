@@ -34,7 +34,7 @@ public class participatesDao extends participates implements DAO {
         GETBYID("SELECT * FROM participates WHERE codGame=?, codRune=?,codChamp=?"),
         GETALLCHAMPION("SELECT c.* FROM participates p,champions c WHERE p.codChamp = c.codChamp"),
         GETALLRUNES("SELECT r.* FROM participates p,runes r WHERE p.codRune = r.codRune"),
-        // UPDATE("UPDATE participates SET nombre = ?, description = ?, p = ?, q = ?, w = ?, e = ?, r = ? WHERE codChamp = ?"),
+        UPDATE("UPDATE participates SET codRune=?,codChamp=?  WHERE codGame = ?"),
         REMOVE("DELETE FROM participates WHERE codGame=?, codRune=?,codChamp=?");
         private String q;
 
@@ -122,7 +122,14 @@ public class participatesDao extends participates implements DAO {
         try {
             java.sql.Connection csql = ConnectionUtils.getConnection();
 
-            if (this.codChamp > 0 && this.codRune > 0 && this.codGame > 0) {
+            if (this.codChamp < 0 && this.codRune < 0 && this.codGame < 0) {
+                String qe = qu.UPDATE.getQ();
+                PreparedStatement ps = csql.prepareStatement(qe);
+                ps.setInt(1, codRune);
+                ps.setInt(2, codChamp);
+                ps.setInt(3, codGame);
+                result = ps.executeUpdate();
+            } else {
                 //INSERT
                 String qe = qu.INSERT.getQ();
                 PreparedStatement ps = csql.prepareStatement(qe);

@@ -37,6 +37,8 @@ public class homeController extends Controllers implements Initializable {
 
     Connection con;
     private ObservableList<participates> compos;
+    private ObservableList<runes> l_rune;
+    private ObservableList<champions> l_champ;
     @FXML
     private TableView<participates> composition;
 
@@ -47,7 +49,7 @@ public class homeController extends Controllers implements Initializable {
     private TableColumn<participates, runes> runes;
 
     @FXML
-    private TableColumn<participates, String> nameChamp;
+    private TableColumn<champions, String> nameChamp;
 
     @FXML
     private TableColumn<champions, String> p;
@@ -103,22 +105,30 @@ public class homeController extends Controllers implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.compos = FXCollections.observableArrayList();
+        this.l_rune = FXCollections.observableArrayList();
+        this.l_champ = FXCollections.observableArrayList();
+
         try {
+            
             con = ConnectionUtils.connect(AppController.currentConnection);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(createCompositionController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(homeController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(createCompositionController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(homeController.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         List<participates> misitems = participatesDao.getAll(con);
         compos.addAll(misitems);
 
         List<champions> listChamp = participatesDao.getAllChamp(con);
         List<runes> listRune = participatesDao.getAllRunes(con);
 
+        this.l_champ.addAll(listChamp);
+        this.l_rune.addAll(listRune);
+
         for (participates misitem : misitems) {
-            for (champions lc : listChamp) {
-                if (misitem.getCodChamp() == lc.getCodChamp()) {
+            for (champions lc : l_champ) {
+                if (misitem.getCodChamp() == lc.getCodChamp() && nameChamp.getCellData(lc) != lc.getNombre()) {
                     this.nameChamp.setCellValueFactory(eachRowData -> {
                         return new SimpleObjectProperty<>(lc.getNombre());
                     });
@@ -140,8 +150,9 @@ public class homeController extends Controllers implements Initializable {
 
                 }
             }
-            for (runes lr : listRune) {
-                if (misitem.getCodRune() == lr.getCodRune()) {
+
+            for (runes lr : l_rune) {
+                if (misitem.getCodRune() == lr.getCodRune() && namePageRune.getCellData(lr) != lr.getName()) {
                     this.namePageRune.setCellValueFactory(eachRowData -> {
                         return new SimpleObjectProperty<>(lr.getName());
                     });
@@ -178,12 +189,12 @@ public class homeController extends Controllers implements Initializable {
                     this.buff3.setCellValueFactory(eachRowData -> {
                         return new SimpleObjectProperty<>(lr.getB3().getRune());
                     });
+
                 }
             }
-            // compos.add(misitem);
-            composition.setItems(compos);
+            //compos.add(misitem);
+        composition.setItems(compos);
         }
-
     }
 
     @FXML
