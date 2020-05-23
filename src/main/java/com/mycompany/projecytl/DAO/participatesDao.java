@@ -113,12 +113,6 @@ public class participatesDao extends participates implements DAO {
     public int save() {
         int result = -1;
         participatesDao.queries qu = null;
-//        List<runes> runes = runesDao.getAll(con);
-//        List<champions> champions = championsDao.getAll(con);
-//        List<Game> games = gameDao.getAll(con);
-//        int codC = searchCodChamp(champions);
-//        int codR = searchCodRunes(runes);
-//        int codG = searchCodGame(games);
         try {
             java.sql.Connection csql = ConnectionUtils.getConnection();
 

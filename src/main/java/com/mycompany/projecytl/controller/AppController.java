@@ -27,7 +27,7 @@ public class AppController extends Controllers {
     public Scenes backScene;
     public Scenes currentScene;
     public static Connection currentConnection;
-
+    
     // public static Connection currentConnection;
     public static MapEntry<Parent, Controllers> loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));

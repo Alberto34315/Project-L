@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -25,6 +26,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+
         MapEntry<Parent, Controllers> m = AppController.loadFXML(Scenes.ROOT.getUrl());
         mainStage = stage;
         rootLayout = (BorderPane) m.getKey();
@@ -34,19 +36,12 @@ public class App extends Application {
         controller = (AppController) m.getValue();
         controller.setMainApp(this);
         controller.changeScene(Scenes.HOME);
+        stage.getIcons().add(new Image("assets/Icono/icono.png"));
         stage.show();
     }
 
-    /*
-    public static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
+  
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
-    }
-     */
     public static void main(String[] args) {
         launch();
     }
