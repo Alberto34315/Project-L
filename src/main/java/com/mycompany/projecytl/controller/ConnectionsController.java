@@ -46,108 +46,17 @@ public class ConnectionsController extends Controllers implements Initializable 
     public void initialize(URL url, ResourceBundle rb) {
         this.conns = FXCollections.observableArrayList();
         this.conns.addAll(XMLUtil.loadDataXML());
-
-//        nameConn.setCellValueFactory(cellData -> {
-//            if (cellData.getValue().equals(app.controller.currentConnection)) {
-//                return new SimpleObjectProperty<>(cellData.getValue().getName() + " ( C )");
-//            } else {
-//                return cellData.getValue().getN();
-//            }
-//
-//        });
-//        showConnDetails(null);
-//        connTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> showConnDetails(newValue)
-//        );
-//        //Add observable
-//        connTable.setItems(conns);
     }
 
-//    private void showConnDetails(Connection c) {
-//        if (c != null) {
-//            tools.setDisable(false);
-//            L_nameConn.setText(c.getName());
-//            L_type.setText(c.getType());
-//            L_server.setText(c.getServer());
-//            L_user.setText(c.getUserName());
-//            L_pass.setText(c.getPassword());
-//        } else {
-//            tools.setDisable(true);
-//            resetForm();
-//        }
-//    }
-//
-//    private void resetForm() {
-//        L_nameConn.setText("");
-//        L_type.setText("");
-//        L_server.setText("");
-//        L_user.setText("");
-//        L_pass.setText("");
-//    }
-//
-//    @FXML
-//    public void back() {
-//        this.app.controller.changeScene(Scenes.PRIMARY);
-//    }
-//
-//    void onLoad() {
-//        this.app.controller.disableCon();
-//        this.app.controller.title("CONEXIONES");
-//    }
-//
-//    @FXML
-//    private void handleNewConnection() {
-//        editConnectionController cc = (editConnectionController) app.controller.openModal(Scenes.EDIT, "Nueva Conexión", this, null);
-//    }
-//
-//    @FXML
-//    private void handleConConnection() {
-//        Connection c = connTable.getSelectionModel().getSelectedItem();
-//        if (c == null) {
-//            Dialog.showWarning("Aviso", "No hay conexión seleccionada", "Seleccione una conexión antes de pulsar connectar");
-//        } else {
-//            app.controller.currentConnection = c;
-//            app.controller.title("CONEXIONES");
-//            PreferencesUtil.setPreference(c.getName());
-//            conns.add(new Connection()); //refresh gui
-//        }
-//    }
-//
-//    @FXML
-//    private void handleEditConnection() {
-//        Connection c = connTable.getSelectionModel().getSelectedItem();
-//        if (c == null) {
-//            Dialog.showWarning("Aviso", "No hay conexión para editar", "Seleccione una conexión antes de pulsar editar");
-//        } else {
-//            editConnectionController cc = (editConnectionController) app.controller.openModal(Scenes.EDIT, "Editando Conexión", this, c);
-//        }
-//    }
-//
-//    @FXML
-//    private void handleRemoveConnection() {
-//        Connection c = connTable.getSelectionModel().getSelectedItem();
-//        if (c == null) {
-//            Dialog.showWarning("Aviso", "No hay conexión para borrar", "Seleccione una conexión antes de pulsar borrar");
-//        } else {
-//            if (c.equals(app.controller.currentConnection)) {
-//                app.controller.currentConnection = null;
-//                PreferencesUtil.setPreference(null);
-//                app.controller.title("CONEXIONES");
-//            }
-//            conns.remove(c);
-//            XMLUtil.writeDataXML(conns);
-//        }
-//    }
 
     @Override
     void doOnCloseModal(Object response) {
         if (response != null) {
             MapEntry<Connection, Boolean> r = (MapEntry<Connection, Boolean>) response;
-            if (r.getValue()) { //new conn to be added
+            if (r.getValue()) { 
                 conns.add(r.getKey());
             }
-           // showConnDetails(r.getKey()); //update GUI
             XMLUtil.writeDataXML(conns);
-            //SAVE
         }
 
     }

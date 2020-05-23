@@ -83,10 +83,7 @@ public class gameDao extends Game implements DAO{
     }
 
 
-    @Override
-    public int remove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 
     @Override
     public int save() {
@@ -103,7 +100,7 @@ public class gameDao extends Game implements DAO{
                 result = ps.executeUpdate();
                 try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
-                        result = generatedKeys.getInt(1);  //<-- return last id inserted
+                        result = generatedKeys.getInt(1);  
                     }
                 }
                 this.codGame = result;

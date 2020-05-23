@@ -109,22 +109,15 @@ public class runesController extends Controllers implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        /* if (type != null) {
-            for (RuneType _type : RuneType.values()) {
-                type.getItems().add(_type.getRune());
-            }
-        }*/
-       // this.rune = FXCollections.observableArrayList();
         selectTypeRune();
     }
-
-    private ComboBox<String> selectTypeRune() {
+    
+    private void selectTypeRune() {
         if (type != null) {
             for (RuneType _type : RuneType.values()) {
                 type.getItems().add(_type.getRune());
             }
         }
-        return type;
     }
 
     @FXML
@@ -1347,11 +1340,7 @@ public class runesController extends Controllers implements Initializable {
         }
     }
 
-    /*
-    @Override
-    public void setParams(Object p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
+   
     private RuneType returnType(ComboBox<String> type) {
         RuneType rT = null;
         if (type != null) {
@@ -1492,20 +1481,7 @@ public class runesController extends Controllers implements Initializable {
         }
     }
 
-    private boolean showConfirm() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Comfirmar");
-        alert.setHeaderText("A punto de Guardar");
-        alert.setContentText("¿Desea guardar el elemento?");
-        //alert.show();
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
+   
     @FXML
     private void handleNameRune() {
         addNameRunesController cc = (addNameRunesController) app.controller.openModal(Scenes.NAMERUNE, "Name Rune", this, null);
@@ -1515,7 +1491,6 @@ public class runesController extends Controllers implements Initializable {
     public runes save() {
         runes r = null;
         addNameRunesController add = new addNameRunesController();
-        //  if (isValid()) {
         if (r == null) {
             r = new runes();
             this.creating = true;

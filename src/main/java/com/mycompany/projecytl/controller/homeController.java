@@ -27,7 +27,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  *
@@ -128,7 +127,7 @@ public class homeController extends Controllers implements Initializable {
 
         for (participates misitem : misitems) {
             for (champions lc : l_champ) {
-                if (misitem.getCodChamp() == lc.getCodChamp() && nameChamp.getCellData(lc) != lc.getNombre()) {
+                if (misitem.getCodChamp() == lc.getCodChamp()) {
                     this.nameChamp.setCellValueFactory(eachRowData -> {
                         return new SimpleObjectProperty<>(lc.getNombre());
                     });
@@ -152,7 +151,7 @@ public class homeController extends Controllers implements Initializable {
             }
 
             for (runes lr : l_rune) {
-                if (misitem.getCodRune() == lr.getCodRune() && namePageRune.getCellData(lr) != lr.getName()) {
+                if (misitem.getCodRune() == lr.getCodRune()) {
                     this.namePageRune.setCellValueFactory(eachRowData -> {
                         return new SimpleObjectProperty<>(lr.getName());
                     });

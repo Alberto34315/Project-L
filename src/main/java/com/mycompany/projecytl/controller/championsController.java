@@ -71,11 +71,7 @@ public class championsController extends Controllers implements Initializable {
         this.champs = FXCollections.observableArrayList();
     }
 
-//    @FXML
-//    public Button aatrox;
-//
-//    @FXML
-//    public Button aatrox;
+
     @FXML
     public ImageView img;
 
@@ -114,7 +110,6 @@ public class championsController extends Controllers implements Initializable {
         }
         loadChampionsFromXML();
         loadChampionsFromDB();
-        //loadChampionsFromDB();
     }
 
     @FXML
@@ -122,7 +117,6 @@ public class championsController extends Controllers implements Initializable {
         skills.getItems().clear();
         for (champions champion : champions) {
             if (champion.getNombre().equals("Aatrox")) {
-                //img =  new ImageView(imgAatrox);
                 File file = new File(imgAatrox);
                 Image image = new Image(file.toURI().toString());
                 img.setImage(image);
@@ -144,7 +138,6 @@ public class championsController extends Controllers implements Initializable {
         skills.getItems().clear();
         for (champions champion : champions) {
             if (champion.getNombre().equals("Ahri")) {
-                //img =  new ImageView(imgAatrox);
                 File file = new File(imgAhri);
                 Image image = new Image(file.toURI().toString());
                 img.setImage(image);
@@ -166,7 +159,6 @@ public class championsController extends Controllers implements Initializable {
         skills.getItems().clear();
         for (champions champion : champions) {
             if (champion.getNombre().equals("Braum")) {
-                //img =  new ImageView(imgAatrox);
                 File file = new File(imgBraum);
                 Image image = new Image(file.toURI().toString());
                 img.setImage(image);
@@ -210,7 +202,6 @@ public class championsController extends Controllers implements Initializable {
         skills.getItems().clear();
         for (champions champion : champions) {
             if (champion.getNombre().equals("Lee Sin")) {
-                //img =  new ImageView(imgAatrox);
                 File file = new File(imgLeesin);
                 Image image = new Image(file.toURI().toString());
                 img.setImage(image);
@@ -232,7 +223,6 @@ public class championsController extends Controllers implements Initializable {
         skills.getItems().clear();
         for (champions champion : champions) {
             if (champion.getNombre().equals("Trundle")) {
-                //img =  new ImageView(imgAatrox);
                 File file = new File(imgTrundle);
                 Image image = new Image(file.toURI().toString());
                 img.setImage(image);
@@ -249,6 +239,10 @@ public class championsController extends Controllers implements Initializable {
         }
     }
 
+    /**
+     * Carga de un archivo XML la informacion de los campeones
+     * @return boolean (True si los carga y false si no)
+     */
     public boolean loadChampionsFromXML() {
         boolean cargado = false;
         this.champions.clear();
@@ -259,16 +253,15 @@ public class championsController extends Controllers implements Initializable {
             dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(file);
 
-            // estos métodos podemos usarlos combinados para normalizar el archivo XML
+            // Estos métodos podemos usarlos combinados para normalizar el archivo XML
             //getDocumentElement()	Accede al nodo raíz del documento
             //normalize()	Elimina nodos vacíos y combina adyacentes en caso de que los hubiera
             doc.getDocumentElement().normalize();
-            NodeList nList = doc.getElementsByTagName("Champion");   //nList.getLength() -> n_nodos
+            NodeList nList = doc.getElementsByTagName("Champion");  
             for (int i = 0; i < nList.getLength(); i++) {
                 Node nNode = nList.item(i);
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    //String id=eElement.getAttribute("id");
                     String codChamp = eElement.getElementsByTagName("codChamp").item(0).getTextContent();
                     String nombre = eElement.getElementsByTagName("nombre").item(0).getTextContent();
                     String descripcion = eElement.getElementsByTagName("descripcion").item(0).getTextContent();
@@ -294,7 +287,12 @@ public class championsController extends Controllers implements Initializable {
         }
         return cargado;
     }
-
+    
+    /**
+     * Actualiza la informacion del archivo XML, con la informacion de la base de datos
+     * @param cha recibe un champion
+     * @return boolean (True si los guarda y false si no)
+     */
     public boolean saveChampionsFromDDBB(champions cha) {
         boolean guardado = false;
         try {
@@ -309,12 +307,10 @@ public class championsController extends Controllers implements Initializable {
             for (champions c : lChamp) {
 
                 Element e = doc.createElement("Champion");
-               // if (c.getNombre().equals(cha.getNombre())) {
                     String codigo = String.valueOf(c.getCodChamp());
                     Element k = doc.createElement("codChamp");
                     k.appendChild(doc.createTextNode(codigo));
                     e.appendChild(k);
-               // }
                 Element name = doc.createElement("nombre");
                 name.appendChild(doc.createTextNode(c.getNombre()));
                 e.appendChild(name);
@@ -365,7 +361,10 @@ public class championsController extends Controllers implements Initializable {
         }
         return guardado;
     }
-
+    
+    /**
+     * Guarda la informacion del XML a la basae de datos de MySQL
+     */
     public void loadChampionsFromDB() {
         for (champions champ : champions) {
             champs.add(champ);

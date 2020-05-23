@@ -9,10 +9,8 @@ import com.mycompany.projecytl.Utils.MapEntry;
 import com.mycompany.projecytl.model.runes;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -28,7 +26,6 @@ public class addNameRunesController extends ModalControllers implements Initiali
 
     private boolean creating;
     private runesController parent;
-    //recibir ifo de mi padre
     private Object params;
     private Stage myStage;
 

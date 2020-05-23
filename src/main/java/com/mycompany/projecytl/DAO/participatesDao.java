@@ -87,7 +87,9 @@ public class participatesDao extends participates implements DAO {
         this.persist = false;
     }
 
-    @Override
+    /**
+     * Elimina en la tabla el elemento que coincida con esta instancia 
+     */
     public int remove() {
         int result = -1;
         if (this.codGame > 0) {

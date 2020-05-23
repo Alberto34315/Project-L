@@ -61,7 +61,7 @@ public class AppController extends Controllers {
             Stage modalStage = new Stage();
             modalStage.setTitle(title);
             modalStage.initModality(Modality.APPLICATION_MODAL);
-            modalStage.initOwner(this.app.mainStage); //ojo no existía, hay que crearlo
+            modalStage.initOwner(this.app.mainStage); 
             Scene modalScene = new Scene(modal);
             modalStage.setScene(modalScene);
             ModalControllers modalController = (ModalControllers) m.getValue();

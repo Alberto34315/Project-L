@@ -34,8 +34,7 @@ public class runesDao extends runes implements DAO {
         INSERT("INSERT INTO runes (codRune,name,RuneType,DescriptionType,R1,DescriptionRunesPrimary,S1,DescriptionS1,S2,DescriptionS2,S3,DescriptionS3,R2,DescriptionRunesSecondary,S4,DescriptionS4,S5,DescriptionS5,B1,DescriptionB1,B2,DescriptionB2,B3,DescriptionB3) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"),
         ALL("SELECT * FROM runes"),
         GETBYID("SELECT * FROM runes WHERE codRune=?"),
-        UPDATE("UPDATE runes SET RuneType = ?, name = ?, DescriptionType = ?, R1 = ?, DescriptionRunesPrimary = ?, S1 = ?, DescriptionS1 = ?, S2 = ?, DescriptionS2 = ?, S3 = ?, DescriptionS3 = ?, R2 = ?, DescriptionRunesSecondary = ?, S4 = ?, DescriptionS4 = ?, S5 = ?, DescriptionS5 = ?, B1 = ?, DescriptionB1 = ?, B2 = ?, DescriptionB2 = ?, B3 = ?, DescriptionB3 = ?  WHERE codRune = ?"),
-        REMOVE("DELETE FROM runes WHERE codRune=?");
+        UPDATE("UPDATE runes SET RuneType = ?, name = ?, DescriptionType = ?, R1 = ?, DescriptionRunesPrimary = ?, S1 = ?, DescriptionS1 = ?, S2 = ?, DescriptionS2 = ?, S3 = ?, DescriptionS3 = ?, R2 = ?, DescriptionRunesSecondary = ?, S4 = ?, DescriptionS4 = ?, S5 = ?, DescriptionS5 = ?, B1 = ?, DescriptionB1 = ?, B2 = ?, DescriptionB2 = ?, B3 = ?, DescriptionB3 = ?  WHERE codRune = ?");
         private String q;
 
         queries(String q) {
@@ -132,10 +131,7 @@ public class runesDao extends runes implements DAO {
         this.persist = false;
     }
 
-    @Override
-    public int remove() {
-        return -1;
-    }
+    
 
     @Override
     public int save() {
@@ -204,7 +200,7 @@ public class runesDao extends runes implements DAO {
                 result = ps.executeUpdate();
                 try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
-                        result = generatedKeys.getInt(1);  //<-- return last id inserted
+                        result = generatedKeys.getInt(1);  
                     }
                 }
                 this.codRune = result;

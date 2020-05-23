@@ -124,6 +124,13 @@ public class createCompositionController extends ModalControllers implements Ini
         this.myStage.close();
     }
 
+    /**
+     * Busca el codigo de la página de runas en la lista y si el nombre de la
+     * página de runas es igual al que se encuentra en el TextField T_namesRune
+     * devuelve el codigo de la pagina de runas
+     *
+     * @return int cod
+     */
     private int returnCodRune() {
         int cod = 0;
         for (runes rune : r) {
@@ -134,16 +141,27 @@ public class createCompositionController extends ModalControllers implements Ini
         return cod;
     }
 
+    /**
+     * Busca el codigo del campeón en la lista y si el nombre del campeón es
+     * igual al que se encuentra en el TextField T_namesChampion devuelve el
+     * codigo del campeón
+     *
+     * @return int cod
+     */
     private int returnCodChampion() {
         int cod = 0;
         for (champions c : lChamp) {
-            if (c.getNombre().equals(namesChampion.getSelectionModel().getSelectedItem())) {
+            if (c.getNombre().equals(T_namesChampion.getText())) {
                 cod = c.getCodChamp();
             }
         }
         return cod;
     }
 
+    /**
+     *Crea un Game(Partida) cada vez que se llame al metodo
+     * @return devuelve el codigo del Game
+     */
     private int returnCodGame() {
         int cod = 0;
         Game newItem = new Game();
@@ -157,7 +175,6 @@ public class createCompositionController extends ModalControllers implements Ini
     @FXML
     public void handleOK() {
         participates p = new participates(returnCodGame(), returnCodRune(), returnCodChampion());
-        //runes r = (runes) params;
         if (this.parent != null) {
             this.creating = true;
             MapEntry<participates, Boolean> response = new MapEntry<>(p, creating);

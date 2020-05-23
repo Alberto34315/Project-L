@@ -30,8 +30,7 @@ public class championsDao extends champions implements DAO {
         INSERT("INSERT INTO champions (codChamp,nombre,description,p,q,w,e,r) VALUES (NULL,?,?,?,?,?,?,?)"),
         ALL("SELECT * FROM champions"),
         GETBYID("SELECT * FROM champions WHERE codChamp=?"),
-        UPDATE("UPDATE champions SET nombre = ?, description = ?, p = ?, q = ?, w = ?, e = ?, r = ? WHERE codChamp = ?"),
-        REMOVE("DELETE FROM champions WHERE codChamp=?");
+        UPDATE("UPDATE champions SET nombre = ?, description = ?, p = ?, q = ?, w = ?, e = ?, r = ? WHERE codChamp = ?");
         private String q;
 
         queries(String q) {
@@ -112,11 +111,7 @@ public class championsDao extends champions implements DAO {
         this.persist = false;
     }
 
-    @Override
-    public int remove() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    
     @Override
     public int save() {
         int result = -1;
@@ -152,7 +147,7 @@ public class championsDao extends champions implements DAO {
                 result = ps.executeUpdate();
                 try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                     if (generatedKeys.next()) {
-                        result = generatedKeys.getInt(1);  //<-- return last id inserted
+                        result = generatedKeys.getInt(1);  
                     }
                 }
                 this.codChamp = result;
